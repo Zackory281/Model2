@@ -15,6 +15,19 @@
 		F2BD640121B0B2D600FBDFD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2BD640021B0B2D600FBDFD2 /* Assets.xcassets */; };
 		F2BD640421B0B2D600FBDFD2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2BD640221B0B2D600FBDFD2 /* Main.storyboard */; };
 		F2BD641021B0B2D600FBDFD2 /* Model2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BD640F21B0B2D600FBDFD2 /* Model2Tests.swift */; };
+		F2BD642221B0B35100FBDFD2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BD642121B0B35100FBDFD2 /* main.swift */; };
+		F2BD642721B0B36300FBDFD2 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BD642621B0B36200FBDFD2 /* Model.swift */; };
+		F2BD642821B0B3C700FBDFD2 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BD642621B0B36200FBDFD2 /* Model.swift */; };
+		F2BD642B21B0B45C00FBDFD2 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BD642A21B0B45C00FBDFD2 /* Node.swift */; };
+		F2BD642C21B0B45C00FBDFD2 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BD642A21B0B45C00FBDFD2 /* Node.swift */; };
+		F2BD642E21B0B48F00FBDFD2 /* misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BD642D21B0B48F00FBDFD2 /* misc.swift */; };
+		F2BD642F21B0B48F00FBDFD2 /* misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BD642D21B0B48F00FBDFD2 /* misc.swift */; };
+		F2BD643221B0CB5700FBDFD2 /* SetStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BD643121B0CB5700FBDFD2 /* SetStack.swift */; };
+		F2BD643321B0CB5700FBDFD2 /* SetStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BD643121B0CB5700FBDFD2 /* SetStack.swift */; };
+		F2BD643521B0CBEB00FBDFD2 /* WeakSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BD643421B0CBEB00FBDFD2 /* WeakSet.swift */; };
+		F2BD643621B0CBEB00FBDFD2 /* WeakSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BD643421B0CBEB00FBDFD2 /* WeakSet.swift */; };
+		F2BD643821B0CC7200FBDFD2 /* WeakDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BD643721B0CC7200FBDFD2 /* WeakDictionary.swift */; };
+		F2BD643921B0CC7200FBDFD2 /* WeakDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BD643721B0CC7200FBDFD2 /* WeakDictionary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +39,18 @@
 			remoteInfo = Model2;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F2BD641D21B0B35100FBDFD2 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		F2BD63F321B0B2D500FBDFD2 /* Model2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Model2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -41,6 +66,14 @@
 		F2BD640B21B0B2D600FBDFD2 /* Model2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Model2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2BD640F21B0B2D600FBDFD2 /* Model2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model2Tests.swift; sourceTree = "<group>"; };
 		F2BD641121B0B2D600FBDFD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F2BD641F21B0B35100FBDFD2 /* ModelCommand */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ModelCommand; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2BD642121B0B35100FBDFD2 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		F2BD642621B0B36200FBDFD2 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		F2BD642A21B0B45C00FBDFD2 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		F2BD642D21B0B48F00FBDFD2 /* misc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = misc.swift; sourceTree = "<group>"; };
+		F2BD643121B0CB5700FBDFD2 /* SetStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetStack.swift; sourceTree = "<group>"; };
+		F2BD643421B0CBEB00FBDFD2 /* WeakSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakSet.swift; sourceTree = "<group>"; };
+		F2BD643721B0CC7200FBDFD2 /* WeakDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakDictionary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +91,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F2BD641C21B0B35100FBDFD2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -66,6 +106,7 @@
 			children = (
 				F2BD63F521B0B2D500FBDFD2 /* Model2 */,
 				F2BD640E21B0B2D600FBDFD2 /* Model2Tests */,
+				F2BD642021B0B35100FBDFD2 /* ModelCommand */,
 				F2BD63F421B0B2D500FBDFD2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -75,6 +116,7 @@
 			children = (
 				F2BD63F321B0B2D500FBDFD2 /* Model2.app */,
 				F2BD640B21B0B2D600FBDFD2 /* Model2Tests.xctest */,
+				F2BD641F21B0B35100FBDFD2 /* ModelCommand */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -82,6 +124,7 @@
 		F2BD63F521B0B2D500FBDFD2 /* Model2 */ = {
 			isa = PBXGroup;
 			children = (
+				F2BD641A21B0B30B00FBDFD2 /* Model */,
 				F2BD63F621B0B2D500FBDFD2 /* AppDelegate.swift */,
 				F2BD63F821B0B2D500FBDFD2 /* GameScene.sks */,
 				F2BD63FA21B0B2D500FBDFD2 /* Actions.sks */,
@@ -102,6 +145,43 @@
 				F2BD641121B0B2D600FBDFD2 /* Info.plist */,
 			);
 			path = Model2Tests;
+			sourceTree = "<group>";
+		};
+		F2BD641A21B0B30B00FBDFD2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F2BD643021B0CB4700FBDFD2 /* types */,
+				F2BD642921B0B43000FBDFD2 /* data */,
+				F2BD642621B0B36200FBDFD2 /* Model.swift */,
+				F2BD642D21B0B48F00FBDFD2 /* misc.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F2BD642021B0B35100FBDFD2 /* ModelCommand */ = {
+			isa = PBXGroup;
+			children = (
+				F2BD642121B0B35100FBDFD2 /* main.swift */,
+			);
+			path = ModelCommand;
+			sourceTree = "<group>";
+		};
+		F2BD642921B0B43000FBDFD2 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				F2BD642A21B0B45C00FBDFD2 /* Node.swift */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		F2BD643021B0CB4700FBDFD2 /* types */ = {
+			isa = PBXGroup;
+			children = (
+				F2BD643121B0CB5700FBDFD2 /* SetStack.swift */,
+				F2BD643421B0CBEB00FBDFD2 /* WeakSet.swift */,
+				F2BD643721B0CC7200FBDFD2 /* WeakDictionary.swift */,
+			);
+			path = types;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,6 +222,23 @@
 			productReference = F2BD640B21B0B2D600FBDFD2 /* Model2Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		F2BD641E21B0B35100FBDFD2 /* ModelCommand */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F2BD642321B0B35100FBDFD2 /* Build configuration list for PBXNativeTarget "ModelCommand" */;
+			buildPhases = (
+				F2BD641B21B0B35100FBDFD2 /* Sources */,
+				F2BD641C21B0B35100FBDFD2 /* Frameworks */,
+				F2BD641D21B0B35100FBDFD2 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ModelCommand;
+			productName = ModelCommand;
+			productReference = F2BD641F21B0B35100FBDFD2 /* ModelCommand */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -158,6 +255,9 @@
 					F2BD640A21B0B2D600FBDFD2 = {
 						CreatedOnToolsVersion = 10.0;
 						TestTargetID = F2BD63F221B0B2D500FBDFD2;
+					};
+					F2BD641E21B0B35100FBDFD2 = {
+						CreatedOnToolsVersion = 10.0;
 					};
 				};
 			};
@@ -176,6 +276,7 @@
 			targets = (
 				F2BD63F221B0B2D500FBDFD2 /* Model2 */,
 				F2BD640A21B0B2D600FBDFD2 /* Model2Tests */,
+				F2BD641E21B0B35100FBDFD2 /* ModelCommand */,
 			);
 		};
 /* End PBXProject section */
@@ -207,8 +308,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2BD63FF21B0B2D500FBDFD2 /* ViewController.swift in Sources */,
+				F2BD642B21B0B45C00FBDFD2 /* Node.swift in Sources */,
+				F2BD643821B0CC7200FBDFD2 /* WeakDictionary.swift in Sources */,
 				F2BD63FD21B0B2D500FBDFD2 /* GameScene.swift in Sources */,
+				F2BD642E21B0B48F00FBDFD2 /* misc.swift in Sources */,
+				F2BD643521B0CBEB00FBDFD2 /* WeakSet.swift in Sources */,
+				F2BD643221B0CB5700FBDFD2 /* SetStack.swift in Sources */,
 				F2BD63F721B0B2D500FBDFD2 /* AppDelegate.swift in Sources */,
+				F2BD642721B0B36300FBDFD2 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,6 +324,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2BD641021B0B2D600FBDFD2 /* Model2Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F2BD641B21B0B35100FBDFD2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2BD643621B0CBEB00FBDFD2 /* WeakSet.swift in Sources */,
+				F2BD643921B0CC7200FBDFD2 /* WeakDictionary.swift in Sources */,
+				F2BD642C21B0B45C00FBDFD2 /* Node.swift in Sources */,
+				F2BD643321B0CB5700FBDFD2 /* SetStack.swift in Sources */,
+				F2BD642F21B0B48F00FBDFD2 /* misc.swift in Sources */,
+				F2BD642821B0B3C700FBDFD2 /* Model.swift in Sources */,
+				F2BD642221B0B35100FBDFD2 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,6 +558,26 @@
 			};
 			name = Release;
 		};
+		F2BD642421B0B35100FBDFD2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7F7BS4L457;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		F2BD642521B0B35100FBDFD2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7F7BS4L457;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -463,6 +604,15 @@
 			buildConfigurations = (
 				F2BD641821B0B2D600FBDFD2 /* Debug */,
 				F2BD641921B0B2D600FBDFD2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F2BD642321B0B35100FBDFD2 /* Build configuration list for PBXNativeTarget "ModelCommand" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2BD642421B0B35100FBDFD2 /* Debug */,
+				F2BD642521B0B35100FBDFD2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
