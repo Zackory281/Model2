@@ -45,6 +45,10 @@
 		F2D6BDA221B1F4E500EC3AE5 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D6BDA021B1F45F00EC3AE5 /* Utils.swift */; };
 		F2D6BDA421B1F62A00EC3AE5 /* NodeTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D6BDA321B1F62A00EC3AE5 /* NodeTree.swift */; };
 		F2D6BDA521B1F62A00EC3AE5 /* NodeTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D6BDA321B1F62A00EC3AE5 /* NodeTree.swift */; };
+		F2E6C58621B2FCC5005C7DEA /* PathNodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E6C58521B2FCC5005C7DEA /* PathNodeController.swift */; };
+		F2E6C58721B2FCC5005C7DEA /* PathNodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E6C58521B2FCC5005C7DEA /* PathNodeController.swift */; };
+		F2E6C58A21B33254005C7DEA /* NodeMisc.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E6C58921B33254005C7DEA /* NodeMisc.swift */; };
+		F2E6C58B21B33254005C7DEA /* NodeMisc.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E6C58921B33254005C7DEA /* NodeMisc.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +104,8 @@
 		F2D6BD9D21B1ECDC00EC3AE5 /* WeakDictionaryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakDictionaryTest.swift; sourceTree = "<group>"; };
 		F2D6BDA021B1F45F00EC3AE5 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		F2D6BDA321B1F62A00EC3AE5 /* NodeTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeTree.swift; sourceTree = "<group>"; };
+		F2E6C58521B2FCC5005C7DEA /* PathNodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathNodeController.swift; sourceTree = "<group>"; };
+		F2E6C58921B33254005C7DEA /* NodeMisc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeMisc.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +173,7 @@
 		F2BD63F521B0B2D500FBDFD2 /* Model2 */ = {
 			isa = PBXGroup;
 			children = (
+				F2BD643021B0CB4700FBDFD2 /* datatypes */,
 				F2BD641A21B0B30B00FBDFD2 /* Model */,
 				F2BD63F621B0B2D500FBDFD2 /* AppDelegate.swift */,
 				F2BD63F821B0B2D500FBDFD2 /* GameScene.sks */,
@@ -193,13 +200,12 @@
 		F2BD641A21B0B30B00FBDFD2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F2E6C58821B32FBD005C7DEA /* util */,
+				F2E6C58421B2FC40005C7DEA /* controller */,
 				F262F1C421B230D900B973C8 /* model utils */,
 				F2D6BDA621B2109D00EC3AE5 /* database */,
-				F2BD643021B0CB4700FBDFD2 /* datatypes */,
 				F2BD642921B0B43000FBDFD2 /* data */,
 				F2BD642621B0B36200FBDFD2 /* Model.swift */,
-				F2BD642D21B0B48F00FBDFD2 /* misc.swift */,
-				F2D6BDA021B1F45F00EC3AE5 /* Utils.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -242,6 +248,24 @@
 				F262F1B421B21BDE00B973C8 /* PathnodeBase.swift */,
 			);
 			path = database;
+			sourceTree = "<group>";
+		};
+		F2E6C58421B2FC40005C7DEA /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				F2E6C58521B2FCC5005C7DEA /* PathNodeController.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		F2E6C58821B32FBD005C7DEA /* util */ = {
+			isa = PBXGroup;
+			children = (
+				F2BD642D21B0B48F00FBDFD2 /* misc.swift */,
+				F2D6BDA021B1F45F00EC3AE5 /* Utils.swift */,
+				F2E6C58921B33254005C7DEA /* NodeMisc.swift */,
+			);
+			path = util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -370,11 +394,13 @@
 				F2D6BDA421B1F62A00EC3AE5 /* NodeTree.swift in Sources */,
 				F2BD63FF21B0B2D500FBDFD2 /* ViewController.swift in Sources */,
 				F262F1B821B21CAD00B973C8 /* ModelSetting.swift in Sources */,
+				F2E6C58A21B33254005C7DEA /* NodeMisc.swift in Sources */,
 				F2BD642B21B0B45C00FBDFD2 /* PathNode.swift in Sources */,
 				F2BD643821B0CC7200FBDFD2 /* WeakDictionary.swift in Sources */,
 				F262F1BB21B2225C00B973C8 /* CommandQueue.swift in Sources */,
 				F2BD63FD21B0B2D500FBDFD2 /* GameScene.swift in Sources */,
 				F2BD642E21B0B48F00FBDFD2 /* misc.swift in Sources */,
+				F2E6C58621B2FCC5005C7DEA /* PathNodeController.swift in Sources */,
 				F2D6BDA121B1F45F00EC3AE5 /* Utils.swift in Sources */,
 				F2BD643521B0CBEB00FBDFD2 /* WeakSet.swift in Sources */,
 				F2BD643221B0CB5700FBDFD2 /* SetStack.swift in Sources */,
@@ -408,8 +434,10 @@
 				F262F1B621B21BDE00B973C8 /* PathnodeBase.swift in Sources */,
 				F2BD642C21B0B45C00FBDFD2 /* PathNode.swift in Sources */,
 				F2BD643321B0CB5700FBDFD2 /* SetStack.swift in Sources */,
+				F2E6C58B21B33254005C7DEA /* NodeMisc.swift in Sources */,
 				F2BD642F21B0B48F00FBDFD2 /* misc.swift in Sources */,
 				F2BD642821B0B3C700FBDFD2 /* Model.swift in Sources */,
+				F2E6C58721B2FCC5005C7DEA /* PathNodeController.swift in Sources */,
 				F2D6BDA521B1F62A00EC3AE5 /* NodeTree.swift in Sources */,
 				F2BD642221B0B35100FBDFD2 /* main.swift in Sources */,
 				F262F1B921B21CAD00B973C8 /* ModelSetting.swift in Sources */,

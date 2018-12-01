@@ -10,9 +10,11 @@ import Foundation
 
 class PathNodeBase {
 	
-	let nodeTree: NodeTree<PathNode>
+	let nodeTree = NodeTree<<#N: Gridable#>>()
 	
 	init(setting: ModelSetting) {
-		nodeTree = NodeTree<PathNode>(setting.minCorner, setting.maxCorner)
+		//nodeTree = NodeTree<PathNode>(setting.minCorner, setting.maxCorner)
 	}
+	
 }
+
