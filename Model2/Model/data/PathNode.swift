@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PathNode: NSObject{
+class PathNode: NSObject, Gridable{
 	let point: GPoint
 	let id: PATHID
 	var table = WeakDictionary<Direction, PathNode>()
