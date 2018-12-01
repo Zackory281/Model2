@@ -8,8 +8,7 @@
 
 import Foundation
 
-let model = Model()
-let weakdict = WeakDictionary<Direction, NSString>()
-let s:NSString = "UP!"
-weakdict.insert(key: .UP, obj: s)
-print(weakdict.contains(key: .UP))
+
+let setting = ModelSetting(xi: -100, yi: -100, xf: 100, yf: 100)
+let model = Model(setting: setting)
+//print(Action.addPathNode(at: GP(0,0)) == Action.addPathNode(at: GP(0,1)))

@@ -9,10 +9,28 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>ModelCommand.xcscheme</key>
+		<key>Model2Tests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>1</integer>
+		</dict>
+		<key>ModelCommand.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>F2BD63F221B0B2D500FBDFD2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F2BD640A21B0B2D600FBDFD2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

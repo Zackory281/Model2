@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F262F1B521B21BDE00B973C8 /* PathnodeBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F262F1B421B21BDE00B973C8 /* PathnodeBase.swift */; };
+		F262F1B621B21BDE00B973C8 /* PathnodeBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F262F1B421B21BDE00B973C8 /* PathnodeBase.swift */; };
+		F262F1B821B21CAD00B973C8 /* ModelSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = F262F1B721B21CAD00B973C8 /* ModelSetting.swift */; };
+		F262F1B921B21CAD00B973C8 /* ModelSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = F262F1B721B21CAD00B973C8 /* ModelSetting.swift */; };
+		F262F1BB21B2225C00B973C8 /* CommandQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F262F1BA21B2225C00B973C8 /* CommandQueue.swift */; };
+		F262F1BC21B2225C00B973C8 /* CommandQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F262F1BA21B2225C00B973C8 /* CommandQueue.swift */; };
+		F262F1BE21B222F300B973C8 /* LinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F262F1BD21B222F300B973C8 /* LinkedList.swift */; };
+		F262F1BF21B222F300B973C8 /* LinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F262F1BD21B222F300B973C8 /* LinkedList.swift */; };
+		F262F1C121B22F1000B973C8 /* TickBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F262F1C021B22F1000B973C8 /* TickBase.swift */; };
+		F262F1C521B2317700B973C8 /* TickBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F262F1C021B22F1000B973C8 /* TickBase.swift */; };
+		F262F1C821B23B3600B973C8 /* TestBaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F262F1C721B23B3600B973C8 /* TestBaseTest.swift */; };
 		F2BD63F721B0B2D500FBDFD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BD63F621B0B2D500FBDFD2 /* AppDelegate.swift */; };
 		F2BD63F921B0B2D500FBDFD2 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F2BD63F821B0B2D500FBDFD2 /* GameScene.sks */; };
 		F2BD63FB21B0B2D500FBDFD2 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = F2BD63FA21B0B2D500FBDFD2 /* Actions.sks */; };
@@ -18,8 +29,8 @@
 		F2BD642221B0B35100FBDFD2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BD642121B0B35100FBDFD2 /* main.swift */; };
 		F2BD642721B0B36300FBDFD2 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BD642621B0B36200FBDFD2 /* Model.swift */; };
 		F2BD642821B0B3C700FBDFD2 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BD642621B0B36200FBDFD2 /* Model.swift */; };
-		F2BD642B21B0B45C00FBDFD2 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BD642A21B0B45C00FBDFD2 /* Node.swift */; };
-		F2BD642C21B0B45C00FBDFD2 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BD642A21B0B45C00FBDFD2 /* Node.swift */; };
+		F2BD642B21B0B45C00FBDFD2 /* PathNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BD642A21B0B45C00FBDFD2 /* PathNode.swift */; };
+		F2BD642C21B0B45C00FBDFD2 /* PathNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BD642A21B0B45C00FBDFD2 /* PathNode.swift */; };
 		F2BD642E21B0B48F00FBDFD2 /* misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BD642D21B0B48F00FBDFD2 /* misc.swift */; };
 		F2BD642F21B0B48F00FBDFD2 /* misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BD642D21B0B48F00FBDFD2 /* misc.swift */; };
 		F2BD643221B0CB5700FBDFD2 /* SetStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BD643121B0CB5700FBDFD2 /* SetStack.swift */; };
@@ -28,6 +39,12 @@
 		F2BD643621B0CBEB00FBDFD2 /* WeakSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BD643421B0CBEB00FBDFD2 /* WeakSet.swift */; };
 		F2BD643821B0CC7200FBDFD2 /* WeakDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BD643721B0CC7200FBDFD2 /* WeakDictionary.swift */; };
 		F2BD643921B0CC7200FBDFD2 /* WeakDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BD643721B0CC7200FBDFD2 /* WeakDictionary.swift */; };
+		F2D6BD9E21B1ECDC00EC3AE5 /* WeakDictionaryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D6BD9D21B1ECDC00EC3AE5 /* WeakDictionaryTest.swift */; };
+		F2D6BD9F21B1ED2600EC3AE5 /* WeakDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BD643721B0CC7200FBDFD2 /* WeakDictionary.swift */; };
+		F2D6BDA121B1F45F00EC3AE5 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D6BDA021B1F45F00EC3AE5 /* Utils.swift */; };
+		F2D6BDA221B1F4E500EC3AE5 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D6BDA021B1F45F00EC3AE5 /* Utils.swift */; };
+		F2D6BDA421B1F62A00EC3AE5 /* NodeTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D6BDA321B1F62A00EC3AE5 /* NodeTree.swift */; };
+		F2D6BDA521B1F62A00EC3AE5 /* NodeTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D6BDA321B1F62A00EC3AE5 /* NodeTree.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +70,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F262F1B421B21BDE00B973C8 /* PathnodeBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathnodeBase.swift; sourceTree = "<group>"; };
+		F262F1B721B21CAD00B973C8 /* ModelSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSetting.swift; sourceTree = "<group>"; };
+		F262F1BA21B2225C00B973C8 /* CommandQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandQueue.swift; sourceTree = "<group>"; };
+		F262F1BD21B222F300B973C8 /* LinkedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedList.swift; sourceTree = "<group>"; };
+		F262F1C021B22F1000B973C8 /* TickBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickBase.swift; sourceTree = "<group>"; };
+		F262F1C721B23B3600B973C8 /* TestBaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBaseTest.swift; sourceTree = "<group>"; };
 		F2BD63F321B0B2D500FBDFD2 /* Model2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Model2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2BD63F621B0B2D500FBDFD2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2BD63F821B0B2D500FBDFD2 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -69,11 +92,14 @@
 		F2BD641F21B0B35100FBDFD2 /* ModelCommand */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ModelCommand; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2BD642121B0B35100FBDFD2 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		F2BD642621B0B36200FBDFD2 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		F2BD642A21B0B45C00FBDFD2 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		F2BD642A21B0B45C00FBDFD2 /* PathNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathNode.swift; sourceTree = "<group>"; };
 		F2BD642D21B0B48F00FBDFD2 /* misc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = misc.swift; sourceTree = "<group>"; };
 		F2BD643121B0CB5700FBDFD2 /* SetStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetStack.swift; sourceTree = "<group>"; };
 		F2BD643421B0CBEB00FBDFD2 /* WeakSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakSet.swift; sourceTree = "<group>"; };
 		F2BD643721B0CC7200FBDFD2 /* WeakDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakDictionary.swift; sourceTree = "<group>"; };
+		F2D6BD9D21B1ECDC00EC3AE5 /* WeakDictionaryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakDictionaryTest.swift; sourceTree = "<group>"; };
+		F2D6BDA021B1F45F00EC3AE5 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		F2D6BDA321B1F62A00EC3AE5 /* NodeTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeTree.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +127,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F262F1C421B230D900B973C8 /* model utils */ = {
+			isa = PBXGroup;
+			children = (
+				F262F1BA21B2225C00B973C8 /* CommandQueue.swift */,
+				F262F1C021B22F1000B973C8 /* TickBase.swift */,
+			);
+			path = "model utils";
+			sourceTree = "<group>";
+		};
+		F262F1C621B23B1C00B973C8 /* TickBase test */ = {
+			isa = PBXGroup;
+			children = (
+				F262F1C721B23B3600B973C8 /* TestBaseTest.swift */,
+			);
+			path = "TickBase test";
+			sourceTree = "<group>";
+		};
 		F2BD63EA21B0B2D500FBDFD2 = {
 			isa = PBXGroup;
 			children = (
@@ -150,10 +193,13 @@
 		F2BD641A21B0B30B00FBDFD2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F2BD643021B0CB4700FBDFD2 /* types */,
+				F262F1C421B230D900B973C8 /* model utils */,
+				F2D6BDA621B2109D00EC3AE5 /* database */,
+				F2BD643021B0CB4700FBDFD2 /* datatypes */,
 				F2BD642921B0B43000FBDFD2 /* data */,
 				F2BD642621B0B36200FBDFD2 /* Model.swift */,
 				F2BD642D21B0B48F00FBDFD2 /* misc.swift */,
+				F2D6BDA021B1F45F00EC3AE5 /* Utils.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -161,7 +207,9 @@
 		F2BD642021B0B35100FBDFD2 /* ModelCommand */ = {
 			isa = PBXGroup;
 			children = (
+				F262F1C621B23B1C00B973C8 /* TickBase test */,
 				F2BD642121B0B35100FBDFD2 /* main.swift */,
+				F2D6BD9D21B1ECDC00EC3AE5 /* WeakDictionaryTest.swift */,
 			);
 			path = ModelCommand;
 			sourceTree = "<group>";
@@ -169,19 +217,31 @@
 		F2BD642921B0B43000FBDFD2 /* data */ = {
 			isa = PBXGroup;
 			children = (
-				F2BD642A21B0B45C00FBDFD2 /* Node.swift */,
+				F2BD642A21B0B45C00FBDFD2 /* PathNode.swift */,
+				F2D6BDA321B1F62A00EC3AE5 /* NodeTree.swift */,
+				F262F1B721B21CAD00B973C8 /* ModelSetting.swift */,
 			);
 			path = data;
 			sourceTree = "<group>";
 		};
-		F2BD643021B0CB4700FBDFD2 /* types */ = {
+		F2BD643021B0CB4700FBDFD2 /* datatypes */ = {
 			isa = PBXGroup;
 			children = (
+				F262F1BD21B222F300B973C8 /* LinkedList.swift */,
 				F2BD643121B0CB5700FBDFD2 /* SetStack.swift */,
 				F2BD643421B0CBEB00FBDFD2 /* WeakSet.swift */,
 				F2BD643721B0CC7200FBDFD2 /* WeakDictionary.swift */,
 			);
+			name = datatypes;
 			path = types;
+			sourceTree = "<group>";
+		};
+		F2D6BDA621B2109D00EC3AE5 /* database */ = {
+			isa = PBXGroup;
+			children = (
+				F262F1B421B21BDE00B973C8 /* PathnodeBase.swift */,
+			);
+			path = database;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,15 +367,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2D6BDA421B1F62A00EC3AE5 /* NodeTree.swift in Sources */,
 				F2BD63FF21B0B2D500FBDFD2 /* ViewController.swift in Sources */,
-				F2BD642B21B0B45C00FBDFD2 /* Node.swift in Sources */,
+				F262F1B821B21CAD00B973C8 /* ModelSetting.swift in Sources */,
+				F2BD642B21B0B45C00FBDFD2 /* PathNode.swift in Sources */,
 				F2BD643821B0CC7200FBDFD2 /* WeakDictionary.swift in Sources */,
+				F262F1BB21B2225C00B973C8 /* CommandQueue.swift in Sources */,
 				F2BD63FD21B0B2D500FBDFD2 /* GameScene.swift in Sources */,
 				F2BD642E21B0B48F00FBDFD2 /* misc.swift in Sources */,
+				F2D6BDA121B1F45F00EC3AE5 /* Utils.swift in Sources */,
 				F2BD643521B0CBEB00FBDFD2 /* WeakSet.swift in Sources */,
 				F2BD643221B0CB5700FBDFD2 /* SetStack.swift in Sources */,
 				F2BD63F721B0B2D500FBDFD2 /* AppDelegate.swift in Sources */,
+				F262F1BE21B222F300B973C8 /* LinkedList.swift in Sources */,
 				F2BD642721B0B36300FBDFD2 /* Model.swift in Sources */,
+				F262F1B521B21BDE00B973C8 /* PathnodeBase.swift in Sources */,
+				F262F1C121B22F1000B973C8 /* TickBase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,7 +390,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2D6BD9F21B1ED2600EC3AE5 /* WeakDictionary.swift in Sources */,
 				F2BD641021B0B2D600FBDFD2 /* Model2Tests.swift in Sources */,
+				F2D6BD9E21B1ECDC00EC3AE5 /* WeakDictionaryTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,13 +400,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F262F1C521B2317700B973C8 /* TickBase.swift in Sources */,
+				F262F1C821B23B3600B973C8 /* TestBaseTest.swift in Sources */,
+				F2D6BDA221B1F4E500EC3AE5 /* Utils.swift in Sources */,
 				F2BD643621B0CBEB00FBDFD2 /* WeakSet.swift in Sources */,
 				F2BD643921B0CC7200FBDFD2 /* WeakDictionary.swift in Sources */,
-				F2BD642C21B0B45C00FBDFD2 /* Node.swift in Sources */,
+				F262F1B621B21BDE00B973C8 /* PathnodeBase.swift in Sources */,
+				F2BD642C21B0B45C00FBDFD2 /* PathNode.swift in Sources */,
 				F2BD643321B0CB5700FBDFD2 /* SetStack.swift in Sources */,
 				F2BD642F21B0B48F00FBDFD2 /* misc.swift in Sources */,
 				F2BD642821B0B3C700FBDFD2 /* Model.swift in Sources */,
+				F2D6BDA521B1F62A00EC3AE5 /* NodeTree.swift in Sources */,
 				F2BD642221B0B35100FBDFD2 /* main.swift in Sources */,
+				F262F1B921B21CAD00B973C8 /* ModelSetting.swift in Sources */,
+				F262F1BF21B222F300B973C8 /* LinkedList.swift in Sources */,
+				F262F1BC21B2225C00B973C8 /* CommandQueue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -491,6 +568,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				LINK_WITH_STANDARD_LIBRARIES = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = dsf.Model2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -510,6 +588,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				LINK_WITH_STANDARD_LIBRARIES = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = dsf.Model2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -530,6 +609,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
+				LINK_WITH_STANDARD_LIBRARIES = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = dsf.Model2Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -551,6 +631,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
+				LINK_WITH_STANDARD_LIBRARIES = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = dsf.Model2Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -563,6 +644,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7F7BS4L457;
+				LINK_WITH_STANDARD_LIBRARIES = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 			};
@@ -573,6 +655,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7F7BS4L457;
+				LINK_WITH_STANDARD_LIBRARIES = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 			};

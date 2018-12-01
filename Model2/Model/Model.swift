@@ -8,10 +8,51 @@
 
 import Foundation
 
-class Model : NSObject {
+class Model : ModelAPI, Tickable {
 	
-	override init() {
-		super.init()
-		print("Model initiated.")
+	let pathNodeBase: PathNodeBase
+	let commandQueue: CommandQueue
+	let tickBase: TickBase
+	
+	func command(action: MC) {
+		commandQueue.queue(action)
 	}
+	
+	init(setting: ModelSetting) {
+		pathNodeBase = PathNodeBase(setting: setting)
+		commandQueue = CommandQueue()
+		tickBase = TickBase()
+		
+		tickBase.add(tickable: self)
+	}
+	
+	var priority: TickPri = 0
+	
+	func tick() {
+		tickBase.reapTick()
+	}
+	
+	/// DO NOT CALL if you ticking Model
+	@discardableResult func tick(_ tick: TickC) -> Bool {
+		return true
+	}
+}
+
+protocol ModelAPI : class
+{
+	func command(action: ModelCommand)
+}
+
+typealias MC = ModelCommand
+
+enum ModelCommand : Equatable
+{
+	case addPathNode(at: GP)
+	case removePathNode(at: GP)
+}
+
+protocol Tickable : class {
+	@discardableResult
+	func tick(_ tick: TickC) -> Bool
+	var priority: TickPri { get }
 }
