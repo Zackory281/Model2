@@ -11,3 +11,7 @@ import Foundation
 protocol Gridable: class {
 	var point: GPoint {get}
 }
+
+protocol Positionale: class {
+	var fpoint: FPoint { get }
+}

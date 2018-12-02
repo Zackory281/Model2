@@ -8,15 +8,17 @@
 
 import GameplayKit
 
-class NodeTree<N> where Gridable == N {
+class NodeTree<N> where N: Gridable {
 	
 	let tree: GKQuadtree<NSObject>
-//	var nodes: Dictionary<N as! Hashable, GKQuadtreeNode>
-//
-//	init(_ minCorner: GP, _ maxCornder: GP) {
-//		tree = GKQuadtree<NSObject>.init(boundingQuad: GKQuad(quadMin: float2(Float(minCorner.x), Float(minCorner.y)), quadMax: float2(Float(maxCornder.x), Float(maxCornder.y))), minimumCellSize: 0.5)
-//		nodes = Dictionary<N, GKQuadtreeNode>()
-//	}
+	var nodes: Dictionary<AnyHashable, GKQuadtreeNode>
+	
+	//typealias T = N & NSObject
+
+	init(_ minCorner: GP, _ maxCornder: GP) {
+		tree = GKQuadtree<NSObject>.init(boundingQuad: GKQuad(quadMin: float2(Float(minCorner.x), Float(minCorner.y)), quadMax: float2(Float(maxCornder.x), Float(maxCornder.y))), minimumCellSize: 0.5)
+		nodes = Dictionary<AnyHashable, GKQuadtreeNode>()
+	}
 //
 //	func remove(node: N) {
 //		guard let qnode = nodes[node] else { return }

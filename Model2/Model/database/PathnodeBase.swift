@@ -10,11 +10,15 @@ import Foundation
 
 class PathNodeBase {
 	
-	let nodeTree = NodeTree<<#N: Gridable#>>()
+	weak var nodeTree: NodeTree<t>?
 	
 	init(setting: ModelSetting) {
+		let a = Array<t>()
 		//nodeTree = NodeTree<PathNode>(setting.minCorner, setting.maxCorner)
 	}
 	
 }
 
+protocol t: Gridable {
+	var hashable: AnyObject {get}
+}
