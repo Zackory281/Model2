@@ -74,6 +74,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F21CB38621B4784200036785 /* traversal.dec.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = traversal.dec.java; sourceTree = "<group>"; };
+		F21CB38721B4784200036785 /* bofa.dec.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = bofa.dec.java; sourceTree = "<group>"; };
 		F262F1B421B21BDE00B973C8 /* PathnodeBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathnodeBase.swift; sourceTree = "<group>"; };
 		F262F1B721B21CAD00B973C8 /* ModelSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSetting.swift; sourceTree = "<group>"; };
 		F262F1BA21B2225C00B973C8 /* CommandQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandQueue.swift; sourceTree = "<group>"; };
@@ -133,6 +135,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F21CB38521B4782400036785 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				F21CB38721B4784200036785 /* bofa.dec.java */,
+				F21CB38621B4784200036785 /* traversal.dec.java */,
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		F262F1C421B230D900B973C8 /* model utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +164,7 @@
 		F2BD63EA21B0B2D500FBDFD2 = {
 			isa = PBXGroup;
 			children = (
+				F21CB38521B4782400036785 /* New Group */,
 				F2BD63F521B0B2D500FBDFD2 /* Model2 */,
 				F2BD640E21B0B2D600FBDFD2 /* Model2Tests */,
 				F2BD642021B0B35100FBDFD2 /* ModelCommand */,
