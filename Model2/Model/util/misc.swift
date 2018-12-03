@@ -10,10 +10,11 @@ import Foundation
 
 typealias IntC = Int16
 typealias FloatC = Float
-typealias TickC = UInt32
+typealias Tick = UInt32
 typealias PATHID = UInt16
 typealias TickPri = UInt8
 typealias GP = GPoint
+typealias FP = FPoint
 
 struct GPoint: CustomStringConvertible, Hashable {
 	
@@ -23,7 +24,14 @@ struct GPoint: CustomStringConvertible, Hashable {
 	init(_ x: IntC, _ y: IntC) {
 		(self.x, self.y) = (x, y)
 	}
+	
+	func getFPoint() -> FPoint {
+		return FPoint(FloatC(x), FloatC(y))
+	}
+	
 	var description: String { get { return "(\(x), \(y))"}}
+	
+	static var zero = GPoint(0, 0)
 	
 	static func == (lhs: GPoint, rhs: GPoint) -> Bool {
 		return lhs.x == rhs.x && lhs.y == rhs.y
@@ -43,7 +51,14 @@ struct FPoint: CustomStringConvertible, Hashable {
 	init(_ x: FloatC, _ y: FloatC) {
 		(self.x, self.y) = (x, y)
 	}
+	
+	func getGPoint() -> GPoint {
+		return GPoint(IntC(x), IntC(y))
+	}
+	
 	var description: String { get { return "(\(x), \(y))"}}
+	
+	static var zero = FPoint(0, 0)
 	
 	static func == (lhs: FPoint, rhs: FPoint) -> Bool {
 		return lhs.x == rhs.x && lhs.y == rhs.y

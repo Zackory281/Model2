@@ -10,7 +10,7 @@ import Foundation
 
 class NodeController: Tickable {
 	
-	func tick(_ tick: TickC) -> Bool {
+	func tick(_ tick: Tick) -> Bool {
 		return false
 	}
 	

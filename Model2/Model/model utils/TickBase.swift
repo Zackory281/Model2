@@ -11,7 +11,7 @@ import Foundation
 class TickBase {
 	
 	let list: LinkedList<Tickable>
-	var tick: TickC = 0
+	var tick: Tick = 0
 	
 	init() {
 		list = LinkedList<Tickable>()

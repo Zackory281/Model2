@@ -33,7 +33,7 @@ class Model : ModelAPI, Tickable {
 	}
 	
 	/// DO NOT CALL if you ticking Model
-	@discardableResult func tick(_ tick: TickC) -> Bool {
+	@discardableResult func tick(_ tick: Tick) -> Bool {
 		return true
 	}
 }
@@ -53,6 +53,6 @@ enum ModelCommand : Equatable
 
 protocol Tickable : class {
 	@discardableResult
-	func tick(_ tick: TickC) -> Bool
+	func tick(_ tick: Tick) -> Bool
 	var priority: TickPri { get }
 }

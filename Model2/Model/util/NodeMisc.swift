@@ -8,10 +8,68 @@
 
 import Foundation
 
-protocol Gridable: class {
-	var point: GPoint {get}
+class NodeAbstract: NSObject {
+	
+	var fpoint: FPoint {get{
+		if _gmoved {
+			_fpoint = gpoint.getFPoint()
+		}
+		return _fpoint
+		}set{_fpoint = newValue; _fmoved = true}}
+	var gpoint: GP {get{return .zero}set{}}
+	var moved: Bool { return _fmoved || _gmoved}
+	private var _fpoint: FPoint
+	private var _gpoint: GPoint
+	private var _fmoved: Bool = false
+	private var _gmoved: Bool = false
+	
+	init(fpoint: FPoint) {
+		(_fpoint, _gpoint) = (fpoint, fpoint.getGPoint())
+	}
+	
+	init(gpoint: GPoint) {
+		(_fpoint, _gpoint) = (gpoint.getFPoint(), gpoint)
+	}
 }
 
-protocol Positionale: class {
-	var fpoint: FPoint { get }
+protocol Positionable: class {
+	var fpoint: FPoint{get set}
+	var gpoint: GPoint{get set}
+	/// Positionable marks it true, Client marks it false
+	var moved: Bool {get set}
+}
+
+protocol Statable {
+	var states: LinkedList<NodeState> {get set}
+}
+
+class NodeState: Hashable {
+	
+	var startingTick, progressTick, endingTick: Tick
+	let occupation: NodeStateType
+	
+	init(startTick: Tick, endTick: Tick, occupation: NodeStateType) {
+		self.startingTick = startTick
+		self.endingTick = endTick
+		self.progressTick = startTick
+		self.occupation = occupation
+	}
+	
+	func delay(_ delay: Tick) {
+		endingTick += delay
+	}
+	
+	static func == (lhs: NodeState, rhs: NodeState) -> Bool {
+		return lhs === rhs
+	}
+	
+	func hash(into hasher: inout Hasher) {
+		hasher.combine(endingTick)
+		hasher.combine(occupation)
+	}
+}
+
+enum NodeStateType {
+	case idle
+	case moving
 }

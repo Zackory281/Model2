@@ -135,6 +135,14 @@ public final class LinkedList<T> {
 		insert(newNode, at: index)
 	}
 	
+	/// Insert a value at a the beginning.
+	///
+	/// - Parameters:
+	///   - value: The data value to be inserted
+	public func addFirst(_ value: T) {
+		insert(Node(value: value), at: 0)
+	}
+	
 	/// Insert a copy of a node at a specific index. Crashes if index is out of bounds (0...self.count)
 	///
 	/// - Parameters:

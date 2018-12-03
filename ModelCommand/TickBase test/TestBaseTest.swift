@@ -9,7 +9,7 @@
 import Foundation
 
 class O: Tickable {
-	func tick(_ tick: TickC) -> Bool {
+	func tick(_ tick: Tick) -> Bool {
 		print("\(priority) ticked")
 		return true
 	}
