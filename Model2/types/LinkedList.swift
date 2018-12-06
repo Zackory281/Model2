@@ -1,355 +1,466 @@
 //
 //  LinkedList.swift
-//  Model2
+//  LinkedList
 //
-//  Created by Zackory Cramer on 11/30/18.
-//  Copyright © 2018 Zackori Cui. All rights reserved.
+//  Created by Zackory Cramer on 12/4/18.
+//  Copyright © 2018 Aoil Applications. All rights reserved.
 //
 
-public final class LinkedList<T> {
+import Foundation
+
+class LinkedList<T> {
 	
-	/// Linked List's Node Class Declaration
-	public class LinkedListNode<T> {
-		var value: T
-		var next: LinkedListNode?
-		weak var previous: LinkedListNode?
-		
-		public init(value: T) {
-			self.value = value
-		}
+	let sentinel: LinkedListHeadNode
+	var head: LinkedListValueNode? { get { return sentinel._next } set { sentinel._next = newValue}}
+	var tail: LinkedListValueNode? { get { return sentinel._prev } set { sentinel._prev = newValue}}
+	var size: Int
+	
+	init() {
+		self.sentinel = LinkedListHeadNode()
+		self.size = 0
 	}
 	
-	/// Typealiasing the node class to increase readability of code
-	public typealias Node = LinkedListNode<T>
+	convenience init(from array: Array<T>) {
+		self.init()
+		_buildFrom(array)
+	}
 	
+	/**
+	Gets the Element at the index if it exists.
+	- parameters:
+	- index: the index of the LinkedListValueNode
+	- returns: the LinkedListValueNode at index
+	*/
+	func getElement(at index: Index) -> Element? {
+		guard inBounds(index) else { return nil }
+		return _getListNode(at: index).value
+	}
 	
-	/// The head of the Linked List
-	private(set) var head: Node?
+	/**
+	Gets the LinkedListValueNode at the index if it exists.
+	- parameters:
+	- index: the index of the LinkedListValueNode
+	- returns: the LinkedListValueNode at index
+	*/
+	func getNode(at index: Index) -> LinkedListValueNode? {
+		guard inBounds(index) else { return nil }
+		return _getListNode(at: index)
+	}
 	
-	/// Computed property to iterate through the linked list and return the last node in the list (if any)
-	public var last: Node? {
-		guard var node = head else {
-			return nil
-		}
-		
-		while let next = node.next {
-			node = next
+	@discardableResult func insert(node: LinkedListValueNode, at index: Index) -> LinkedListValueNode? {
+		guard isOrphan(node) && (inBounds(index) || index == size)else { return nil }
+		_insert(node: node, at: index)
+		return node
+	}
+	
+	@discardableResult func insert(element: Element, at index: Index) -> Element? {
+		guard (inBounds(index) || index == size)else { return nil }
+		_insert(node: LinkedListValueNode(element), at: index)
+		return element
+	}
+	
+	@discardableResult func insert(element: Element, after node: LinkedListValueNode) -> Element? {
+		_appendSingle(node: LinkedListValueNode(element), after: node)
+		return element
+	}
+	
+	/// Adds an item to the end of the list
+	/// - parameters:
+	/// 	- item: the value to add
+	/// - returns: the LinkedListValueNode inserted
+	@discardableResult func append(_ item: T) -> LinkedListValueNode {
+		let node = LinkedListValueNode(item)
+		if size == 0 {
+			_addOnlyNode(node: node)
+		} else {
+			_appendSingle(node: node, after: tail!)
 		}
 		return node
 	}
 	
-	/// Computed property to check if the linked list is empty
-	public var isEmpty: Bool {
-		return head == nil
-	}
-	
-	/// Computed property to iterate through the linked list and return the total number of nodes
-	public var count: Int {
-		guard var node = head else {
-			return 0
-		}
-		
-		var count = 1
-		while let next = node.next {
-			node = next
-			count += 1
-		}
-		return count
-	}
-	
-	/// Default initializer
-	public init() {}
-	
-	
-	/// Subscript function to return the node at a specific index
-	///
-	/// - Parameter index: Integer value of the requested value's index
-	public subscript(index: Int) -> T {
-		let node = self.node(at: index)
-		return node.value
-	}
-	
-	/// Function to return the node at a specific index. Crashes if index is out of bounds (0...self.count)
-	///
-	/// - Parameter index: Integer value of the node's index to be returned
-	/// - Returns: LinkedListNode
-	public func node(at index: Int) -> Node {
-		assert(head != nil, "List is empty")
-		assert(index >= 0, "index must be greater than 0")
-		
-		if index == 0 {
-			return head!
+	/// Adds an item to the start of the list
+	/// - parameters:
+	/// 	- item: the value to add
+	/// - returns: the LinkedListValueNode inserted
+	@discardableResult func addFirst(_ item: T) -> LinkedListValueNode {
+		let node = LinkedListValueNode(item)
+		if size == 0 {
+			_addOnlyNode(node: node)
 		} else {
-			var node = head!.next
-			for _ in 1..<index {
-				node = node?.next
-				if node == nil {
-					break
-				}
+			_prependSingle(node: node, before: head!)
+		}
+		return node
+	}
+	
+	/**
+	Pop off the head of the list.
+	- returns: The linkedListValueNode, head, an optional.
+	*/
+	func popHeadNode() -> LinkedListValueNode? {
+		guard let head = head else { return nil }
+		return _detachNode(head)
+	}
+	
+	/**
+	Pop off the tail of the list.
+	- returns: The linkedListValueNode, tail, an optional.
+	*/
+	func popTailNode() -> LinkedListValueNode? {
+		guard let tail = tail else { return nil }
+		return _detachNode(tail)
+	}
+	
+	/**
+	Pop off the first item in the list with the node.
+	- returns: The Element, at the head, an optional.
+	*/
+	func popFirst() -> T? {
+		return popHeadNode()?.value
+	}
+	
+	/**
+	Pop off the last item in the list with the node.
+	- returns: The Element, at the tail, an optional.
+	*/
+	func popLast() -> T? {
+		return popTailNode()?.value
+	}
+	
+	@discardableResult func removeElement(at index: Index) -> T {
+		precondition(inBounds(index), "Removing an element out of bounds")
+		return _detachNode(getNode(at: index)!).value
+	}
+	
+	@discardableResult func removeNode(at index: Index) -> LinkedListValueNode {
+		precondition(inBounds(index), "Removing an node out of bounds")
+		return _detachNode(getNode(at: index)!)
+	}
+	
+	func inBounds(_ index: Index) -> Bool {
+		return index >= 0 && index < size
+	}
+	
+	func isOrphan(_ node: LinkedListValueNode) -> Bool {
+		return node._next == nil && node._prev == nil
+	}
+	
+	func setNodeBefore(node: LinkedListValueNode, before: LinkedListValueNode) {
+		_prependSingle(node: node, before: before)
+	}
+	
+	func setNodeAfter(node: LinkedListValueNode, after: LinkedListValueNode) {
+		_appendSingle(node: node, after: after)
+	}
+	
+	func checkLinkedList() -> LinkedListError? {
+		if size == 0 {
+			return (head == nil && tail == nil) ? nil : LinkedListError.Message("Size said zero but not.")
+		}
+		if head == nil {
+			return LinkedListError.Message("Non empty list with nil head")
+		}
+		if tail == nil {
+			return LinkedListError.Message("Non empty list with nil tail")
+		}
+		if size == 1 {
+			return tail! == head! ? nil : LinkedListError.Message("Size one list with non-matching head and tail.")
+		}
+		var visitedNodes = Set<LinkedListValueNode>()
+		var actualSize = 0
+		var currentNode: LinkedListValueNode? = head!._next!
+		var prevNode: LinkedListValueNode = head!
+		while let curr = currentNode {
+			guard visitedNodes.insert(curr).0 else {
+				return .Message("There is a loop involving \(curr)")
 			}
-			
-			assert(node != nil, "index is out of bounds.")
-			return node!
-		}
-	}
-	
-	/// Append a value to the end of the list
-	///
-	/// - Parameter value: The data value to be appended
-	public func append(_ value: T) {
-		let newNode = Node(value: value)
-		append(newNode)
-	}
-	
-	/// Append a copy of a LinkedListNode to the end of the list.
-	///
-	/// - Parameter node: The node containing the value to be appended
-	public func append(_ node: Node) {
-		let newNode = node
-		if let lastNode = last {
-			newNode.previous = lastNode
-			lastNode.next = newNode
-		} else {
-			head = newNode
-		}
-	}
-	
-	/// Append a copy of a LinkedList to the end of the list.
-	///
-	/// - Parameter list: The list to be copied and appended.
-	public func append(_ list: LinkedList) {
-		var nodeToCopy = list.head
-		while let node = nodeToCopy {
-			append(node.value)
-			nodeToCopy = node.next
-		}
-	}
-	
-	/// Insert a value at a specific index. Crashes if index is out of bounds (0...self.count)
-	///
-	/// - Parameters:
-	///   - value: The data value to be inserted
-	///   - index: Integer value of the index to be insterted at
-	public func insert(_ value: T, at index: Int) {
-		let newNode = Node(value: value)
-		insert(newNode, at: index)
-	}
-	
-	/// Insert a value at a the beginning.
-	///
-	/// - Parameters:
-	///   - value: The data value to be inserted
-	public func addFirst(_ value: T) {
-		insert(Node(value: value), at: 0)
-	}
-	
-	/// Insert a copy of a node at a specific index. Crashes if index is out of bounds (0...self.count)
-	///
-	/// - Parameters:
-	///   - node: The node containing the value to be inserted
-	///   - index: Integer value of the index to be inserted at
-	public func insert(_ newNode: Node, at index: Int) {
-		if index == 0 {
-			newNode.next = head
-			head?.previous = newNode
-			head = newNode
-		} else {
-			let prev = node(at: index - 1)
-			let next = prev.next
-			newNode.previous = prev
-			newNode.next = next
-			next?.previous = newNode
-			prev.next = newNode
-		}
-	}
-	
-	/// Insert a copy of a LinkedList at a specific index. Crashes if index is out of bounds (0...self.count)
-	///
-	/// - Parameters:
-	///   - list: The LinkedList to be copied and inserted
-	///   - index: Integer value of the index to be inserted at
-	public func insert(_ list: LinkedList, at index: Int) {
-		if list.isEmpty { return }
-		
-		if index == 0 {
-			list.last?.next = head
-			head = list.head
-		} else {
-			let prev = node(at: index - 1)
-			let next = prev.next
-			
-			prev.next = list.head
-			list.head?.previous = prev
-			
-			list.last?.next = next
-			next?.previous = list.last
-		}
-	}
-	
-	/// Function to remove all nodes/value from the list
-	public func removeAll() {
-		head = nil
-	}
-	
-	/// Function to remove a specific node.
-	///
-	/// - Parameter node: The node to be deleted
-	/// - Returns: The data value contained in the deleted node.
-	@discardableResult public func remove(node: Node) -> T {
-		let prev = node.previous
-		let next = node.next
-		
-		if let prev = prev {
-			prev.next = next
-		} else {
-			head = next
-		}
-		next?.previous = prev
-		
-		node.previous = nil
-		node.next = nil
-		return node.value
-	}
-	
-	/// Function to remove the last node/value in the list. Crashes if the list is empty
-	///
-	/// - Returns: The data value contained in the deleted node.
-	@discardableResult public func removeLast() -> T {
-		assert(!isEmpty)
-		return remove(node: last!)
-	}
-	
-	/// Function to remove a node/value at a specific index. Crashes if index is out of bounds (0...self.count)
-	///
-	/// - Parameter index: Integer value of the index of the node to be removed
-	/// - Returns: The data value contained in the deleted node
-	@discardableResult public func remove(at index: Int) -> T {
-		let node = self.node(at: index)
-		return remove(node: node)
-	}
-}
-
-//: End of the base class declarations & beginning of extensions' declarations:
-// MARK: - Extension to enable the standard conversion of a list to String
-extension LinkedList: CustomStringConvertible {
-	public var description: String {
-		var s = "["
-		var node = head
-		while let nd = node {
-			s += "\(nd.value)"
-			node = nd.next
-			if node != nil { s += ", " }
-		}
-		return s + "]"
-	}
-}
-
-// MARK: - Extension to add a 'reverse' function to the list
-extension LinkedList {
-	public func reverse() {
-		var node = head
-		while let currentNode = node {
-			node = currentNode.next
-			swap(&currentNode.next, &currentNode.previous)
-			head = currentNode
-		}
-	}
-}
-
-// MARK: - An extension with an implementation of 'map' & 'filter' functions
-extension LinkedList {
-	public func map<U>(transform: (T) -> U) -> LinkedList<U> {
-		let result = LinkedList<U>()
-		var node = head
-		while let nd = node {
-			result.append(transform(nd.value))
-			node = nd.next
-		}
-		return result
-	}
-	
-	public func filter(predicate: (T) -> Bool) -> LinkedList<T> {
-		let result = LinkedList<T>()
-		var node = head
-		while let nd = node {
-			if predicate(nd.value) {
-				result.append(nd.value)
+			guard actualSize < size else {
+				return .Message("Actual size exceeds \(size)")
 			}
-			node = nd.next
+			guard curr._prev == prevNode else {
+				return .Message("Node \(curr)'s prev doesn't match it's prev's next.")
+			}
+			guard prevNode == curr._prev else {
+				return .Message("Node \(curr) doesn't have a prev")
+			}
+			prevNode = curr
+			currentNode = curr._next
+			actualSize += 1
 		}
-		return result
+		guard prevNode == tail! else {
+			return .Message("End node of the list: \(prevNode) doesn't correspond to the tail")
+		}
+		return nil
 	}
-}
-
-// MARK: - Extension to enable initialization from an Array
-extension LinkedList {
-	convenience init(array: Array<T>) {
-		self.init()
+	
+	class LinkedListHeadNode {
+		fileprivate var _next: LinkedListValueNode?
+		fileprivate weak var _prev: LinkedListValueNode?
 		
-		array.forEach { append($0) }
+		init(_ next: LinkedListValueNode? = nil, _ prev: LinkedListValueNode? = nil) {
+			self._next = next
+			self._prev = prev
+		}
 	}
-}
-
-// MARK: - Extension to enable initialization from an Array Literal
-extension LinkedList: ExpressibleByArrayLiteral {
-	public convenience init(arrayLiteral elements: T...) {
-		self.init()
+	
+	class LinkedListValueNode: LinkedListHeadNode, Hashable {
 		
-		elements.forEach { append($0) }
+		var prev: LinkedListValueNode? {get{return _prev}}
+		var next: LinkedListValueNode? {get{return _next}}
+		var value: T
+		
+		init(_ value: T, prev: LinkedListValueNode, next: LinkedListValueNode? = nil) {
+			self.value = value
+			super.init(next, prev)
+		}
+		init(_ value: T) {
+			self.value = value
+			super.init()
+		}
+		
+		func hash(into hasher: inout Hasher) {
+			hasher.combine(ObjectIdentifier(self))
+		}
+		
+		static func == (lhs: LinkedList<T>.LinkedListValueNode, rhs: LinkedList<T>.LinkedListValueNode) -> Bool {
+			return lhs === rhs
+		}
 	}
 }
 
-// MARK: - Collection
 extension LinkedList: Collection {
 	
-	public typealias Index = LinkedListIndex<T>
+	typealias Index = Int
+	typealias Element = T
 	
-	/// The position of the first element in a nonempty collection.
-	///
-	/// If the collection is empty, `startIndex` is equal to `endIndex`.
-	/// - Complexity: O(1)
-	public var startIndex: Index {
+	var startIndex: Index { return 0 }
+	var endIndex: Index { return size }
+	
+	subscript(index: Index) -> Iterator.Element {
 		get {
-			return LinkedListIndex<T>(node: head, tag: 0)
+			precondition(inBounds(index))
+			return getElement(at: index)!
+		}
+		set {
+			precondition(inBounds(index))
+			_replaceNode(node: _getListNode(at: index), with: LinkedListValueNode(newValue))
 		}
 	}
 	
-	/// The collection's "past the end" position---that is, the position one
-	/// greater than the last valid subscript argument.
-	/// - Complexity: O(n), where n is the number of elements in the list. This can be improved by keeping a reference
-	///   to the last node in the collection.
-	public var endIndex: Index {
-		get {
-			if let h = self.head {
-				return LinkedListIndex<T>(node: h, tag: count)
-			} else {
-				return LinkedListIndex<T>(node: nil, tag: startIndex.tag)
-			}
-		}
+	func index(after i: Index) -> Index {
+		return i + 1
 	}
 	
-	public subscript(position: Index) -> T {
-		get {
-			return position.node!.value
-		}
+	typealias Iterator = LinkedListIterator
+	
+	func makeIterator() -> Iterator {
+		return LinkedListIterator(start: head)
 	}
 	
-	public func index(after idx: Index) -> Index {
-		return LinkedListIndex<T>(node: idx.node?.next, tag: idx.tag + 1)
+	class LinkedListIterator: IteratorProtocol {
+		
+		weak var currentNode: LinkedListValueNode?
+		
+		init(start: LinkedListValueNode?) {
+			currentNode = start
+		}
+		
+		func next() -> T? {
+			guard let cnode = currentNode?.value else { return nil }
+			currentNode = currentNode!._next
+			return cnode
+		}
 	}
 }
 
-// MARK: - Collection Index
-/// Custom index type that contains a reference to the node at index 'tag'
-public struct LinkedListIndex<T>: Comparable {
-	fileprivate let node: LinkedList<T>.LinkedListNode<T>?
-	fileprivate let tag: Int
+extension LinkedList {
 	
-	public static func==<T>(lhs: LinkedListIndex<T>, rhs: LinkedListIndex<T>) -> Bool {
-		return (lhs.tag == rhs.tag)
+	class LinkedListNodeIterator: IteratorProtocol {
+		
+		weak var currentNode: LinkedListValueNode?
+		
+		init(start: LinkedListValueNode?) {
+			currentNode = start
+		}
+		
+		func next() -> T? {
+			guard let cnode = currentNode?.value else { return nil }
+			currentNode = currentNode!._next
+			return cnode
+		}
+	}
+}
+
+// Subscript extension
+extension LinkedList {
+	
+	subscript(index: Index) -> LinkedListValueNode {
+		get {
+			precondition(inBounds(index))
+			return _getListNode(at: index)
+		}
+		set {
+			precondition(isOrphan(newValue))
+			precondition(inBounds(index))
+			_replaceNode(node: _getListNode(at: index), with: newValue)
+		}
 	}
 	
-	public static func< <T>(lhs: LinkedListIndex<T>, rhs: LinkedListIndex<T>) -> Bool {
-		return (lhs.tag < rhs.tag)
+	subscript(safe index: Index) -> Iterator.Element? {
+		get {
+			return getElement(at: index)
+		}
+	}
+}
+
+enum LinkedListError: Error {
+	case IndexOutOfBounds(i: Int)
+	case SizeInaccurate
+	case Looped
+	case Message(String)
+}
+
+// Private utility functions
+extension LinkedList {
+	
+	/// Build LinkedList<T> from Array<T>
+	private func _buildFrom(_ array: Array<T>) {
+		size = array.count
+		if size == 0 {
+			return
+		}
+		if size == 1 {
+			_addOnlyNode(node: LinkedListValueNode(array.first!))
+		}
+		var curr = LinkedListValueNode(array[0])
+		head = curr
+		var iterator = array.makeIterator()
+		let _ = iterator.next()
+		for element in iterator {
+			let newNode = LinkedListValueNode(element, prev: curr)
+			curr._next = newNode
+			curr = newNode
+		}
+		tail = curr
+	}
+	
+	/// Replaces a node with its replacement. Assumes node is an orphan.
+	private func _replaceNode(node: LinkedListValueNode, with replacement: LinkedListValueNode) {
+		if head == node {
+			head = replacement
+		} else if let prev = node._prev {
+			prev._next = replacement
+			replacement._prev = node
+		}
+		if tail == node {
+			tail = replacement
+		} else if let next = node._next {
+			next._prev = replacement
+			replacement._next = node
+		}
+	}
+	
+	/// Get the LinkedListValue at index.
+	/// Assumes index in bound
+	private func _getListNode(at index: Index) -> LinkedListValueNode {
+		var cur: LinkedListValueNode!
+		var i = index
+		if index < size / 2 {
+			cur = head!
+			while i > 0 {
+				cur = cur.next!
+				i -= 1
+			}
+			return cur
+		}
+		i = size - index - 1
+		cur = tail!
+		while i > 0 {
+			cur = cur.prev!
+			i -= 1
+		}
+		return cur
+	}
+	
+	/// Detach the LinkedListValue at index. Strips the node making it an orphan.
+	@discardableResult private func _detachNode(_ node: LinkedListValueNode) -> LinkedListValueNode {
+		if size == 1 {
+			head = nil
+			tail = nil
+		} else if node == head! {
+			head = node._next
+			node._next!._prev = nil
+		} else if node == tail! {
+			tail = node._prev
+			node._prev!._next = nil
+		} else {
+			node._next!._prev = node._prev!
+			node._prev!._next = node._next!
+		}
+		node._next = nil
+		node._prev = nil
+		size -= 1
+		return node
+	}
+	
+	/// Appends a single orphan node as the only node in list.
+	/// This Set the LinkedList to have only this node.
+	private func _addOnlyNode(node: LinkedListValueNode) {
+		head = node
+		tail = node
+		size += 1
+	}
+	
+	/// Appends a single orphan node at beginning of the index.
+	/// important:
+	/// * node is an orphan since we may or may not strip it
+	private func _insert(node: LinkedListValueNode, at index: Index) {
+		if size == 0 {
+			_addOnlyNode(node: node)
+		}
+		if index == 0 {
+			_prependSingle(node: node, before: head!)
+			return
+		}
+		_appendSingle(node: node, after: _getListNode(at: index))
+	}
+	
+	//	/// Creates a LinkedListValueNode and appends it at index in the LinkedList<T>
+	//	/// important:
+	//	/// * index be in bounds
+	//	private func _insert(element: Element, at index: Index) {
+	//		if size == 0 {
+	//			_addOnlyNode(node: LinkedListValueNode(element))
+	//		}
+	//		if index == 0 {
+	//			_prependSingle(node: node, before: head!)
+	//			return
+	//		}
+	//		_appendSingle(node: node, after: _getListNode(at: index))
+	//	}
+	
+	/// Appends a single orphan node, doesn't check for same LinkedList<T>
+	private func _appendSingle(node: LinkedListValueNode, after: LinkedListValueNode) {
+		node._prev = after
+		if let preNext = after._next {
+			node._next = preNext
+			preNext._prev = node
+		} else {
+			tail = node
+		}
+		after._next = node
+		size += 1
+	}
+	
+	/// Appends a single orphan node, doesn't check for same LinkedList<T>
+	private func _prependSingle(node: LinkedListValueNode, before: LinkedListValueNode) {
+		node._next = before
+		if let prePrev = before._prev {
+			node._prev = prePrev
+			prePrev._next = node
+		} else {
+			head = node
+		}
+		before._prev = node
+		size += 1
 	}
 }

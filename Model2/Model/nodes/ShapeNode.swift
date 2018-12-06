@@ -8,24 +8,17 @@
 
 import Foundation
 
-class ShapeNode: NSObject, Positionable, Statable{
+class ShapeNode: NSObject, Positionable {
 	
 	// Positionable fields
 	var fpoint: FPoint {get{return gpoint.getFPoint()}set{}}
 	var gpoint: GPoint {get{return pathNode?.gpoint ?? .zero}set{}}
 	var moved: Bool
-	// Statable fields
-	var states: LinkedList<NodeState>
 	
 	weak var pathNode: PathNode? {didSet{moved=true}}
 	
 	init(pathNode: PathNode) {
 		self.moved = true
-		self.states = LinkedList<NodeState>()
 		self.pathNode = pathNode
-	}
-	
-	func addState(_ state: NodeState) {
-		states.addFirst(state)
 	}
 }

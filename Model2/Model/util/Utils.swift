@@ -14,3 +14,7 @@ func getNodeId() -> PATHID {
 	i += 1
 	return i
 }
+
+func error(_ string: Any) {
+	print(string)
+}

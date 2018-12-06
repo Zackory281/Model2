@@ -11,22 +11,43 @@ import Foundation
 class Model : ModelAPI, Tickable {
 	
 	let pathNodeBase: PathNodeBase
+	let shapeNodeBase: ShapeNodeBase
+	let stateBase: StateBase
+	
 	let commandQueue: CommandQueue
 	let tickBase: TickBase
+	let reaper: Reaper
+	
+	let stateController: StateController
+	let commandController: CommandController
 	
 	func command(action: MC) {
 		commandQueue.queue(action)
 	}
 	
+	/// Add a NodeState
+	func addState(state: NodeState) {
+		stateBase.addState(state)
+	}
+	
 	init(setting: ModelSetting) {
 		pathNodeBase = PathNodeBase(setting: setting)
+		shapeNodeBase = ShapeNodeBase(setting: setting)
+		stateBase = StateBase()
+		
 		commandQueue = CommandQueue()
 		tickBase = TickBase()
 		
+		reaper = Reaper(commandQueue: commandQueue, stateBase: stateBase, pathNodeBase: pathNodeBase, shapeNodeBase: shapeNodeBase)
+		commandController = CommandController(reaper: reaper)
+		stateController = StateController(reaper: reaper)
+		
 		tickBase.add(tickable: self)
+		tickBase.add(tickable: commandController)
+		tickBase.add(tickable: stateController)
 	}
 	
-	var priority: TickPri = 0
+	var priority: TickPri = MODEL_PRIORITY
 	
 	func tick() {
 		tickBase.reapTick()
@@ -48,6 +69,7 @@ typealias MC = ModelCommand
 enum ModelCommand : Equatable
 {
 	case addPathNode(at: GP)
+	case addShapeNode(at: GP)
 	case removePathNode(at: GP)
 }
 
@@ -56,3 +78,7 @@ protocol Tickable : class {
 	func tick(_ tick: Tick) -> Bool
 	var priority: TickPri { get }
 }
+
+let MODEL_PRIORITY: TickPri = 0
+let COMMAND_CONTROLLER_PRIORITY: TickPri = 2
+let STATE_CONTROLLER_PRIORITY: TickPri = 3

@@ -27,28 +27,22 @@ class TickBase {
 	}
 	
 	func add(tickable: Tickable) {
-		print(list)
 		guard let first = list.first else {
 			list.append(tickable)
 			return
 		}
 		let p = tickable.priority
 		if first.priority > p {
-			list.insert(tickable, at: 0)
+			list.insert(element: tickable, at: 0)
 			return
 		}
-		var seg: LinkedList<Tickable>.Node? = list.head!
-		repeat {
-			guard let pp = seg!.previous?.value.priority else {
+		var cur: LinkedList<Tickable>.LinkedListValueNode = list.head!
+		while let next = cur.next {
+			if next.value.priority >= p {
 				break
 			}
-			if pp > p {
-				break
-			}
-			seg = seg!.previous
-		} while seg != nil
-		let next = seg!.next
-		seg!.next = LinkedList<Tickable>.Node(value: tickable)
-		seg!.next!.next = next
+			cur = next
+		}
+		list.insert(element: tickable, after: cur)
 	}
 }

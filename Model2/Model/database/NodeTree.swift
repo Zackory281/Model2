@@ -18,6 +18,14 @@ class NodeTree<N: NSObject & Positionable> {
 		tree = GKQuadtree<N>.init(boundingQuad: GKQuad(quadMin: float2(Float(minCorner.x), Float(minCorner.y)), quadMax: float2(Float(maxCornder.x), Float(maxCornder.y))), minimumCellSize: 0.5)
 		nodes = Dictionary<N, GKQuadtreeNode>()
 	}
+	
+	func getNodesAt(_ gpoint: GP) -> [N] {
+		return getNodesAt(gpoint.getFPoint())
+	}
+	
+	func getNodesAt(_ fpoint: FP) -> [N] {
+		return tree.elements(at: fpoint.f2)
+	}
 
 	func remove(node: N) {
 		guard let qnode = nodes[node] else { return }

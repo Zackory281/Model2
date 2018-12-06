@@ -12,22 +12,21 @@ class CommandQueue {
 	
 	typealias Element = MC
 	
-	let list, queue: LinkedList<ModelCommand>
+	var list, queue: SinglyLinkedList<ModelCommand>
 	
 	init() {
-		list = LinkedList<ModelCommand>()
-		queue = LinkedList<ModelCommand>()
+		list = SinglyLinkedList<ModelCommand>()
+		queue = SinglyLinkedList<ModelCommand>()
 	}
 	
 	func queue(_ command: ModelCommand) {
-		queue.append(command)
+		queue.append(value: command)
 	}
 	
 	func pop() -> ModelCommand? {
-		if let c = queue.head {
-			list.remove(node: c)
-			list.insert(c.value, at: 0)
-			return c.value
+		if let c = queue.popHead() {
+			list.append(value: c)
+			return c
 		}
 		return nil
 	}
