@@ -23,9 +23,6 @@
 		F21CB3CB21B8F23100036785 /* Physics.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21CB3CA21B8F23100036785 /* Physics.swift */; };
 		F21CB3CC21B8F23100036785 /* Physics.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21CB3CA21B8F23100036785 /* Physics.swift */; };
 		F21CB3CD21B8F23100036785 /* Physics.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21CB3CA21B8F23100036785 /* Physics.swift */; };
-		F21CB3CF21B8F5B900036785 /* Objects.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21CB3CE21B8F5B900036785 /* Objects.swift */; };
-		F21CB3D021B8F5B900036785 /* Objects.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21CB3CE21B8F5B900036785 /* Objects.swift */; };
-		F21CB3D121B8F5B900036785 /* Objects.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21CB3CE21B8F5B900036785 /* Objects.swift */; };
 		F21CB3D321B8F9F500036785 /* Collision.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21CB3D221B8F9F500036785 /* Collision.swift */; };
 		F21CB3D421B8F9F500036785 /* Collision.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21CB3D221B8F9F500036785 /* Collision.swift */; };
 		F21CB3D521B8F9F500036785 /* Collision.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21CB3D221B8F9F500036785 /* Collision.swift */; };
@@ -46,6 +43,9 @@
 		F262F1C121B22F1000B973C8 /* TickBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F262F1C021B22F1000B973C8 /* TickBase.swift */; };
 		F262F1C521B2317700B973C8 /* TickBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F262F1C021B22F1000B973C8 /* TickBase.swift */; };
 		F262F1C821B23B3600B973C8 /* TestBaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F262F1C721B23B3600B973C8 /* TestBaseTest.swift */; };
+		F2852C1421BA4E6400FCD231 /* Fixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2852C1321BA4E6400FCD231 /* Fixture.swift */; };
+		F2852C1521BA4E6400FCD231 /* Fixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2852C1321BA4E6400FCD231 /* Fixture.swift */; };
+		F2852C1621BA4E6400FCD231 /* Fixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2852C1321BA4E6400FCD231 /* Fixture.swift */; };
 		F2BD63F721B0B2D500FBDFD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BD63F621B0B2D500FBDFD2 /* AppDelegate.swift */; };
 		F2BD63F921B0B2D500FBDFD2 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F2BD63F821B0B2D500FBDFD2 /* GameScene.sks */; };
 		F2BD63FB21B0B2D500FBDFD2 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = F2BD63FA21B0B2D500FBDFD2 /* Actions.sks */; };
@@ -122,7 +122,6 @@
 		F21CB3C321B8F22100036785 /* PhysicsTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = PhysicsTest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F21CB3C521B8F22100036785 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		F21CB3CA21B8F23100036785 /* Physics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Physics.swift; sourceTree = "<group>"; };
-		F21CB3CE21B8F5B900036785 /* Objects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Objects.swift; sourceTree = "<group>"; };
 		F21CB3D221B8F9F500036785 /* Collision.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collision.swift; sourceTree = "<group>"; };
 		F2556A1021B480AF00E23A39 /* ShapeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeNode.swift; sourceTree = "<group>"; };
 		F2556A1321B4881800E23A39 /* ShapeNodeBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeNodeBase.swift; sourceTree = "<group>"; };
@@ -133,6 +132,7 @@
 		F262F1BA21B2225C00B973C8 /* CommandQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandQueue.swift; sourceTree = "<group>"; };
 		F262F1C021B22F1000B973C8 /* TickBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickBase.swift; sourceTree = "<group>"; };
 		F262F1C721B23B3600B973C8 /* TestBaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBaseTest.swift; sourceTree = "<group>"; };
+		F2852C1321BA4E6400FCD231 /* Fixture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fixture.swift; sourceTree = "<group>"; };
 		F2BD63F321B0B2D500FBDFD2 /* Model2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Model2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2BD63F621B0B2D500FBDFD2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2BD63F821B0B2D500FBDFD2 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -206,8 +206,8 @@
 			isa = PBXGroup;
 			children = (
 				F21CB3CA21B8F23100036785 /* Physics.swift */,
-				F21CB3CE21B8F5B900036785 /* Objects.swift */,
 				F21CB3D221B8F9F500036785 /* Collision.swift */,
+				F2852C1321BA4E6400FCD231 /* Fixture.swift */,
 			);
 			path = physics;
 			sourceTree = "<group>";
@@ -528,10 +528,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F21CB3D121B8F5B900036785 /* Objects.swift in Sources */,
 				F21CB3C621B8F22100036785 /* main.swift in Sources */,
 				F21CB3D521B8F9F500036785 /* Collision.swift in Sources */,
 				F21CB3CD21B8F23100036785 /* Physics.swift in Sources */,
+				F2852C1621BA4E6400FCD231 /* Fixture.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,7 +541,6 @@
 			files = (
 				F2D6BDA421B1F62A00EC3AE5 /* NodeTree.swift in Sources */,
 				F2BD63FF21B0B2D500FBDFD2 /* ViewController.swift in Sources */,
-				F21CB3CF21B8F5B900036785 /* Objects.swift in Sources */,
 				F2556A1121B480AF00E23A39 /* ShapeNode.swift in Sources */,
 				F21CB38C21B5120A00036785 /* ShapeNodeStateController.swift in Sources */,
 				F262F1B821B21CAD00B973C8 /* ModelSetting.swift in Sources */,
@@ -557,6 +556,7 @@
 				F2BD642E21B0B48F00FBDFD2 /* misc.swift in Sources */,
 				F2E6C58621B2FCC5005C7DEA /* CommandController.swift in Sources */,
 				F2D6BDA121B1F45F00EC3AE5 /* Utils.swift in Sources */,
+				F2852C1421BA4E6400FCD231 /* Fixture.swift in Sources */,
 				F2BD643521B0CBEB00FBDFD2 /* WeakSet.swift in Sources */,
 				F2BD643221B0CB5700FBDFD2 /* SetStack.swift in Sources */,
 				F2556A1721B489FF00E23A39 /* Reaper.swift in Sources */,
@@ -609,11 +609,11 @@
 				F21CB38D21B5120A00036785 /* ShapeNodeStateController.swift in Sources */,
 				F2D6BDA521B1F62A00EC3AE5 /* NodeTree.swift in Sources */,
 				F2BD642221B0B35100FBDFD2 /* main.swift in Sources */,
-				F21CB3D021B8F5B900036785 /* Objects.swift in Sources */,
 				F262F1B921B21CAD00B973C8 /* ModelSetting.swift in Sources */,
 				F21CB39321B665DF00036785 /* State.swift in Sources */,
 				F21CB3BC21B87D0200036785 /* LinkedList.swift in Sources */,
 				F262F1BC21B2225C00B973C8 /* CommandQueue.swift in Sources */,
+				F2852C1521BA4E6400FCD231 /* Fixture.swift in Sources */,
 				F21CB3CC21B8F23100036785 /* Physics.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
