@@ -15,6 +15,6 @@ func getNodeId() -> PATHID {
 	return i
 }
 
-func error(_ string: Any) {
-	print(string)
+func error(_ items: Any..., separator: String = "", terminator: String = "") {
+	print(items, separator: separator, terminator: terminator)
 }

@@ -10,13 +10,13 @@ import Foundation
 
 class StateBase {
 	
-	var states: SinglyLinkedList<NodeState>
+	var states: SinglyLinkedList<State>
 	
-	func addState(_ state: NodeState) {
+	func addState(_ state: State) {
 		states.append(value: state)
 	}
 	
 	init() {
-		states = SinglyLinkedList<NodeState>()
+		states = SinglyLinkedList<State>()
 	}
 }

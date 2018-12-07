@@ -8,18 +8,16 @@
 
 import Foundation
 
-class NodeState: Hashable {
+class State: Hashable {
 	
 	var startingTick, progressTick, duration: Tick
-	weak var subject: NSObject?
 	let nodeStateType: NodeStateType
 	
-	init(startTick: Tick, duration: Tick, nodeStateType: NodeStateType, subject: NSObject) {
+	init(startTick: Tick, duration: Tick, nodeStateType: NodeStateType) {
 		self.startingTick = startTick
 		self.duration = duration
 		self.progressTick = 0
 		self.nodeStateType = nodeStateType
-		self.subject = subject
 	}
 	
 	func unfinished() -> Bool {
@@ -30,7 +28,7 @@ class NodeState: Hashable {
 		duration += delay
 	}
 	
-	static func == (lhs: NodeState, rhs: NodeState) -> Bool {
+	static func == (lhs: State, rhs: State) -> Bool {
 		return lhs === rhs
 	}
 	
@@ -39,8 +37,22 @@ class NodeState: Hashable {
 		hasher.combine(progressTick)
 		hasher.combine(startingTick)
 		hasher.combine(nodeStateType)
-		if let object = subject {
-			hasher.combine(object)
+	}
+}
+
+class NodeState: State {
+	
+	weak var subject: NSObject?
+	
+	init(startTick: Tick, duration: Tick, nodeStateType: NodeStateType, subject: NSObject) {
+		super.init(startTick: startTick, duration: duration, nodeStateType: nodeStateType)
+		self.subject = subject
+	}
+	
+	override func hash(into hasher: inout Hasher) {
+		super.hash(into: &hasher)
+		if let sub = subject {
+			hasher.combine(sub)
 		}
 	}
 }

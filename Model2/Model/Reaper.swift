@@ -18,7 +18,7 @@ class Reaper {
 	
 	//var needProcessStates: SinglyLinkedList
 	
-	func addStatesToRemove(_ state: NodeState) {
+	func addStatesToRemove(_ state: State) {
 		print("remove state: ", state)
 	}
 	

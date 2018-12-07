@@ -40,5 +40,5 @@ protocol Positionable: class {
 }
 
 protocol Statable: class {
-	var states: SinglyLinkedList<NodeState> {get set}
+	var states: SinglyLinkedList<State> {get set}
 }

@@ -13,15 +13,20 @@ class Fixture {
 	
 	let vets: [float2]
 	let edgs: [int2]
+	var pos: float2
 	
-	init(_ vets: [float2], _ pts: [int2]) {
+	init(_ vets: [float2], _ edgs: [int2], _ pos: float2) {
 		self.vets = vets
-		self.pts = pts
+		self.edgs = edgs
+		self.pos = pos
 	}
 }
 
-struct Motion {
-	let fixture: Fixture
-	let start: float2
-	let end: float2
+struct PointMotion {
+	let v1: float2
+	let v2: float2
+	
+	func getPos(at time: float_t) -> float2 {
+		return v1 + time * (v2 - v1)
+	}
 }

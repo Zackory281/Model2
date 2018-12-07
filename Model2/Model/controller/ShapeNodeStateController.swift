@@ -18,20 +18,23 @@ class ShapeNodeStateController: StateControllerDelegate {
 		self.tick = tick
 	}
 	
+	func handleIdle(_ state: State) {
+		let state = state as! NodeState
+		guard let subject = state.subject else { return }
+		print(subject, " idles")
+	}
+	
 	func updateTick() {
 		for state in reaper.stateBase.states {
 			guard state.unfinished() else {
 				reaper.addStatesToRemove(state)
 				continue
 			}
-			guard let subject = state.subject else { continue }
-			switch state.nodeStateType {
-			case .idle:
-				state.duration = tick - state.startingTick
-				print(subject, " performing ", state.nodeStateType)
-			default:
-				break
+			guard let handler = stateHandler[state.nodeStateType] else {
+				error("No handler for ", state.nodeStateType)
+				continue
 			}
+			handler(state)
 			if !state.unfinished() {
 				reaper.addStatesToRemove(state)
 			}
@@ -42,4 +45,10 @@ class ShapeNodeStateController: StateControllerDelegate {
 		self.reaper = reaper
 		self.tick = 0
 	}
+	
+	lazy var stateHandler: [NodeStateType: (State) -> ()] = {
+		return [
+			NodeStateType.idle : self.handleIdle
+		]
+	}()
 }

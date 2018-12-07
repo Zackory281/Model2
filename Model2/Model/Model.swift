@@ -26,7 +26,7 @@ class Model : ModelAPI, Tickable {
 	}
 	
 	/// Add a NodeState
-	func addState(state: NodeState) {
+	func addState(state: State) {
 		stateBase.addState(state)
 	}
 	
