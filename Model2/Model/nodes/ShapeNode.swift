@@ -7,12 +7,14 @@
 //
 
 import Foundation
+import simd
 
 class ShapeNode: NSObject, Positionable {
 	
 	// Positionable fields
-	var fpoint: FPoint {get{return gpoint.getFPoint()}set{}}
-	var gpoint: GPoint {get{return pathNode?.gpoint ?? .zero}set{}}
+	var fpoint: float2
+	var gpoint: int2 {get{return fpoint.i2}set{fpoint = newValue.f2}}
+	var direction: Direction = .UP
 	var moved: Bool
 	
 	weak var pathNode: PathNode? {didSet{moved=true}}
@@ -20,5 +22,6 @@ class ShapeNode: NSObject, Positionable {
 	init(pathNode: PathNode) {
 		self.moved = true
 		self.pathNode = pathNode
+		self.fpoint = pathNode.fpoint
 	}
 }

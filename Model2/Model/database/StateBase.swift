@@ -10,13 +10,24 @@ import Foundation
 
 class StateBase {
 	
-	var states: SinglyLinkedList<State>
+	var stateBuffer: LinkedList<State>
+	var stateUpdated: LinkedList<State>
 	
 	func addState(_ state: State) {
-		states.append(value: state)
+		stateBuffer.append(state)
+	}
+	
+	func addStateUpdated(_ state: State) {
+		stateUpdated.addFirst(state)
+	}
+	
+	func dumpStates() {
+		stateBuffer = stateUpdated
+		stateUpdated = LinkedList<State>()
 	}
 	
 	init() {
-		states = SinglyLinkedList<State>()
+		stateBuffer = LinkedList<State>()
+		stateUpdated = LinkedList<State>()
 	}
 }

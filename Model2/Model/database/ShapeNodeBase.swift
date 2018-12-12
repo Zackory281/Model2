@@ -14,10 +14,4 @@ class ShapeNodeBase: NodeTree<ShapeNode> {
 		super.init(setting.minCorner, setting.maxCorner)
 	}
 	
-	func reapMovement() {
-		for shapeNode in values where shapeNode.moved {
-			move(node: shapeNode)
-		}
-	}
-	
 }

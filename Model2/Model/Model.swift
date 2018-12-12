@@ -21,6 +21,8 @@ class Model : ModelAPI, Tickable {
 	let stateController: StateController
 	let commandController: CommandController
 	
+	let dateReader: DataReader
+	
 	func command(action: MC) {
 		commandQueue.queue(action)
 	}
@@ -34,6 +36,8 @@ class Model : ModelAPI, Tickable {
 		pathNodeBase = PathNodeBase(setting: setting)
 		shapeNodeBase = ShapeNodeBase(setting: setting)
 		stateBase = StateBase()
+		
+		dateReader = DataReader(pathBase: pathNodeBase, shapeBase: shapeNodeBase)
 		
 		commandQueue = CommandQueue()
 		tickBase = TickBase()
@@ -51,6 +55,7 @@ class Model : ModelAPI, Tickable {
 	
 	func tick() {
 		tickBase.reapTick()
+		tickBase.tick += 1
 	}
 	
 	/// DO NOT CALL if you ticking Model

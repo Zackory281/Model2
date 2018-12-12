@@ -37,6 +37,7 @@ class StateController: Tickable {
 	
 	func updateTick() {
 		shapeNodeStateController.updateTick()
+		shapeNodeStateController.reaper.stateBase.dumpStates()
 	}
 }
 

@@ -11,10 +11,16 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-    
-    
+	
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
+		let controller = NSApplication.shared.mainWindow!.contentViewController as! NodeSceneViewController
+		let setting = ModelSetting(xi: -100, yi: -100, xf: 100, yf: 100)
+		let model = Model(setting: setting)
+		controller.dataReader = model.dateReader
+		model.command(action: .addPathNode(at: GP(2, 3)))
+		model.command(action: .addShapeNode(at: GP(2, 3)))
+		controller.model = model
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {

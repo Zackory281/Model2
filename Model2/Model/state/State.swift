@@ -10,18 +10,23 @@ import Foundation
 
 class State: Hashable {
 	
-	var startingTick, progressTick, duration: Tick
+	var startingTick, progressTick, duration, endingTick: Tick
 	let nodeStateType: NodeStateType
 	
 	init(startTick: Tick, duration: Tick, nodeStateType: NodeStateType) {
 		self.startingTick = startTick
 		self.duration = duration
-		self.progressTick = 0
+		self.endingTick = startingTick + duration
+		self.progressTick = startTick
 		self.nodeStateType = nodeStateType
 	}
 	
 	func unfinished() -> Bool {
-		return progressTick <= duration
+		return progressTick <= endingTick
+	}
+	
+	func isFinishingTick(_ tick: Tick) -> Bool {
+		return tick == endingTick
 	}
 	
 	func delay(_ delay: Tick) {
@@ -43,8 +48,10 @@ class State: Hashable {
 class NodeState: State {
 	
 	weak var subject: NSObject?
+	var attributes: [StateAttributes : Any]
 	
 	init(startTick: Tick, duration: Tick, nodeStateType: NodeStateType, subject: NSObject) {
+		self.attributes = [:]
 		super.init(startTick: startTick, duration: duration, nodeStateType: nodeStateType)
 		self.subject = subject
 	}
@@ -55,6 +62,11 @@ class NodeState: State {
 			hasher.combine(sub)
 		}
 	}
+}
+
+enum StateAttributes {
+	case start
+	case end
 }
 
 enum NodeStateType {

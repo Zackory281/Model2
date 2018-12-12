@@ -20,11 +20,11 @@ class NodeTree<N: NSObject & Positionable> {
 	}
 	
 	func getNodesAt(_ gpoint: GP) -> [N] {
-		return getNodesAt(gpoint.getFPoint())
+		return getNodesAt(gpoint.f2)
 	}
 	
 	func getNodesAt(_ fpoint: FP) -> [N] {
-		return tree.elements(at: fpoint.f2)
+		return tree.elements(at: fpoint)
 	}
 
 	func remove(node: N) {
@@ -36,7 +36,7 @@ class NodeTree<N: NSObject & Positionable> {
 		if let _ = nodes[node] {
 			remove(node: node)
 		}
-		nodes[node] = tree.add(node, at: node.fpoint.f2)
+		nodes[node] = tree.add(node, at: node.fpoint)
 	}
 
 	func contains(node: N) -> Bool {
@@ -46,8 +46,4 @@ class NodeTree<N: NSObject & Positionable> {
 	func move(node: N) {
 		add(node: node)
 	}
-}
-
-extension FPoint {
-	var f2: float2 { get { return float2(Float(x), Float(y))}}
 }

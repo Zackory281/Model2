@@ -9,7 +9,7 @@
 import Foundation
 
 class PathNode: NSObject, Positionable{
-	var fpoint: FPoint {set{gpoint=newValue.getGPoint()}get{return gpoint.getFPoint()}}
+	var fpoint: FPoint {set{gpoint=newValue.i2}get{return gpoint.f2}}
 	var gpoint: GPoint
 	var moved: Bool
 	

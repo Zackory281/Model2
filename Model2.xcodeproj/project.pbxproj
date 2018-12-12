@@ -46,6 +46,10 @@
 		F2852C1421BA4E6400FCD231 /* Fixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2852C1321BA4E6400FCD231 /* Fixture.swift */; };
 		F2852C1521BA4E6400FCD231 /* Fixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2852C1321BA4E6400FCD231 /* Fixture.swift */; };
 		F2852C1621BA4E6400FCD231 /* Fixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2852C1321BA4E6400FCD231 /* Fixture.swift */; };
+		F2BAA17E21C0825100503A6D /* NodeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BAA17D21C0825100503A6D /* NodeScene.swift */; };
+		F2BAA18021C0830E00503A6D /* DataReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BAA17F21C0830E00503A6D /* DataReader.swift */; };
+		F2BAA18121C0830E00503A6D /* DataReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BAA17F21C0830E00503A6D /* DataReader.swift */; };
+		F2BAA18321C0861300503A6D /* NodeSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BAA18221C0861300503A6D /* NodeSceneViewController.swift */; };
 		F2BD63F721B0B2D500FBDFD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BD63F621B0B2D500FBDFD2 /* AppDelegate.swift */; };
 		F2BD63F921B0B2D500FBDFD2 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F2BD63F821B0B2D500FBDFD2 /* GameScene.sks */; };
 		F2BD63FB21B0B2D500FBDFD2 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = F2BD63FA21B0B2D500FBDFD2 /* Actions.sks */; };
@@ -111,8 +115,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		F21CB38621B4784200036785 /* traversal.dec.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = traversal.dec.java; sourceTree = "<group>"; };
-		F21CB38721B4784200036785 /* bofa.dec.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = bofa.dec.java; sourceTree = "<group>"; };
 		F21CB38821B5116B00036785 /* SinglyLinkedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglyLinkedList.swift; sourceTree = "<group>"; };
 		F21CB38B21B5120A00036785 /* ShapeNodeStateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeNodeStateController.swift; sourceTree = "<group>"; };
 		F21CB38E21B5EC6D00036785 /* StateBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateBase.swift; sourceTree = "<group>"; };
@@ -133,6 +135,9 @@
 		F262F1C021B22F1000B973C8 /* TickBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickBase.swift; sourceTree = "<group>"; };
 		F262F1C721B23B3600B973C8 /* TestBaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBaseTest.swift; sourceTree = "<group>"; };
 		F2852C1321BA4E6400FCD231 /* Fixture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fixture.swift; sourceTree = "<group>"; };
+		F2BAA17D21C0825100503A6D /* NodeScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeScene.swift; sourceTree = "<group>"; };
+		F2BAA17F21C0830E00503A6D /* DataReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataReader.swift; sourceTree = "<group>"; };
+		F2BAA18221C0861300503A6D /* NodeSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeSceneViewController.swift; sourceTree = "<group>"; };
 		F2BD63F321B0B2D500FBDFD2 /* Model2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Model2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2BD63F621B0B2D500FBDFD2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2BD63F821B0B2D500FBDFD2 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -193,13 +198,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F21CB38521B4782400036785 /* New Group */ = {
+		F21CB38521B4782400036785 /* ui */ = {
 			isa = PBXGroup;
 			children = (
-				F21CB38721B4784200036785 /* bofa.dec.java */,
-				F21CB38621B4784200036785 /* traversal.dec.java */,
+				F2BAA17D21C0825100503A6D /* NodeScene.swift */,
+				F2BAA18221C0861300503A6D /* NodeSceneViewController.swift */,
 			);
-			path = "New Group";
+			path = ui;
 			sourceTree = "<group>";
 		};
 		F21CB3BE21B8F20B00036785 /* physics */ = {
@@ -257,7 +262,7 @@
 		F2BD63EA21B0B2D500FBDFD2 = {
 			isa = PBXGroup;
 			children = (
-				F21CB38521B4782400036785 /* New Group */,
+				F21CB38521B4782400036785 /* ui */,
 				F2BD63F521B0B2D500FBDFD2 /* Model2 */,
 				F2BD640E21B0B2D600FBDFD2 /* Model2Tests */,
 				F2BD642021B0B35100FBDFD2 /* ModelCommand */,
@@ -360,6 +365,7 @@
 				F262F1B421B21BDE00B973C8 /* PathnodeBase.swift */,
 				F2556A1321B4881800E23A39 /* ShapeNodeBase.swift */,
 				F21CB38E21B5EC6D00036785 /* StateBase.swift */,
+				F2BAA17F21C0830E00503A6D /* DataReader.swift */,
 			);
 			path = database;
 			sourceTree = "<group>";
@@ -546,6 +552,7 @@
 				F262F1B821B21CAD00B973C8 /* ModelSetting.swift in Sources */,
 				F2E6C58A21B33254005C7DEA /* NodeMisc.swift in Sources */,
 				F21CB39521B66B7B00036785 /* SLinkedList.swift in Sources */,
+				F2BAA18321C0861300503A6D /* NodeSceneViewController.swift in Sources */,
 				F2BD642B21B0B45C00FBDFD2 /* PathNode.swift in Sources */,
 				F2BD643821B0CC7200FBDFD2 /* WeakDictionary.swift in Sources */,
 				F21CB3D321B8F9F500036785 /* Collision.swift in Sources */,
@@ -563,8 +570,10 @@
 				F21CB3CB21B8F23100036785 /* Physics.swift in Sources */,
 				F2556A1B21B4CDE500E23A39 /* StateController.swift in Sources */,
 				F2BD63F721B0B2D500FBDFD2 /* AppDelegate.swift in Sources */,
+				F2BAA18021C0830E00503A6D /* DataReader.swift in Sources */,
 				F2556A1421B4881800E23A39 /* ShapeNodeBase.swift in Sources */,
 				F2BD642721B0B36300FBDFD2 /* Model.swift in Sources */,
+				F2BAA17E21C0825100503A6D /* NodeScene.swift in Sources */,
 				F21CB38F21B5EC6D00036785 /* StateBase.swift in Sources */,
 				F262F1B521B21BDE00B973C8 /* PathnodeBase.swift in Sources */,
 				F262F1C121B22F1000B973C8 /* TickBase.swift in Sources */,
@@ -602,6 +611,7 @@
 				F2BD643321B0CB5700FBDFD2 /* SetStack.swift in Sources */,
 				F2E6C58B21B33254005C7DEA /* NodeMisc.swift in Sources */,
 				F2BD642F21B0B48F00FBDFD2 /* misc.swift in Sources */,
+				F2BAA18121C0830E00503A6D /* DataReader.swift in Sources */,
 				F2BD642821B0B3C700FBDFD2 /* Model.swift in Sources */,
 				F2E6C58721B2FCC5005C7DEA /* CommandController.swift in Sources */,
 				F2556A1821B489FF00E23A39 /* Reaper.swift in Sources */,
