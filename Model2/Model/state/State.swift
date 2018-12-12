@@ -8,29 +8,45 @@
 
 import Foundation
 
+typealias StateHandler = (State)->()
 class State: Hashable {
 	
-	var startingTick, progressTick, duration, endingTick: Tick
 	let nodeStateType: NodeStateType
+	var startCall: StateHandler? = nilHandler("No start call")
+	var updateCall: StateHandler? = nilHandler("No updateCall call")
+	var endCall: StateHandler? = nilHandler("No endCall call")
+	var unsyncedCall: StateHandler? = nilHandler("No unsyncedCall call")
+	var delegate: StateDelegate
+	var components: [StateComponent]
 	
 	init(startTick: Tick, duration: Tick, nodeStateType: NodeStateType) {
-		self.startingTick = startTick
-		self.duration = duration
-		self.endingTick = startingTick + duration
-		self.progressTick = startTick
+		self.delegate = TimedStateDelegate(startTick: startTick, duration: duration)
 		self.nodeStateType = nodeStateType
+		self.components = []
 	}
 	
-	func unfinished() -> Bool {
-		return progressTick <= endingTick
+	func addComponent(_ component: StateComponent) {
+		self.components.append(component)
 	}
 	
-	func isFinishingTick(_ tick: Tick) -> Bool {
-		return tick == endingTick
+	func getComponent<T: StateComponent>(_ t: T.Type) -> T? {
+		return components.first{return $0 is T} as? T
 	}
 	
-	func delay(_ delay: Tick) {
-		duration += delay
+	func tick(_ tick: Tick) {
+		if delegate.outOfSync(tick) {
+			unsyncedCall?(self)
+			return
+		}
+		if delegate.isEndTick(tick) {
+			endCall?(self)
+			return
+		}
+		if delegate.isUpdateTick(tick) {
+			updateCall?(self)
+			return
+		}
+		startCall?(self)
 	}
 	
 	static func == (lhs: State, rhs: State) -> Bool {
@@ -38,30 +54,57 @@ class State: Hashable {
 	}
 	
 	func hash(into hasher: inout Hasher) {
-		hasher.combine(duration)
-		hasher.combine(progressTick)
-		hasher.combine(startingTick)
+		hasher.combine(ObjectIdentifier(delegate))
 		hasher.combine(nodeStateType)
 	}
 }
 
-class NodeState: State {
+func nilHandler(_ message: String) -> StateHandler {
+	return {_ in print(message)}
+}
+
+protocol StateDelegate: class {
+	func isStartTick(_ tick: Tick) -> Bool
+	func isUpdateTick(_ tick: Tick) -> Bool
+	func isEndTick(_ tick: Tick) -> Bool
+	func outOfSync(_ tick: Tick) -> Bool
+}
+
+class TimedStateDelegate: StateDelegate {
 	
-	weak var subject: NSObject?
-	var attributes: [StateAttributes : Any]
+	var startingTick, progressTick, duration, endingTick: Tick
 	
-	init(startTick: Tick, duration: Tick, nodeStateType: NodeStateType, subject: NSObject) {
-		self.attributes = [:]
-		super.init(startTick: startTick, duration: duration, nodeStateType: nodeStateType)
-		self.subject = subject
+	init(startTick: Tick, duration: Tick) {
+		self.startingTick = startTick
+		self.progressTick = startingTick
+		self.duration = duration
+		self.endingTick = startingTick + duration
 	}
-	
-	override func hash(into hasher: inout Hasher) {
-		super.hash(into: &hasher)
-		if let sub = subject {
-			hasher.combine(sub)
-		}
+	func isStartTick(_ tick: Tick) -> Bool {
+		return tick == startingTick
 	}
+	func isUpdateTick(_ tick: Tick) -> Bool {
+		return tick > startingTick && tick < endingTick
+	}
+	func isEndTick(_ tick: Tick) -> Bool {
+		return tick == endingTick
+	}
+	func outOfSync(_ tick: Tick) -> Bool {
+		return tick < startingTick || tick > endingTick
+	}
+	func hash(into hasher: inout Hasher) {
+		hasher.combine(startingTick)
+		hasher.combine(progressTick)
+		hasher.combine(duration)
+		hasher.combine(endingTick)
+	}
+	static func == (lhs: TimedStateDelegate, rhs: TimedStateDelegate) -> Bool {
+		return lhs === rhs
+	}
+}
+
+class MovementStateComponent: StateComponent {
+	
 }
 
 enum StateAttributes {
@@ -72,4 +115,8 @@ enum StateAttributes {
 enum NodeStateType {
 	case idle
 	case moving
+}
+
+class StateComponent {
+	
 }

@@ -22,12 +22,12 @@ class StateController: Tickable {
 	
 	var reaper: Reaper
 	var tick: Tick
-	var shapeNodeStateController: StateControllerDelegate
+	var shapeNodeStateController: ShapeNodeStateHandler
 	
 	init(reaper: Reaper) {
 		self.tick = 0
 		self.reaper = reaper
-		self.shapeNodeStateController = ShapeNodeStateController(reaper: reaper)
+		self.shapeNodeStateController = ShapeNodeStateHandler(reaper: reaper)
 	}
 	
 	func initTick(_ tick: Tick) {
@@ -36,14 +36,6 @@ class StateController: Tickable {
 	}
 	
 	func updateTick() {
-		shapeNodeStateController.updateTick()
 		shapeNodeStateController.reaper.stateBase.dumpStates()
 	}
-}
-
-protocol StateControllerDelegate {
-	var tick: Tick {set get}
-	var reaper: Reaper {set get}
-	func initTick(tick: Tick)
-	func updateTick()
 }

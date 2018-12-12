@@ -12,6 +12,7 @@ import SpriteKit
 class NodeScene: SKScene {
 	
 	var nodeDict = Dictionary<NSObject, SKSpriteNode>()
+	var cam: SKCameraNode = SKCameraNode()
 	
 	func render(_ shapeNode: ShapeNode) {
 		let sknode: SKSpriteNode
@@ -22,7 +23,9 @@ class NodeScene: SKScene {
 		} else {
 			sknode = nodeDict[shapeNode]!
 		}
-		sknode.position = shapeNode.fpoint.cgPoint
+		let act = SKAction.move(to: shapeNode.fpoint.cgPoint, duration: tickTime)
+		act.timingMode = .linear
+		sknode.run(act)
 	}
 	
 	func render(_ pathNode: PathNode) {
@@ -30,10 +33,18 @@ class NodeScene: SKScene {
 	}
 	
 	private func createNewShapeNode() -> SKSpriteNode {
-		let node = SKSpriteNode(texture: SKTexture(imageNamed: "square"), size: CGSize(width: 32, height: 32))
-		node.texture?.filteringMode = .nearest
-		self.camera!.xScale = 1000
-		self.camera!.yScale = 1000
+		let node = SKSpriteNode(texture: SKTexture(imageNamed: "square"), size: CGSize(width: 100, height: 100))
+		node.texture?.filteringMode = .linear
+		if self.camera == nil {
+			self.camera = cam
+			self.camera!.xScale = 1
+			self.camera!.yScale = 1
+		}
+		let node2 = SKSpriteNode(texture: SKTexture(imageNamed: "square"), size: CGSize(width: 100, height: 100))
+		node2.texture?.filteringMode = .nearest
+		node2.run(SKAction.move(by: CGVector(dx: 0, dy: 100), duration: 5))
+		node2.position = CGPoint(x: 200, y: 100)
+		addChild(node2)
 		return node
 	}
 }

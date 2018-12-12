@@ -18,8 +18,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		let setting = ModelSetting(xi: -100, yi: -100, xf: 100, yf: 100)
 		let model = Model(setting: setting)
 		controller.dataReader = model.dateReader
-		model.command(action: .addPathNode(at: GP(2, 3)))
-		model.command(action: .addShapeNode(at: GP(2, 3)))
+		model.command(action: .addPathNode(at: GP(0, 0)))
+		model.command(action: .addShapeNode(at: GP(0, 0)))
 		controller.model = model
     }
     

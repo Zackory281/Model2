@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		F21CB38921B5116B00036785 /* SinglyLinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21CB38821B5116B00036785 /* SinglyLinkedList.swift */; };
 		F21CB38A21B5116B00036785 /* SinglyLinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21CB38821B5116B00036785 /* SinglyLinkedList.swift */; };
-		F21CB38C21B5120A00036785 /* ShapeNodeStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21CB38B21B5120A00036785 /* ShapeNodeStateController.swift */; };
-		F21CB38D21B5120A00036785 /* ShapeNodeStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21CB38B21B5120A00036785 /* ShapeNodeStateController.swift */; };
+		F21CB38C21B5120A00036785 /* ShapeNodeStateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21CB38B21B5120A00036785 /* ShapeNodeStateHandler.swift */; };
+		F21CB38D21B5120A00036785 /* ShapeNodeStateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21CB38B21B5120A00036785 /* ShapeNodeStateHandler.swift */; };
 		F21CB38F21B5EC6D00036785 /* StateBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21CB38E21B5EC6D00036785 /* StateBase.swift */; };
 		F21CB39021B5EC6D00036785 /* StateBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21CB38E21B5EC6D00036785 /* StateBase.swift */; };
 		F21CB39221B665DF00036785 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21CB39121B665DF00036785 /* State.swift */; };
@@ -116,7 +116,7 @@
 
 /* Begin PBXFileReference section */
 		F21CB38821B5116B00036785 /* SinglyLinkedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglyLinkedList.swift; sourceTree = "<group>"; };
-		F21CB38B21B5120A00036785 /* ShapeNodeStateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeNodeStateController.swift; sourceTree = "<group>"; };
+		F21CB38B21B5120A00036785 /* ShapeNodeStateHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeNodeStateHandler.swift; sourceTree = "<group>"; };
 		F21CB38E21B5EC6D00036785 /* StateBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateBase.swift; sourceTree = "<group>"; };
 		F21CB39121B665DF00036785 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		F21CB39421B66B7B00036785 /* SLinkedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLinkedList.swift; sourceTree = "<group>"; };
@@ -375,7 +375,7 @@
 			children = (
 				F2E6C58521B2FCC5005C7DEA /* CommandController.swift */,
 				F2556A1A21B4CDE500E23A39 /* StateController.swift */,
-				F21CB38B21B5120A00036785 /* ShapeNodeStateController.swift */,
+				F21CB38B21B5120A00036785 /* ShapeNodeStateHandler.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -548,7 +548,7 @@
 				F2D6BDA421B1F62A00EC3AE5 /* NodeTree.swift in Sources */,
 				F2BD63FF21B0B2D500FBDFD2 /* ViewController.swift in Sources */,
 				F2556A1121B480AF00E23A39 /* ShapeNode.swift in Sources */,
-				F21CB38C21B5120A00036785 /* ShapeNodeStateController.swift in Sources */,
+				F21CB38C21B5120A00036785 /* ShapeNodeStateHandler.swift in Sources */,
 				F262F1B821B21CAD00B973C8 /* ModelSetting.swift in Sources */,
 				F2E6C58A21B33254005C7DEA /* NodeMisc.swift in Sources */,
 				F21CB39521B66B7B00036785 /* SLinkedList.swift in Sources */,
@@ -616,7 +616,7 @@
 				F2E6C58721B2FCC5005C7DEA /* CommandController.swift in Sources */,
 				F2556A1821B489FF00E23A39 /* Reaper.swift in Sources */,
 				F21CB39621B66B7B00036785 /* SLinkedList.swift in Sources */,
-				F21CB38D21B5120A00036785 /* ShapeNodeStateController.swift in Sources */,
+				F21CB38D21B5120A00036785 /* ShapeNodeStateHandler.swift in Sources */,
 				F2D6BDA521B1F62A00EC3AE5 /* NodeTree.swift in Sources */,
 				F2BD642221B0B35100FBDFD2 /* main.swift in Sources */,
 				F262F1B921B21CAD00B973C8 /* ModelSetting.swift in Sources */,

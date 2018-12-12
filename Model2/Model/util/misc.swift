@@ -20,7 +20,7 @@ typealias GPoint = int2
 typealias FPoint = float2
 
 extension FPoint {
-	var cgPoint: CGPoint { return CGPoint(x: CGFloat(x), y: CGFloat(y))}
+	var cgPoint: CGPoint { return CGPoint(x: CGFloat(x * 100), y: CGFloat(y * 100))}
 }
 //struct GPoint: CustomStringConvertible, Hashable {
 //
@@ -89,3 +89,5 @@ let DirectionToVector: [Direction : float2] = [
 	.DOWN  : float2(0, -1),
 	.LEFT  : float2(-1, 0),
 ]
+
+let tickTime: TimeInterval = 1 / 60.0
