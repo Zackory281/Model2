@@ -76,11 +76,18 @@ extension FPoint {
 //	}
 //}
 
-enum Direction {
-	case UP
-	case RIGHT
-	case DOWN
-	case LEFT
+enum Direction: UInt8 {
+	case UP = 0
+	case RIGHT = 1
+	case DOWN = 2
+	case LEFT = 3
+	
+	func opposite() -> Direction {
+		return Direction(rawValue: (self.rawValue + 2) % 4)!
+	}
+	func right() -> Direction {
+		return Direction(rawValue: (self.rawValue + 1) % 4)!
+	}
 }
 
 let DirectionToVector: [Direction : float2] = [

@@ -262,6 +262,7 @@
 		F2BD63EA21B0B2D500FBDFD2 = {
 			isa = PBXGroup;
 			children = (
+				F21CB3BE21B8F20B00036785 /* physics */,
 				F21CB38521B4782400036785 /* ui */,
 				F2BD63F521B0B2D500FBDFD2 /* Model2 */,
 				F2BD640E21B0B2D600FBDFD2 /* Model2Tests */,
@@ -285,7 +286,6 @@
 		F2BD63F521B0B2D500FBDFD2 /* Model2 */ = {
 			isa = PBXGroup;
 			children = (
-				F21CB3BE21B8F20B00036785 /* physics */,
 				F2BD643021B0CB4700FBDFD2 /* datatypes */,
 				F2BD641A21B0B30B00FBDFD2 /* Model */,
 				F2BD63F621B0B2D500FBDFD2 /* AppDelegate.swift */,

@@ -28,6 +28,15 @@ func orientedCollidable(_ x1: float_t, _ y1: float_t, _ x2: float_t, _ y2: float
 	return simd_determinant(m) < 0
 }
 
+func insideLineOriented(_ point: float2, _ line: float2x2) -> Bool {
+	var m = float2x2(point - line.columns.0, line.columns.1 - line.columns.0)
+	return m.determinant >= 0
+}
+
+//func insideLineOriented(_ vectors: float2x2) -> UInt8 {
+//	return vectors.determinant >= 0
+//}
+
 func orientedCollidable(_ vec1: float2x2, _ vec2: float2x2) -> Bool{
 	return orientedCollidable(vec1.columns.0.x, vec1.columns.0.y, vec1.columns.1.x, vec1.columns.1.y
 		, vec2.columns.0.x, vec2.columns.0.y, vec2.columns.1.x, vec2.columns.1.y)
@@ -40,7 +49,7 @@ func collideTime(p1: simd_float2, p2: simd_float2, p3: simd_float2, p4: simd_flo
 func collideTime(motion: PointMotion, fixture: Fixture) -> float_t {
 	var time: float_t = float_t.infinity
 	for e in fixture.edgs {
-		let edge = float2x2(fixture.vets[Int(e.x)], fixture.vets[Int(e.y)]) + float2x2(fixture.pos, fixture.pos)
+		let edge = float2x2(fixture.vets[e.0], fixture.vets[e.1]) + float2x2(fixture.pos, fixture.pos)
 		let mos = float2x2([motion.v1, motion.v2])
 		if !orientedCollidable(mos, edge) {
 			continue

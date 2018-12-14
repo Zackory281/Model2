@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import simd
 
 class StateController: Tickable {
 	
@@ -19,6 +20,14 @@ class StateController: Tickable {
 	
 	let priority: TickPri = STATE_CONTROLLER_PRIORITY
 	
+	func make(node: ShapeNode, move dir: Direction = .UP) {
+		let state = State(startTick: tick, duration: 45, nodeStateType: .moving)
+		state.addComponent(MovementStateComponent(start: node.fpoint, end: node.fpoint + DirectionToVector[dir]!, startTick: tick, shapeNode: node))
+		state.startCall = shapeNodeStateController.handleShapeMoveStart
+		state.updateCall = shapeNodeStateController.handleShapeMoveUpdate
+		state.endCall = shapeNodeStateController.handleShapeMoveEnd
+		reaper.stateBase.addState(state)
+	}
 	
 	var reaper: Reaper
 	var tick: Tick
@@ -36,6 +45,12 @@ class StateController: Tickable {
 	}
 	
 	func updateTick() {
-		shapeNodeStateController.reaper.stateBase.dumpStates()
+		//shapeNodeStateController.reaper.stateBase.dumpStates()
+		while let state = reaper.stateBase.stateBuffer.popFirst() {
+			if !state.tick(tick) {
+				reaper.stateBase.addStateUpdated(state)
+			}
+		}
+		reaper.stateBase.dumpStates()
 	}
 }

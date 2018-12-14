@@ -20,19 +20,19 @@ class ShapeNodeStateHandler {
 		self.tick = tick
 	}
 	
-	func moveShape(_ shapeNode: ShapeNode, _ direction: Direction?) {
-		let shapeMoveState = NodeState(startTick: tick, duration: 500, nodeStateType: .moving, subject: shapeNode)
-		shapeMoveState.attributes[.start] = shapeNode.fpoint
-		shapeMoveState.attributes[.end] =  shapeNode.fpoint + DirectionToVector[direction ?? shapeNode.direction]!
-		stateBase.addState(shapeMoveState)
-	}
-	
-	func handleShapeIdle(_ state: State) {
-		print("ShapeNode Idling")
-	}
-	
 	func handleShapeMoveStart(_ state: State) {
 		print("ShapeNode Idling")
+	}
+	func handleShapeMoveUpdate(_ state: State) {
+		guard let movement = state.getComponent(MovementStateComponent.self) else { return }
+		guard let subject = movement.shapeNode else { return }
+		guard let del = state.delegate as? TimedStateDelegate else { return }
+		subject.fpoint = movement.getProgressedPoint(del.getProgress())
+	}
+	func handleShapeMoveEnd(_ state: State) {
+		guard let subject = state.getComponent(MovementStateComponent.self)?.shapeNode else { return }
+		subject.direction = subject.direction.right()
+		reaper.stateController.make(node: subject, move: subject.direction)
 	}
 	
 //	func handleIdle(_ state: State) {

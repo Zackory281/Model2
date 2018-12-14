@@ -28,7 +28,7 @@ class CommandController: Tickable {
 			return
 		}
 		let shapeNode = ShapeNode(pathNode: pathNode)
-		reaper.stateBase.addState(NodeState(startTick: tick, duration: 1, nodeStateType: .idle, subject: shapeNode))
+		reaper.stateController.make(node: shapeNode, move: .DOWN)
 		shapeBase.add(node: shapeNode)
 	}
 	

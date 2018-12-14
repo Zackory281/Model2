@@ -45,6 +45,7 @@ class Model : ModelAPI, Tickable {
 		reaper = Reaper(commandQueue: commandQueue, stateBase: stateBase, pathNodeBase: pathNodeBase, shapeNodeBase: shapeNodeBase)
 		commandController = CommandController(reaper: reaper)
 		stateController = StateController(reaper: reaper)
+		reaper.stateController = stateController
 		
 		tickBase.add(tickable: self)
 		tickBase.add(tickable: commandController)

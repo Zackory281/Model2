@@ -13,6 +13,7 @@ class Reaper {
 	let pathNodeBase: PathNodeBase
 	let shapeNodeBase: ShapeNodeBase
 	let stateBase: StateBase
+	var stateController: StateController!
 	
 	let commandQueue: CommandQueue
 	
