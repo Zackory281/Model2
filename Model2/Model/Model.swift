@@ -29,7 +29,7 @@ class Model : ModelAPI {
 	let actionEvaluator: ActionEvaluator
 	
 	func command(action: MC, time: Time) {
-		commandQueue.queue(action, time: time)
+		commandQueue.queue(action, time: time) 
 	}
 	
 	func evalute(to: Time) {
