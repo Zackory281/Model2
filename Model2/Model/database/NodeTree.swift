@@ -19,6 +19,10 @@ class NodeTree<N: NSObject & Positionable> {
 		nodes = Dictionary<N, GKQuadtreeNode>()
 	}
 	
+	func getNodesIn(_ minCorner: FP, _ maxCornder: FP) -> [N] {
+		return tree.elements(in: GKQuad(quadMin: minCorner, quadMax: maxCornder))
+	}
+	
 	func getNodesAt(_ gpoint: GP) -> [N] {
 		return getNodesAt(gpoint.f2)
 	}

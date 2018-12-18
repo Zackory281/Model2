@@ -2,31 +2,20 @@
 //  Reaper.swift
 //  Model2
 //
-//  Created by Zackory Cramer on 12/2/18.
+//  Created by Zackory Cramer on 12/15/18.
 //  Copyright © 2018 Zackori Cui. All rights reserved.
 //
 
 import Foundation
 
 class Reaper {
+	var dataBase: DataReader
+	var clock: Clock
+	var actionBase: ActionBase
 	
-	let pathNodeBase: PathNodeBase
-	let shapeNodeBase: ShapeNodeBase
-	let stateBase: StateBase
-	var stateController: StateController!
-	
-	let commandQueue: CommandQueue
-	
-	//var needProcessStates: SinglyLinkedList
-	
-	func addStatesToRemove(_ state: State) {
-		print("remove state: ", state)
-	}
-	
-	init(commandQueue: CommandQueue, stateBase: StateBase, pathNodeBase: PathNodeBase, shapeNodeBase: ShapeNodeBase) {
-		self.stateBase = stateBase
-		self.pathNodeBase = pathNodeBase
-		self.shapeNodeBase = shapeNodeBase
-		self.commandQueue = commandQueue
+	init(dataBase: DataReader, actionBase: ActionBase, clock: Clock) {
+		self.dataBase = dataBase
+		self.actionBase = actionBase
+		self.clock = clock
 	}
 }

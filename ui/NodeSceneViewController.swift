@@ -19,9 +19,10 @@ class NodeSceneViewController: NSViewController, SKSceneDelegate {
 	
 	func update(_ currentTime: TimeInterval, for scene: SKScene) {
 		guard let model = self.model else { return }
-		model.tick()
+		model.evalute(to: currentTime)
 		guard let dataReader = self.dataReader else { return }
 		dataReader.forEachShapeNode(function: nodeScene.render)
+		dataReader.forEachPathNode(function: nodeScene.render)
 	}
 	
 	override func viewDidLoad() {

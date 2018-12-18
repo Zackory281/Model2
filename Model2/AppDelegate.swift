@@ -17,15 +17,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		let controller = NSApplication.shared.mainWindow!.contentViewController as! NodeSceneViewController
 		let setting = ModelSetting(xi: -100, yi: -100, xf: 100, yf: 100)
 		let model = Model(setting: setting)
+//		model.command(action: .addPathNode(at: GP(2, 1)), time: 1.125)
+//		model.command(action: .addShapeNode(at: GP(2, 1)), time: 1.25)
+//		model.command(action: .addPathNode(at: GP(2, 2)), time: 1.0625)
+//		model.command(action: .addPathNode(at: GP(2, 3)), time: 1.25)
+//		model.command(action: .addPathNode(at: GP(3, 3)), time: 2.5)
+//		model.command(action: .addPathNode(at: GP(4, 3)), time: 5.75)
+		model.command(action: .addPathNode(at: GP(1, 1)), time: 0.50)
+		model.command(action: .addShapeNode(at: GP(1, 1)), time: 0.75)
+		model.command(action: .addPathNode(at: GP(1, 2)), time: 0.625)
+		model.command(action: .addShapeNode(at: GP(1, 2)), time: 0.75)
+		model.command(action: .addPathNode(at: GP(2, 2)), time: 1.625)
+		model.command(action: .addPathNode(at: GP(2, 1)), time: 1.75)
+		model.command(action: .addPathNode(at: GP(3, 2)), time: 3.625)
+		model.command(action: .addPathNode(at: GP(3, 1)), time: 3.75)
 		controller.dataReader = model.dateReader
-		model.command(action: .addPathNode(at: GP(0, 0)))
-		model.command(action: .addShapeNode(at: GP(0, 0)))
 		controller.model = model
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
-    
-    
+	
 }

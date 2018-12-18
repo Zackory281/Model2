@@ -11,13 +11,13 @@ import simd
 
 typealias IntC = Int32
 typealias FloatC = Float
-typealias Tick = UInt32
 typealias PATHID = UInt16
 typealias TickPri = UInt8
 typealias GP = GPoint
 typealias FP = FPoint
 typealias GPoint = int2
 typealias FPoint = float2
+typealias Time = Double
 
 extension FPoint {
 	var cgPoint: CGPoint { return CGPoint(x: CGFloat(x * 100), y: CGFloat(y * 100))}
@@ -87,6 +87,9 @@ enum Direction: UInt8 {
 	}
 	func right() -> Direction {
 		return Direction(rawValue: (self.rawValue + 1) % 4)!
+	}
+	func left() -> Direction {
+		return Direction(rawValue: (self.rawValue + 3) % 4)!
 	}
 }
 

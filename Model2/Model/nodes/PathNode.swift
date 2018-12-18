@@ -11,14 +11,14 @@ import Foundation
 class PathNode: NSObject, Positionable{
 	var fpoint: FPoint {set{gpoint=newValue.i2}get{return gpoint.f2}}
 	var gpoint: GPoint
-	var moved: Bool
+	var taken: Bool
 	
 	let id: PATHID
 	var table = WeakDictionary<Direction, PathNode>()
 	var outDegree: Int {get{table.reap();return table.count}}
 	var outNodes: Set<PathNode> {get{return Set(table.toStrongDictionary().values)}}
 	init(point: GPoint) {
-		moved = true
+		taken = false
 		gpoint = point
 		id = getNodeId()
 	}

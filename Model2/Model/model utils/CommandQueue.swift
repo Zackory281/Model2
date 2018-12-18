@@ -10,24 +10,21 @@ import Foundation
 
 class CommandQueue {
 	
-	typealias Element = MC
+	var actionCreater: ActionCreater
 	
-	var list, queue: SinglyLinkedList<ModelCommand>
-	
-	init() {
-		list = SinglyLinkedList<ModelCommand>()
-		queue = SinglyLinkedList<ModelCommand>()
+	init(actionCreater: ActionCreater) {
+		self.actionCreater = actionCreater
 	}
 	
-	func queue(_ command: ModelCommand) {
-		queue.append(value: command)
-	}
-	
-	func pop() -> ModelCommand? {
-		if let c = queue.popHead() {
-			list.append(value: c)
-			return c
+	func queue(_ command: ModelCommand, time: Time) {
+		switch command {
+		case let ModelCommand.addPathNode(at: point):
+			actionCreater.addPathNode(at: point, time: time)
+		case let ModelCommand.addShapeNode(at: point):
+			actionCreater.addShapeNode(at: point, time: time)
+		default:
+			error(command, " handler not implemented.")
+			return
 		}
-		return nil
 	}
 }

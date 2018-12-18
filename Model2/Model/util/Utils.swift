@@ -16,6 +16,13 @@ func getNodeId() -> PATHID {
 	return i
 }
 
+private var actioni: Int = 0
+
+func getActionId() -> Int {
+	actioni += 1
+	return actioni
+}
+
 func error(_ items: Any..., separator: String = "", terminator: String = "") {
 	print(items, separator: separator, terminator: terminator)
 }
@@ -29,5 +36,19 @@ extension float2 {
 extension int2 {
 	var f2: float2 {
 		return float2(Float(x), Float(y))
+	}
+}
+
+extension Sequence {
+	func stableSorted(
+		by areInIncreasingOrder: (Element, Element) throws -> Bool)
+		rethrows -> [Element]
+	{
+		return try enumerated()
+			.sorted { a, b -> Bool in
+				try areInIncreasingOrder(a.element, b.element) ||
+					(a.offset < b.offset && !areInIncreasingOrder(b.element, a.element))
+			}
+			.map { $0.element }
 	}
 }

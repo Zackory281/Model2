@@ -35,10 +35,4 @@ import Foundation
 protocol Positionable: class {
 	var fpoint: FPoint{get set}
 	var gpoint: GPoint{get set}
-	/// Positionable marks it true, Client marks it false
-	var moved: Bool {get set}
-}
-
-protocol Statable: class {
-	var states: SinglyLinkedList<State> {get set}
 }

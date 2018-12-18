@@ -13,5 +13,4 @@ class ShapeNodeBase: NodeTree<ShapeNode> {
 	init(setting: ModelSetting) {
 		super.init(setting.minCorner, setting.maxCorner)
 	}
-	
 }

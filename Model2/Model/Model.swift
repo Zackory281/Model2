@@ -8,66 +8,70 @@
 
 import Foundation
 
-class Model : ModelAPI, Tickable {
+class Model : ModelAPI {
+	
+	var startTime: Time?
+	
+	let clock: Clock
 	
 	let pathNodeBase: PathNodeBase
 	let shapeNodeBase: ShapeNodeBase
-	let stateBase: StateBase
+	let actionBase: ActionBase
+	let dataBase: DataReader
 	
 	let commandQueue: CommandQueue
-	let tickBase: TickBase
-	let reaper: Reaper
-	
-	let stateController: StateController
-	let commandController: CommandController
 	
 	let dateReader: DataReader
+	let actionDelegateSet: ActionDelegateSet
+	let actionCreater: ActionCreater
+	let reaper: Reaper
 	
-	func command(action: MC) {
-		commandQueue.queue(action)
+	let actionEvaluator: ActionEvaluator
+	
+	func command(action: MC, time: Time) {
+		commandQueue.queue(action, time: time)
 	}
 	
-	/// Add a NodeState
-	func addState(state: State) {
-		stateBase.addState(state)
+	func evalute(to: Time) {
+		if let st = startTime {
+			actionEvaluator.evaluateTo(to - st)
+		} else {
+			startTime = to
+		}
 	}
 	
 	init(setting: ModelSetting) {
-		pathNodeBase = PathNodeBase(setting: setting)
-		shapeNodeBase = ShapeNodeBase(setting: setting)
-		stateBase = StateBase()
+		self.clock = Clock(lastTime: START_TIME, evalTime: START_TIME)
 		
-		dateReader = DataReader(pathBase: pathNodeBase, shapeBase: shapeNodeBase)
+		self.pathNodeBase = PathNodeBase(setting: setting)
+		self.shapeNodeBase = ShapeNodeBase(setting: setting)
+		self.actionBase = ActionBase()
+		self.dataBase = DataReader(pathBase: pathNodeBase, shapeBase: shapeNodeBase)
 		
-		commandQueue = CommandQueue()
-		tickBase = TickBase()
+		self.dateReader = DataReader(pathBase: pathNodeBase, shapeBase: shapeNodeBase)
 		
-		reaper = Reaper(commandQueue: commandQueue, stateBase: stateBase, pathNodeBase: pathNodeBase, shapeNodeBase: shapeNodeBase)
-		commandController = CommandController(reaper: reaper)
-		stateController = StateController(reaper: reaper)
-		reaper.stateController = stateController
+		self.reaper = Reaper(dataBase: dateReader, actionBase: actionBase, clock: clock)
 		
-		tickBase.add(tickable: self)
-		tickBase.add(tickable: commandController)
-		tickBase.add(tickable: stateController)
+		let snad = ShapeNodeActionDelegate(dataBase: dateReader, clock: clock)
+		let pnad = PathNodeActionDelegate(dataBase: dateReader, clock: clock)
+		self.actionDelegateSet = ActionDelegateSet(shapeNodeActionDelegate: snad, pathNodeActionDelegate: pnad)
+		self.actionCreater = ActionCreater(reaper: reaper, actionDelegateSet: actionDelegateSet, clock: reaper.clock)
+		snad.actionCreater = actionCreater
+		pnad.actionCreater = actionCreater
+		
+		self.actionEvaluator = ActionEvaluator(reaper: reaper, actionCreater: actionCreater)
+		
+		self.commandQueue = CommandQueue(actionCreater: actionCreater)
 	}
 	
 	var priority: TickPri = MODEL_PRIORITY
 	
-	func tick() {
-		tickBase.reapTick()
-		tickBase.tick += 1
-	}
-	
-	/// DO NOT CALL if you ticking Model
-	@discardableResult func tick(_ tick: Tick) -> Bool {
-		return true
-	}
 }
 
 protocol ModelAPI : class
 {
-	func command(action: ModelCommand)
+	func command(action: ModelCommand, time: Time)
+	func evalute(to: Time)
 }
 
 typealias MC = ModelCommand
@@ -79,12 +83,8 @@ enum ModelCommand : Equatable
 	case removePathNode(at: GP)
 }
 
-protocol Tickable : class {
-	@discardableResult
-	func tick(_ tick: Tick) -> Bool
-	var priority: TickPri { get }
-}
-
 let MODEL_PRIORITY: TickPri = 0
 let COMMAND_CONTROLLER_PRIORITY: TickPri = 2
 let STATE_CONTROLLER_PRIORITY: TickPri = 3
+
+let START_TIME: Time = 0
