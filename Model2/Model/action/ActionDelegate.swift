@@ -9,13 +9,13 @@
 import Foundation
 
 class ActionDelegate {
-	let dataBase: DataReader
+	let dataBase: DataBase
 	let clock: Clock
 	var shapeNodeBase: ShapeNodeBase { return dataBase.shapeNodeBase }
 	var pathNodeBase: PathNodeBase { return dataBase.pathNodeBase }
 	var actionCreater: ActionCreater!
 	
-	init(dataBase: DataReader, clock: Clock) {
+	init(dataBase: DataBase, clock: Clock) {
 		self.dataBase = dataBase
 		self.clock = clock
 	}

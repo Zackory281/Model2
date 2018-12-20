@@ -13,7 +13,7 @@ class NodeSceneViewController: NSViewController, SKSceneDelegate {
 	
 	
 	@IBOutlet var skView: SKView!
-	var dataReader: DataReader?
+	var dataReader: DataBase?
 	var model: Model?
 	var nodeScene: NodeScene!
 	
@@ -23,6 +23,7 @@ class NodeSceneViewController: NSViewController, SKSceneDelegate {
 		guard let dataReader = self.dataReader else { return }
 		dataReader.forEachShapeNode(function: nodeScene.render)
 		dataReader.forEachPathNode(function: nodeScene.render)
+		dataReader.forEachGeometryNode(function: nodeScene.render)
 	}
 	
 	override func viewDidLoad() {
@@ -30,9 +31,11 @@ class NodeSceneViewController: NSViewController, SKSceneDelegate {
 		
 		if let view = self.skView {
 			nodeScene = NodeScene.init(size: CGSize(width: 800, height: 600))
+			nodeScene.initialize()
 			nodeScene.delegate = self
 			nodeScene.backgroundColor = .black
 			nodeScene.scaleMode = .aspectFill
+			view.preferredFramesPerSecond = 30
 			view.presentScene(nodeScene)
 			
 			view.ignoresSiblingOrder = true

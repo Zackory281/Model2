@@ -17,14 +17,14 @@ class CommandQueue {
 	}
 	
 	func queue(_ command: ModelCommand, time: Time) {
-		switch command {
-		case let ModelCommand.addPathNode(at: point):
-			actionCreater.addPathNode(at: point, time: time)
-		case let ModelCommand.addShapeNode(at: point):
-			actionCreater.addShapeNode(at: point, time: time)
-		default:
-			error(command, " handler not implemented.")
-			return
-		}
+//		switch command {
+//		case let ModelCommand.addPathNode(at: point):
+//			actionCreater.addPathNode(at: point, time: time)
+//		case let ModelCommand.addShapeNode(at: point):
+//			actionCreater.addShapeNode(at: point, time: time)
+//		default:
+//			error(command, " handler not implemented.")
+//			return
+//		}
 	}
 }

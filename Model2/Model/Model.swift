@@ -16,20 +16,23 @@ class Model : ModelAPI {
 	
 	let pathNodeBase: PathNodeBase
 	let shapeNodeBase: ShapeNodeBase
+	let geometryNodeBase: GeometryNodeBase
 	let actionBase: ActionBase
-	let dataBase: DataReader
+	let dataBase: DataBase
 	
 	let commandQueue: CommandQueue
 	
-	let dateReader: DataReader
 	let actionDelegateSet: ActionDelegateSet
 	let actionCreater: ActionCreater
 	let reaper: Reaper
 	
 	let actionEvaluator: ActionEvaluator
 	
+	let controllerSet: ControllerSet
+	
 	func command(action: MC, time: Time) {
-		commandQueue.queue(action, time: time) 
+		//commandQueue.queue(action, time: time)
+		controllerSet.feed(action, time)
 	}
 	
 	func evalute(to: Time) {
@@ -45,15 +48,14 @@ class Model : ModelAPI {
 		
 		self.pathNodeBase = PathNodeBase(setting: setting)
 		self.shapeNodeBase = ShapeNodeBase(setting: setting)
+		self.geometryNodeBase = GeometryNodeBase(setting: setting)
 		self.actionBase = ActionBase()
-		self.dataBase = DataReader(pathBase: pathNodeBase, shapeBase: shapeNodeBase)
+		self.dataBase = DataBase(pathBase: pathNodeBase, shapeBase: shapeNodeBase, geometryBase: geometryNodeBase, actionBase: actionBase)
 		
-		self.dateReader = DataReader(pathBase: pathNodeBase, shapeBase: shapeNodeBase)
+		self.reaper = Reaper(dataBase: dataBase, actionBase: actionBase, clock: clock)
 		
-		self.reaper = Reaper(dataBase: dateReader, actionBase: actionBase, clock: clock)
-		
-		let snad = ShapeNodeActionDelegate(dataBase: dateReader, clock: clock)
-		let pnad = PathNodeActionDelegate(dataBase: dateReader, clock: clock)
+		let snad = ShapeNodeActionDelegate(dataBase: dataBase, clock: clock)
+		let pnad = PathNodeActionDelegate(dataBase: dataBase, clock: clock)
 		self.actionDelegateSet = ActionDelegateSet(shapeNodeActionDelegate: snad, pathNodeActionDelegate: pnad)
 		self.actionCreater = ActionCreater(reaper: reaper, actionDelegateSet: actionDelegateSet, clock: reaper.clock)
 		snad.actionCreater = actionCreater
@@ -62,6 +64,8 @@ class Model : ModelAPI {
 		self.actionEvaluator = ActionEvaluator(reaper: reaper, actionCreater: actionCreater)
 		
 		self.commandQueue = CommandQueue(actionCreater: actionCreater)
+		
+		self.controllerSet = ControllerSet(dataBase: dataBase)
 	}
 	
 	var priority: TickPri = MODEL_PRIORITY
@@ -80,6 +84,7 @@ enum ModelCommand : Equatable
 {
 	case addPathNode(at: GP)
 	case addShapeNode(at: GP)
+	case addGeoemtryNode(type: GeometryType, dir: Direction, at: GP)
 	case removePathNode(at: GP)
 }
 

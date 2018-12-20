@@ -15,7 +15,7 @@ class ActionEvaluator {
 	let actionCreater: ActionCreater
 	
 	var actionBase: ActionBase { return reaper.actionBase }
-	var dataBase: DataReader { return reaper.dataBase }
+	var dataBase: DataBase { return reaper.dataBase }
 	var clock: Clock { return reaper.clock}
 	
 	private var inFrameAction: [Action] = []
@@ -45,11 +45,11 @@ class ActionEvaluator {
 				continue
 			}
 			clock.evalTime = instantAction.startTime
-			act(instantAction)
+			act()
 		}
 		clock.evalTime = time
 		for contAction in actionBase.actionsIterateReturned(to: time) {
-			contAction.collapse?(time)
+			contAction.collapse?()
 		}
 	}
 	

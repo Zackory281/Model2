@@ -8,9 +8,9 @@
 
 import Foundation
 
-public class WeakSet<T: AnyObject>: Sequence, ExpressibleByArrayLiteral, CustomStringConvertible, CustomDebugStringConvertible {
+public class WeakSet<T>: Sequence, ExpressibleByArrayLiteral, CustomStringConvertible, CustomDebugStringConvertible {
 	
-	private var objects = NSHashTable<T>.weakObjects()
+	private var objects = NSHashTable<AnyObject>.weakObjects()
 	
 	public init(_ objects: [T]) {
 		for object in objects {
@@ -23,7 +23,7 @@ public class WeakSet<T: AnyObject>: Sequence, ExpressibleByArrayLiteral, CustomS
 	}
 	
 	public var allObjects: [T] {
-		return objects.allObjects
+		return objects.allObjects as! [T]
 	}
 	
 	public var count: Int {
@@ -31,15 +31,15 @@ public class WeakSet<T: AnyObject>: Sequence, ExpressibleByArrayLiteral, CustomS
 	}
 	
 	public func contains(_ object: T) -> Bool {
-		return objects.contains(object)
+		return objects.contains(object as AnyObject)
 	}
 	
 	public func insert(_ object: T) {
-		objects.add(object)
+		objects.add(object as AnyObject)
 	}
 	
 	public func remove(_ object: T) {
-		objects.remove(object)
+		objects.remove(object as AnyObject)
 	}
 	
 	public func makeIterator() -> AnyIterator<T> {

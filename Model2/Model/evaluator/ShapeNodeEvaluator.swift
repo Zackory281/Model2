@@ -12,7 +12,7 @@ class ShapeNodeEvaluator {
 	
 	let reaper: Reaper
 	let actionCreater: ActionCreater
-	var dataBase: DataReader { return reaper.dataBase }
+	var dataBase: DataBase { return reaper.dataBase }
 	
 //	func updateShapeNodes() {
 //		dataBase.forEachShapeNode(function: self.updateShapeNode)

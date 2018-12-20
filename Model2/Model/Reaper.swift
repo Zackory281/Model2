@@ -9,11 +9,11 @@
 import Foundation
 
 class Reaper {
-	var dataBase: DataReader
+	var dataBase: DataBase
 	var clock: Clock
 	var actionBase: ActionBase
 	
-	init(dataBase: DataReader, actionBase: ActionBase, clock: Clock) {
+	init(dataBase: DataBase, actionBase: ActionBase, clock: Clock) {
 		self.dataBase = dataBase
 		self.actionBase = actionBase
 		self.clock = clock

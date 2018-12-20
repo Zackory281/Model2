@@ -12,7 +12,7 @@ import simd
 class PathNodeEvaluator {
 	
 	let reaper: Reaper
-	var dataBase: DataReader { return reaper.dataBase }
+	var dataBase: DataBase { return reaper.dataBase }
 	let actionCreater: ActionCreater
 	
 //	func addPathNode(at point: GP) {

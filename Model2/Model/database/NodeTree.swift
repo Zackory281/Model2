@@ -14,8 +14,8 @@ class NodeTree<N: NSObject & Positionable> {
 	var nodes: Dictionary<N, GKQuadtreeNode>
 	var values: Dictionary<N, GKQuadtreeNode>.Keys {get{return nodes.keys}}
 
-	init(_ minCorner: GP, _ maxCornder: GP) {
-		tree = GKQuadtree<N>.init(boundingQuad: GKQuad(quadMin: float2(Float(minCorner.x), Float(minCorner.y)), quadMax: float2(Float(maxCornder.x), Float(maxCornder.y))), minimumCellSize: 0.5)
+	init(_ minCorner: GP, _ maxCornder: GP, minCellSize: Float = 0.5) {
+		tree = GKQuadtree<N>.init(boundingQuad: GKQuad(quadMin: float2(Float(minCorner.x), Float(minCorner.y)), quadMax: float2(Float(maxCornder.x), Float(maxCornder.y))), minimumCellSize: minCellSize)
 		nodes = Dictionary<N, GKQuadtreeNode>()
 	}
 	

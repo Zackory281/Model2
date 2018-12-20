@@ -35,8 +35,8 @@
 		F2852C1521BA4E6400FCD231 /* Fixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2852C1321BA4E6400FCD231 /* Fixture.swift */; };
 		F2852C1621BA4E6400FCD231 /* Fixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2852C1321BA4E6400FCD231 /* Fixture.swift */; };
 		F2BAA17E21C0825100503A6D /* NodeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BAA17D21C0825100503A6D /* NodeScene.swift */; };
-		F2BAA18021C0830E00503A6D /* DataReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BAA17F21C0830E00503A6D /* DataReader.swift */; };
-		F2BAA18121C0830E00503A6D /* DataReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BAA17F21C0830E00503A6D /* DataReader.swift */; };
+		F2BAA18021C0830E00503A6D /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BAA17F21C0830E00503A6D /* DataBase.swift */; };
+		F2BAA18121C0830E00503A6D /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BAA17F21C0830E00503A6D /* DataBase.swift */; };
 		F2BAA18321C0861300503A6D /* NodeSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BAA18221C0861300503A6D /* NodeSceneViewController.swift */; };
 		F2BD63F721B0B2D500FBDFD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BD63F621B0B2D500FBDFD2 /* AppDelegate.swift */; };
 		F2BD63F921B0B2D500FBDFD2 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F2BD63F821B0B2D500FBDFD2 /* GameScene.sks */; };
@@ -85,6 +85,30 @@
 		F2CC64D621C7704100809FE3 /* PathNodeActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CC64D421C7704100809FE3 /* PathNodeActionDelegate.swift */; };
 		F2CC64D821C839D800809FE3 /* UIShapeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CC64D721C839D800809FE3 /* UIShapeNode.swift */; };
 		F2CC64D921C839D800809FE3 /* UIShapeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CC64D721C839D800809FE3 /* UIShapeNode.swift */; };
+		F2CC64DB21C8CEC200809FE3 /* PhysicsWorld.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CC64DA21C8CEC200809FE3 /* PhysicsWorld.swift */; };
+		F2CC64DC21C8CEC200809FE3 /* PhysicsWorld.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CC64DA21C8CEC200809FE3 /* PhysicsWorld.swift */; };
+		F2CC64DD21C8CEC200809FE3 /* PhysicsWorld.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CC64DA21C8CEC200809FE3 /* PhysicsWorld.swift */; };
+		F2CC64DF21C8CF5700809FE3 /* MotionGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CC64DE21C8CF5700809FE3 /* MotionGraph.swift */; };
+		F2CC64E021C8CF5700809FE3 /* MotionGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CC64DE21C8CF5700809FE3 /* MotionGraph.swift */; };
+		F2CC64E121C8CF5700809FE3 /* MotionGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CC64DE21C8CF5700809FE3 /* MotionGraph.swift */; };
+		F2CC64E821C9AC3200809FE3 /* ShapeNodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CC64E721C9AC3200809FE3 /* ShapeNodeController.swift */; };
+		F2CC64E921C9AC3200809FE3 /* ShapeNodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CC64E721C9AC3200809FE3 /* ShapeNodeController.swift */; };
+		F2CC64EB21C9DA3100809FE3 /* ControllerSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CC64EA21C9DA3100809FE3 /* ControllerSet.swift */; };
+		F2CC64EC21C9DA3100809FE3 /* ControllerSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CC64EA21C9DA3100809FE3 /* ControllerSet.swift */; };
+		F2CC64EE21C9E21100809FE3 /* PathNodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CC64ED21C9E21100809FE3 /* PathNodeController.swift */; };
+		F2CC64EF21C9E21100809FE3 /* PathNodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CC64ED21C9E21100809FE3 /* PathNodeController.swift */; };
+		F2CC64F121C9EEE200809FE3 /* GeoemtryBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CC64F021C9EEE200809FE3 /* GeoemtryBase.swift */; };
+		F2CC64F221C9EEE200809FE3 /* GeoemtryBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CC64F021C9EEE200809FE3 /* GeoemtryBase.swift */; };
+		F2CC64F421C9EEF800809FE3 /* GeometryNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CC64F321C9EEF800809FE3 /* GeometryNode.swift */; };
+		F2CC64F521C9EEF800809FE3 /* GeometryNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CC64F321C9EEF800809FE3 /* GeometryNode.swift */; };
+		F2CC64F721CA15D100809FE3 /* GeometryNodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CC64F621CA15D100809FE3 /* GeometryNodeController.swift */; };
+		F2CC64F821CA15D100809FE3 /* GeometryNodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CC64F621CA15D100809FE3 /* GeometryNodeController.swift */; };
+		F2CC650121CB079000809FE3 /* GQTPointQuadTree.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CC64FA21CB079000809FE3 /* GQTPointQuadTree.m */; };
+		F2CC650221CB079000809FE3 /* GQTPointQuadTree.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CC64FA21CB079000809FE3 /* GQTPointQuadTree.m */; };
+		F2CC650321CB079000809FE3 /* GQTPointQuadTree.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CC64FA21CB079000809FE3 /* GQTPointQuadTree.m */; };
+		F2CC650421CB079000809FE3 /* GQTPointQuadTreeChild.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CC64FC21CB079000809FE3 /* GQTPointQuadTreeChild.m */; };
+		F2CC650521CB079000809FE3 /* GQTPointQuadTreeChild.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CC64FC21CB079000809FE3 /* GQTPointQuadTreeChild.m */; };
+		F2CC650621CB079000809FE3 /* GQTPointQuadTreeChild.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CC64FC21CB079000809FE3 /* GQTPointQuadTreeChild.m */; };
 		F2D6BD9E21B1ECDC00EC3AE5 /* WeakDictionaryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D6BD9D21B1ECDC00EC3AE5 /* WeakDictionaryTest.swift */; };
 		F2D6BD9F21B1ED2600EC3AE5 /* WeakDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BD643721B0CC7200FBDFD2 /* WeakDictionary.swift */; };
 		F2D6BDA121B1F45F00EC3AE5 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D6BDA021B1F45F00EC3AE5 /* Utils.swift */; };
@@ -142,7 +166,7 @@
 		F262F1C721B23B3600B973C8 /* TestBaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBaseTest.swift; sourceTree = "<group>"; };
 		F2852C1321BA4E6400FCD231 /* Fixture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fixture.swift; sourceTree = "<group>"; };
 		F2BAA17D21C0825100503A6D /* NodeScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeScene.swift; sourceTree = "<group>"; };
-		F2BAA17F21C0830E00503A6D /* DataReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataReader.swift; sourceTree = "<group>"; };
+		F2BAA17F21C0830E00503A6D /* DataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
 		F2BAA18221C0861300503A6D /* NodeSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeSceneViewController.swift; sourceTree = "<group>"; };
 		F2BD63F321B0B2D500FBDFD2 /* Model2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Model2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2BD63F621B0B2D500FBDFD2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -178,6 +202,22 @@
 		F2CC64D121C7700600809FE3 /* ShapeNodeActionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeNodeActionDelegate.swift; sourceTree = "<group>"; };
 		F2CC64D421C7704100809FE3 /* PathNodeActionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathNodeActionDelegate.swift; sourceTree = "<group>"; };
 		F2CC64D721C839D800809FE3 /* UIShapeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIShapeNode.swift; sourceTree = "<group>"; };
+		F2CC64DA21C8CEC200809FE3 /* PhysicsWorld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsWorld.swift; sourceTree = "<group>"; };
+		F2CC64DE21C8CF5700809FE3 /* MotionGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionGraph.swift; sourceTree = "<group>"; };
+		F2CC64E721C9AC3200809FE3 /* ShapeNodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeNodeController.swift; sourceTree = "<group>"; };
+		F2CC64EA21C9DA3100809FE3 /* ControllerSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerSet.swift; sourceTree = "<group>"; };
+		F2CC64ED21C9E21100809FE3 /* PathNodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathNodeController.swift; sourceTree = "<group>"; };
+		F2CC64F021C9EEE200809FE3 /* GeoemtryBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoemtryBase.swift; sourceTree = "<group>"; };
+		F2CC64F321C9EEF800809FE3 /* GeometryNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryNode.swift; sourceTree = "<group>"; };
+		F2CC64F621CA15D100809FE3 /* GeometryNodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryNodeController.swift; sourceTree = "<group>"; };
+		F2CC64FA21CB079000809FE3 /* GQTPointQuadTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GQTPointQuadTree.m; sourceTree = "<group>"; };
+		F2CC64FB21CB079000809FE3 /* GQTPointQuadTreeItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GQTPointQuadTreeItem.h; sourceTree = "<group>"; };
+		F2CC64FC21CB079000809FE3 /* GQTPointQuadTreeChild.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GQTPointQuadTreeChild.m; sourceTree = "<group>"; };
+		F2CC64FD21CB079000809FE3 /* GQTPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GQTPoint.h; sourceTree = "<group>"; };
+		F2CC64FE21CB079000809FE3 /* GQTPointQuadTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GQTPointQuadTree.h; sourceTree = "<group>"; };
+		F2CC64FF21CB079000809FE3 /* GQTPointQuadTreeChild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GQTPointQuadTreeChild.h; sourceTree = "<group>"; };
+		F2CC650021CB079000809FE3 /* GQTBounds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GQTBounds.h; sourceTree = "<group>"; };
+		F2CC650721CB081300809FE3 /* QuadTree-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QuadTree-Bridging-Header.h"; sourceTree = "<group>"; };
 		F2D6BD9D21B1ECDC00EC3AE5 /* WeakDictionaryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakDictionaryTest.swift; sourceTree = "<group>"; };
 		F2D6BDA021B1F45F00EC3AE5 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		F2D6BDA321B1F62A00EC3AE5 /* NodeTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeTree.swift; sourceTree = "<group>"; };
@@ -232,6 +272,8 @@
 				F21CB3CA21B8F23100036785 /* Physics.swift */,
 				F21CB3D221B8F9F500036785 /* Collision.swift */,
 				F2852C1321BA4E6400FCD231 /* Fixture.swift */,
+				F2CC64DA21C8CEC200809FE3 /* PhysicsWorld.swift */,
+				F2CC64DE21C8CF5700809FE3 /* MotionGraph.swift */,
 			);
 			path = physics;
 			sourceTree = "<group>";
@@ -249,6 +291,7 @@
 			children = (
 				F2BD642A21B0B45C00FBDFD2 /* PathNode.swift */,
 				F2556A1021B480AF00E23A39 /* ShapeNode.swift */,
+				F2CC64F321C9EEF800809FE3 /* GeometryNode.swift */,
 			);
 			path = nodes;
 			sourceTree = "<group>";
@@ -323,6 +366,7 @@
 		F2BD641A21B0B30B00FBDFD2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F2CC64E221C9AC0F00809FE3 /* controller */,
 				F2CC64BB21C4E8EB00809FE3 /* evaluator */,
 				F2CC64B421C4E30200809FE3 /* action */,
 				F2556A0F21B4808F00E23A39 /* nodes */,
@@ -358,6 +402,7 @@
 		F2BD643021B0CB4700FBDFD2 /* datatypes */ = {
 			isa = PBXGroup;
 			children = (
+				F2CC64F921CB079000809FE3 /* QuadTree */,
 				F2BD643121B0CB5700FBDFD2 /* SetStack.swift */,
 				F2BD643421B0CBEB00FBDFD2 /* WeakSet.swift */,
 				F2BD643721B0CC7200FBDFD2 /* WeakDictionary.swift */,
@@ -392,13 +437,40 @@
 			path = evaluator;
 			sourceTree = "<group>";
 		};
+		F2CC64E221C9AC0F00809FE3 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				F2CC64E721C9AC3200809FE3 /* ShapeNodeController.swift */,
+				F2CC64EA21C9DA3100809FE3 /* ControllerSet.swift */,
+				F2CC64ED21C9E21100809FE3 /* PathNodeController.swift */,
+				F2CC64F621CA15D100809FE3 /* GeometryNodeController.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		F2CC64F921CB079000809FE3 /* QuadTree */ = {
+			isa = PBXGroup;
+			children = (
+				F2CC64FA21CB079000809FE3 /* GQTPointQuadTree.m */,
+				F2CC64FB21CB079000809FE3 /* GQTPointQuadTreeItem.h */,
+				F2CC64FC21CB079000809FE3 /* GQTPointQuadTreeChild.m */,
+				F2CC64FD21CB079000809FE3 /* GQTPoint.h */,
+				F2CC64FE21CB079000809FE3 /* GQTPointQuadTree.h */,
+				F2CC64FF21CB079000809FE3 /* GQTPointQuadTreeChild.h */,
+				F2CC650021CB079000809FE3 /* GQTBounds.h */,
+				F2CC650721CB081300809FE3 /* QuadTree-Bridging-Header.h */,
+			);
+			path = QuadTree;
+			sourceTree = "<group>";
+		};
 		F2D6BDA621B2109D00EC3AE5 /* database */ = {
 			isa = PBXGroup;
 			children = (
 				F2D6BDA321B1F62A00EC3AE5 /* NodeTree.swift */,
 				F262F1B421B21BDE00B973C8 /* PathnodeBase.swift */,
 				F2556A1321B4881800E23A39 /* ShapeNodeBase.swift */,
-				F2BAA17F21C0830E00503A6D /* DataReader.swift */,
+				F2CC64F021C9EEE200809FE3 /* GeoemtryBase.swift */,
+				F2BAA17F21C0830E00503A6D /* DataBase.swift */,
 				F2CC64AE21C4E23400809FE3 /* ActionBase.swift */,
 			);
 			path = database;
@@ -559,9 +631,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F21CB3C621B8F22100036785 /* main.swift in Sources */,
+				F2CC64E121C8CF5700809FE3 /* MotionGraph.swift in Sources */,
+				F2CC650321CB079000809FE3 /* GQTPointQuadTree.m in Sources */,
 				F21CB3D521B8F9F500036785 /* Collision.swift in Sources */,
+				F2CC64DD21C8CEC200809FE3 /* PhysicsWorld.swift in Sources */,
 				F21CB3CD21B8F23100036785 /* Physics.swift in Sources */,
 				F2852C1621BA4E6400FCD231 /* Fixture.swift in Sources */,
+				F2CC650621CB079000809FE3 /* GQTPointQuadTreeChild.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -571,14 +647,17 @@
 			files = (
 				F2CC64AF21C4E23400809FE3 /* ActionBase.swift in Sources */,
 				F2D6BDA421B1F62A00EC3AE5 /* NodeTree.swift in Sources */,
+				F2CC64EB21C9DA3100809FE3 /* ControllerSet.swift in Sources */,
 				F2BD63FF21B0B2D500FBDFD2 /* ViewController.swift in Sources */,
 				F2CC64D521C7704100809FE3 /* PathNodeActionDelegate.swift in Sources */,
 				F2556A1121B480AF00E23A39 /* ShapeNode.swift in Sources */,
 				F2CC64CC21C618F400809FE3 /* ShapeNodeEvaluator.swift in Sources */,
+				F2CC64F421C9EEF800809FE3 /* GeometryNode.swift in Sources */,
 				F262F1B821B21CAD00B973C8 /* ModelSetting.swift in Sources */,
 				F2E6C58A21B33254005C7DEA /* NodeMisc.swift in Sources */,
 				F2CC64C921C5F97C00809FE3 /* Clock.swift in Sources */,
 				F21CB39521B66B7B00036785 /* SLinkedList.swift in Sources */,
+				F2CC64DF21C8CF5700809FE3 /* MotionGraph.swift in Sources */,
 				F2BAA18321C0861300503A6D /* NodeSceneViewController.swift in Sources */,
 				F2BD642B21B0B45C00FBDFD2 /* PathNode.swift in Sources */,
 				F2BD643821B0CC7200FBDFD2 /* WeakDictionary.swift in Sources */,
@@ -586,23 +665,30 @@
 				F2CC64C621C5F96200809FE3 /* Reaper.swift in Sources */,
 				F21CB3BB21B87D0200036785 /* LinkedList.swift in Sources */,
 				F262F1BB21B2225C00B973C8 /* CommandQueue.swift in Sources */,
+				F2CC64F121C9EEE200809FE3 /* GeoemtryBase.swift in Sources */,
 				F2CC64B621C4E30B00809FE3 /* Action.swift in Sources */,
 				F2BD63FD21B0B2D500FBDFD2 /* GameScene.swift in Sources */,
 				F2CC64D821C839D800809FE3 /* UIShapeNode.swift in Sources */,
+				F2CC64EE21C9E21100809FE3 /* PathNodeController.swift in Sources */,
 				F2BD642E21B0B48F00FBDFD2 /* misc.swift in Sources */,
 				F2D6BDA121B1F45F00EC3AE5 /* Utils.swift in Sources */,
 				F2852C1421BA4E6400FCD231 /* Fixture.swift in Sources */,
 				F2CC64C321C5F8FC00809FE3 /* ActionCreater.swift in Sources */,
 				F2CC64C021C5F28A00809FE3 /* PathNodeEvaluator.swift in Sources */,
+				F2CC650121CB079000809FE3 /* GQTPointQuadTree.m in Sources */,
 				F2BD643521B0CBEB00FBDFD2 /* WeakSet.swift in Sources */,
 				F2BD643221B0CB5700FBDFD2 /* SetStack.swift in Sources */,
 				F21CB3CB21B8F23100036785 /* Physics.swift in Sources */,
 				F2CC64D221C7700600809FE3 /* ShapeNodeActionDelegate.swift in Sources */,
 				F2BD63F721B0B2D500FBDFD2 /* AppDelegate.swift in Sources */,
-				F2BAA18021C0830E00503A6D /* DataReader.swift in Sources */,
+				F2BAA18021C0830E00503A6D /* DataBase.swift in Sources */,
 				F2CC64CF21C76FA200809FE3 /* ActionDelegate.swift in Sources */,
+				F2CC64DB21C8CEC200809FE3 /* PhysicsWorld.swift in Sources */,
+				F2CC650421CB079000809FE3 /* GQTPointQuadTreeChild.m in Sources */,
 				F2556A1421B4881800E23A39 /* ShapeNodeBase.swift in Sources */,
+				F2CC64E821C9AC3200809FE3 /* ShapeNodeController.swift in Sources */,
 				F2BD642721B0B36300FBDFD2 /* Model.swift in Sources */,
+				F2CC64F721CA15D100809FE3 /* GeometryNodeController.swift in Sources */,
 				F2BAA17E21C0825100503A6D /* NodeScene.swift in Sources */,
 				F262F1B521B21BDE00B973C8 /* PathnodeBase.swift in Sources */,
 				F2CC64BD21C4E8F500809FE3 /* ActionEvaluator.swift in Sources */,
@@ -625,8 +711,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2CC650221CB079000809FE3 /* GQTPointQuadTree.m in Sources */,
 				F2CC64C121C5F28A00809FE3 /* PathNodeEvaluator.swift in Sources */,
 				F262F1C821B23B3600B973C8 /* TestBaseTest.swift in Sources */,
+				F2CC64E921C9AC3200809FE3 /* ShapeNodeController.swift in Sources */,
 				F2CC64B721C4E30B00809FE3 /* Action.swift in Sources */,
 				F2D6BDA221B1F4E500EC3AE5 /* Utils.swift in Sources */,
 				F2CC64D021C76FA200809FE3 /* ActionDelegate.swift in Sources */,
@@ -642,17 +730,24 @@
 				F2CC64CA21C5F97C00809FE3 /* Clock.swift in Sources */,
 				F2BD643321B0CB5700FBDFD2 /* SetStack.swift in Sources */,
 				F2CC64D621C7704100809FE3 /* PathNodeActionDelegate.swift in Sources */,
+				F2CC650521CB079000809FE3 /* GQTPointQuadTreeChild.m in Sources */,
+				F2CC64E021C8CF5700809FE3 /* MotionGraph.swift in Sources */,
 				F2E6C58B21B33254005C7DEA /* NodeMisc.swift in Sources */,
 				F2CC64C721C5F96200809FE3 /* Reaper.swift in Sources */,
 				F2CC64B021C4E23400809FE3 /* ActionBase.swift in Sources */,
+				F2CC64F221C9EEE200809FE3 /* GeoemtryBase.swift in Sources */,
 				F2BD642F21B0B48F00FBDFD2 /* misc.swift in Sources */,
-				F2BAA18121C0830E00503A6D /* DataReader.swift in Sources */,
+				F2BAA18121C0830E00503A6D /* DataBase.swift in Sources */,
+				F2CC64EF21C9E21100809FE3 /* PathNodeController.swift in Sources */,
 				F2BD642821B0B3C700FBDFD2 /* Model.swift in Sources */,
+				F2CC64F821CA15D100809FE3 /* GeometryNodeController.swift in Sources */,
 				F2CC64C421C5F8FC00809FE3 /* ActionCreater.swift in Sources */,
+				F2CC64F521C9EEF800809FE3 /* GeometryNode.swift in Sources */,
 				F21CB39621B66B7B00036785 /* SLinkedList.swift in Sources */,
 				F2D6BDA521B1F62A00EC3AE5 /* NodeTree.swift in Sources */,
 				F2CC64D321C7700600809FE3 /* ShapeNodeActionDelegate.swift in Sources */,
 				F2BD642221B0B35100FBDFD2 /* main.swift in Sources */,
+				F2CC64EC21C9DA3100809FE3 /* ControllerSet.swift in Sources */,
 				F262F1B921B21CAD00B973C8 /* ModelSetting.swift in Sources */,
 				F2CC64BE21C4E8F500809FE3 /* ActionEvaluator.swift in Sources */,
 				F21CB3BC21B87D0200036785 /* LinkedList.swift in Sources */,
@@ -661,6 +756,7 @@
 				F2CC64CD21C618F400809FE3 /* ShapeNodeEvaluator.swift in Sources */,
 				F2852C1521BA4E6400FCD231 /* Fixture.swift in Sources */,
 				F21CB3CC21B8F23100036785 /* Physics.swift in Sources */,
+				F2CC64DC21C8CEC200809FE3 /* PhysicsWorld.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -692,6 +788,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7F7BS4L457;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Model2/types/QuadTree/QuadTree-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -702,6 +799,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7F7BS4L457;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Model2/types/QuadTree/QuadTree-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
@@ -835,8 +933,10 @@
 					"@executable_path/../Frameworks",
 				);
 				LINK_WITH_STANDARD_LIBRARIES = YES;
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = dsf.Model2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Model2/types/QuadTree/QuadTree-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
@@ -855,8 +955,10 @@
 					"@executable_path/../Frameworks",
 				);
 				LINK_WITH_STANDARD_LIBRARIES = YES;
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = dsf.Model2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Model2/types/QuadTree/QuadTree-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
@@ -878,6 +980,7 @@
 				LINK_WITH_STANDARD_LIBRARIES = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = dsf.Model2Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Model2/types/QuadTree/QuadTree-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Model2.app/Contents/MacOS/Model2";
 			};
@@ -900,6 +1003,7 @@
 				LINK_WITH_STANDARD_LIBRARIES = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = dsf.Model2Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Model2/types/QuadTree/QuadTree-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Model2.app/Contents/MacOS/Model2";
 			};
@@ -912,6 +1016,7 @@
 				DEVELOPMENT_TEAM = 7F7BS4L457;
 				LINK_WITH_STANDARD_LIBRARIES = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Model2/types/QuadTree/QuadTree-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -923,6 +1028,7 @@
 				DEVELOPMENT_TEAM = 7F7BS4L457;
 				LINK_WITH_STANDARD_LIBRARIES = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Model2/types/QuadTree/QuadTree-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;

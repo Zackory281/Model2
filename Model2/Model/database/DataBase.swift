@@ -8,14 +8,18 @@
 
 import Foundation
 
-class DataReader {
+class DataBase {
 	
 	let pathNodeBase: PathNodeBase
 	let shapeNodeBase: ShapeNodeBase
+	let geometryNodeBase: GeometryNodeBase
+	let actionBase: ActionBase
 	
-	init(pathBase: PathNodeBase, shapeBase: ShapeNodeBase) {
+	init(pathBase: PathNodeBase, shapeBase: ShapeNodeBase, geometryBase: GeometryNodeBase, actionBase: ActionBase) {
 		self.pathNodeBase = pathBase
 		self.shapeNodeBase = shapeBase
+		self.geometryNodeBase = geometryBase
+		self.actionBase = actionBase
 	}
 	
 	func forEachShapeNode(function: (ShapeNode)->()) {
@@ -27,6 +31,12 @@ class DataReader {
 	func forEachPathNode(function: (PathNode)->()) {
 		for pathNode in pathNodeBase.values {
 			function(pathNode)
+		}
+	}
+	
+	func forEachGeometryNode(function: (GeometryNode)->()) {
+		for geometryNode in geometryNodeBase.values {
+			function(geometryNode)
 		}
 	}
 }

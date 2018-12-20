@@ -31,7 +31,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		model.command(action: .addPathNode(at: GP(2, 1)), time: 1.75)
 		model.command(action: .addPathNode(at: GP(3, 2)), time: 3.625)
 		model.command(action: .addPathNode(at: GP(3, 1)), time: 3.75)
-		controller.dataReader = model.dateReader
+		model.command(action: .addGeoemtryNode(type: .Gem, dir: .RIGHT, at: GP(-1, -3)), time: 0.125)
+		model.command(action: .addGeoemtryNode(type: .Gem, dir: .UP, at: GP(1, 3)), time: 0.125)
+		model.command(action: .addGeoemtryNode(type: .Square, dir: .UP, at: GP(4, -4)), time: 0.25)
+		model.command(action: .addGeoemtryNode(type: .Triangle, dir: .UP, at: GP(-5, -1)), time: 0.25)
+		model.command(action: .addGeoemtryNode(type: .Square, dir: .UP, at: GP(0, 0)), time: 1.5)
+		model.command(action: .addGeoemtryNode(type: .Square, dir: .UP, at: GP(0, 0)), time: 1.5)
+		model.command(action: .addGeoemtryNode(type: .Triangle_Small, dir: .DOWN, at: GP(2, -4)), time: 1.75)
+		model.command(action: .addGeoemtryNode(type: .Z, dir: .UP, at: GP(4, -6)), time: 1.5)
+		controller.dataReader = model.dataBase
 		controller.model = model
     }
     

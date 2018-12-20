@@ -6,8 +6,8 @@
 //  Copyright © 2018 Zackori Cui. All rights reserved.
 //
 
-typealias ActionHandler = (Action) -> ()
-typealias CAHandler = (Time) -> ()
+typealias ActionHandler = () -> ()
+typealias CAHandler = () -> ()
 
 import simd
 import Foundation
@@ -50,10 +50,10 @@ class InstantAction: Action {
 	
 	var action: ActionHandler?
 	
-//	init(start: Time, actionType: ActionType) {
-//		self.action = action
-//		super.init(start: start, actionType: actionType)
-//	}
+	init(start: Time, action: @escaping ActionHandler) {
+		self.action = action
+		super.init(start: start, actionType: .DontCare)
+	}
 	
 }
 
@@ -110,8 +110,8 @@ let actionComparator: (Action, Action) -> Bool = {(r, l) in
 	return r.actionId < l.actionId
 }
 
-let nilHander: ActionHandler = {(action) in error("Nil handler")}
+let nilHander: ActionHandler = {error("Nil handler")}
 
 func stringHandler(_ string: String) -> ActionHandler {
-	return {(action) in print(string)}
+	return {print(string)}
 }
