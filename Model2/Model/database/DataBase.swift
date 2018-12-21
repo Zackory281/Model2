@@ -14,12 +14,14 @@ class DataBase {
 	let shapeNodeBase: ShapeNodeBase
 	let geometryNodeBase: GeometryNodeBase
 	let actionBase: ActionBase
+	let clock: Clock
 	
-	init(pathBase: PathNodeBase, shapeBase: ShapeNodeBase, geometryBase: GeometryNodeBase, actionBase: ActionBase) {
+	init(pathBase: PathNodeBase, shapeBase: ShapeNodeBase, geometryBase: GeometryNodeBase, actionBase: ActionBase, clock: Clock) {
 		self.pathNodeBase = pathBase
 		self.shapeNodeBase = shapeBase
 		self.geometryNodeBase = geometryBase
 		self.actionBase = actionBase
+		self.clock = clock
 	}
 	
 	func forEachShapeNode(function: (ShapeNode)->()) {

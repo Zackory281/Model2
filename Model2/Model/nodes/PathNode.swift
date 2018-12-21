@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import simd
 
 class PathNode: NSObject, Positionable{
-	var fpoint: FPoint {set{gpoint=newValue.i2}get{return gpoint.f2}}
+	var fpoint: FPoint {set{gpoint=(newValue - float2(0.5, 0.5)).i2}get{return gpoint.f2 + float2(0.5, 0.5)}}
 	var gpoint: GPoint
 	var taken: Bool
 	

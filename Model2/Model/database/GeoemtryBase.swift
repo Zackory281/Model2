@@ -24,7 +24,6 @@ class GeometryNodeBase: NodeTree<GeometryNode> {
 			remove(node: node)
 		}
 		nodes[node] = self.tree.add(node, in: node.quad)
-		print(node.quad, " and ", node.fixture.pos)
 	}
 	
 	func isDisjoint(_ geometryNode: GeometryNode, ignore: GeometryNode? = nil) -> Bool {

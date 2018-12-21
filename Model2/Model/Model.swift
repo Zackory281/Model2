@@ -50,7 +50,7 @@ class Model : ModelAPI {
 		self.shapeNodeBase = ShapeNodeBase(setting: setting)
 		self.geometryNodeBase = GeometryNodeBase(setting: setting)
 		self.actionBase = ActionBase()
-		self.dataBase = DataBase(pathBase: pathNodeBase, shapeBase: shapeNodeBase, geometryBase: geometryNodeBase, actionBase: actionBase)
+		self.dataBase = DataBase(pathBase: pathNodeBase, shapeBase: shapeNodeBase, geometryBase: geometryNodeBase, actionBase: actionBase, clock: clock)
 		
 		self.reaper = Reaper(dataBase: dataBase, actionBase: actionBase, clock: clock)
 		
@@ -74,6 +74,7 @@ class Model : ModelAPI {
 
 protocol ModelAPI : class
 {
+	var dataBase: DataBase { get }
 	func command(action: ModelCommand, time: Time)
 	func evalute(to: Time)
 }

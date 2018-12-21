@@ -27,6 +27,7 @@ class GeometryNodeController: Controller {
 			/// TODO
 			actionBase.addAction(InstantAction(start: time) { [unowned self] in
 				self.addGeometry(geoType, dir: direction, at: point)
+				return true
 			})
 		default:
 			return false

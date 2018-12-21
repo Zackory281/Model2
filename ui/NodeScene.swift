@@ -9,18 +9,9 @@
 import Foundation
 import SpriteKit
 
-class NodeScene: SKScene {
+class NodeScene: SKScene, NodeRenderer {
 	
 	var nodeDict = Dictionary<NSObject, SKSpriteNode>()
-	var cam: SKCameraNode = SKCameraNode()
-	
-	func initialize() {
-		if self.camera == nil {
-			self.camera = cam
-			self.camera!.xScale = 2
-			self.camera!.yScale = 2
-		}
-	}
 	
 	func render(_ shapeNode: ShapeNode) {
 		let sknode: SKSpriteNode
@@ -129,7 +120,26 @@ extension float2 {
 }
 
 extension CGPoint {
-	static func *(_ rhs: CGPoint, _ lhs: CGFloat) -> CGPoint {
+	@inline(__always) static func *(_ rhs: CGPoint, _ lhs: CGFloat) -> CGPoint {
 		return CGPoint(x: rhs.x * lhs, y: rhs.y * lhs)
 	}
+	@inline(__always) static func *=(_ rhs: inout CGPoint, _ lhs: CGFloat) {
+		rhs.x *= lhs
+		rhs.y *= lhs
+	}
+	@inline(__always) static func +(_ rhs: CGPoint, _ lhs: CGPoint) -> CGPoint {
+		return CGPoint(x: rhs.x + lhs.x, y: rhs.y + lhs.y)
+	}
+	@inline(__always) static func -(_ rhs: CGPoint, _ lhs: CGPoint) -> CGPoint {
+		return CGPoint(x: rhs.x - lhs.x, y: rhs.y - lhs.y)
+	}
+	@inline(__always) static func +=(_ rhs: inout CGPoint, _ lhs: CGPoint) {
+		rhs.x += lhs.x
+		rhs.y += lhs.y
+	}
+	@inline(__always) static func -=(_ rhs: inout CGPoint, _ lhs: CGPoint) {
+		rhs.x -= lhs.x
+		rhs.y -= lhs.y
+	}
 }
+

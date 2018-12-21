@@ -17,6 +17,7 @@ class ShapeNode: NSObject, Positionable {
 	var direction: Direction = .RIGHT
 	var moving: Bool
 	var transientState: TrasientState
+	var movement: ShapeMovement?
 	
 	weak var pathNode: PathNode?
 	
@@ -28,6 +29,12 @@ class ShapeNode: NSObject, Positionable {
 	}
 }
 
+struct ShapeMovement {
+	let startTime: Time
+	let duration: Time
+	let startPoint: FP
+	let delta: FP
+}
 enum TrasientState {
 	case Stopped
 	case Moving

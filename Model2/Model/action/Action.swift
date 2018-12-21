@@ -6,8 +6,8 @@
 //  Copyright © 2018 Zackori Cui. All rights reserved.
 //
 
-typealias ActionHandler = () -> ()
-typealias CAHandler = () -> ()
+typealias ActionHandler = () -> (Bool)
+typealias CAHandler = () -> (Bool)
 
 import simd
 import Foundation
@@ -110,8 +110,10 @@ let actionComparator: (Action, Action) -> Bool = {(r, l) in
 	return r.actionId < l.actionId
 }
 
-let nilHander: ActionHandler = {error("Nil handler")}
+let nilHander: ActionHandler = {error("Nil handler")
+	return true}
 
 func stringHandler(_ string: String) -> ActionHandler {
-	return {print(string)}
+	return {print(string)
+		return true}
 }
