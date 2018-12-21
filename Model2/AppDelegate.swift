@@ -14,12 +14,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	
 	//applicationDidlau
 	func applicationWillFinishLaunching(_ notification: Notification) {
-		NSApplication.shared.mainWindow!.acceptsMouseMovedEvents = true
 		// Insert code here to initialize your application
 //		let controller = NSApplication.shared.mainWindow!.contentViewController as! NodeSceneViewController
 //		controller.model = model
 	}
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+		//NSApplication.shared.mainWindow!.acceptsMouseMovedEvents = true
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {

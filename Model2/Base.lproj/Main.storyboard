@@ -709,6 +709,17 @@
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl" customClass="GameView" customModule="Model2" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="TEL-rW-3g4">
+                                <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="TEL-rW-3g4" secondAttribute="bottom" id="6QP-WR-KPV"/>
+                            <constraint firstItem="TEL-rW-3g4" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="BNy-aT-txU"/>
+                            <constraint firstAttribute="trailing" secondItem="TEL-rW-3g4" secondAttribute="trailing" id="D9o-5R-n0d"/>
+                            <constraint firstItem="TEL-rW-3g4" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="Iw7-fb-PkU"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="skView" destination="m2S-Jp-Qdl" id="kSD-ub-ZqC"/>
