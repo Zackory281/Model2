@@ -10,13 +10,14 @@ import Foundation
 
 class Model : ModelAPI {
 	
-	var startTime: Time?
+	var startAbsTime: Time
 	
 	let clock: Clock
 	
 	let pathNodeBase: PathNodeBase
 	let shapeNodeBase: ShapeNodeBase
 	let geometryNodeBase: GeometryNodeBase
+	let projectileBase: ProjectileBase
 	let actionBase: ActionBase
 	let dataBase: DataBase
 	
@@ -30,27 +31,33 @@ class Model : ModelAPI {
 	
 	let controllerSet: ControllerSet
 	
+	let timeDilator: TimeDilator
+	
+	lazy var modelImagine: ModelImagineAPI! = { return ModelImagine.init(model: self) }()
+	
 	func command(action: MC, time: Time) {
 		//commandQueue.queue(action, time: time)
 		controllerSet.feed(action, time)
 	}
 	
 	func evalute(to: Time) {
-		if let st = startTime {
-			actionEvaluator.evaluateTo(to - st)
-		} else {
-			startTime = to
+		actionEvaluator.evaluateTo(timeDilator.incoming(time: to))
+		if modelImagine != nil {
+			modelImagine!.update()
 		}
 	}
 	
 	init(setting: ModelSetting) {
+	  	self.startAbsTime = Date().timeIntervalSince1970
 		self.clock = Clock(lastTime: START_TIME, evalTime: START_TIME)
+		self.timeDilator = TimeDilator()
 		
 		self.pathNodeBase = PathNodeBase(setting: setting)
 		self.shapeNodeBase = ShapeNodeBase(setting: setting)
 		self.geometryNodeBase = GeometryNodeBase(setting: setting)
+		self.projectileBase = ProjectileBase(setting: setting)
 		self.actionBase = ActionBase()
-		self.dataBase = DataBase(pathBase: pathNodeBase, shapeBase: shapeNodeBase, geometryBase: geometryNodeBase, actionBase: actionBase, clock: clock)
+		self.dataBase = DataBase(pathBase: pathNodeBase, shapeBase: shapeNodeBase, geometryBase: geometryNodeBase, projectileBase: projectileBase, actionBase: actionBase, clock: clock)
 		
 		self.reaper = Reaper(dataBase: dataBase, actionBase: actionBase, clock: clock)
 		
@@ -74,9 +81,16 @@ class Model : ModelAPI {
 
 protocol ModelAPI : class
 {
+	var startAbsTime: Time { get }
+	var modelImagine: ModelImagineAPI! { get }
 	var dataBase: DataBase { get }
 	func command(action: ModelCommand, time: Time)
 	func evalute(to: Time)
+}
+
+protocol ModelImagineAPI: class {
+	var imaginePathNode: GP? { get set }
+	func update()
 }
 
 typealias MC = ModelCommand

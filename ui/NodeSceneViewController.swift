@@ -9,7 +9,7 @@
 import Foundation
 import SpriteKit
 
-class NodeSceneViewController: NSViewController, SKSceneDelegate {
+class NodeSceneViewController: NSViewController, SKSceneDelegate, NSWindowDelegate {
 	
 	
 	@IBOutlet var skView: GameView!
@@ -19,8 +19,15 @@ class NodeSceneViewController: NSViewController, SKSceneDelegate {
 	
 	var uiController: UIController!
 	
+	@objc dynamic var message: NSAttributedString = NSAttributedString(string: "Bro")
+	
 	func update(_ currentTime: TimeInterval, for scene: SKScene) {
 		uiController.update(currentTime)
+	}
+	
+	override func viewDidAppear() {
+		view.window!.delegate = self
+		NSApplication.shared.mainWindow!.acceptsMouseMovedEvents = true
 	}
 	
 	override func viewDidLoad() {
@@ -28,7 +35,7 @@ class NodeSceneViewController: NSViewController, SKSceneDelegate {
 		
 		if let view = skView {
 			self.cameraController = CameraController(SKCameraNode())
-			nodeScene = NodeScene.init(size: CGSize(width: 800, height: 600))
+			nodeScene = NodeScene.init(size: CGSize(width: view.bounds.width, height: view.bounds.height))
 			nodeScene.camera = cameraController.camera
 			nodeScene.delegate = self
 			nodeScene.backgroundColor = .black
@@ -81,11 +88,15 @@ class NodeSceneViewController: NSViewController, SKSceneDelegate {
 		model.command(action: .addGeoemtryNode(type: .Square, dir: .UP, at: GP(0, 0)), time: 1.5)
 		model.command(action: .addGeoemtryNode(type: .Triangle_Small, dir: .DOWN, at: GP(2, -4)), time: 1.75)
 		model.command(action: .addGeoemtryNode(type: .Z, dir: .UP, at: GP(4, -6)), time: 1.5)
+		model.command(action: .removePathNode(at: GP(3, 1)), time: 4.0)
 	}
-}
-
-protocol NodeRenderer: AnyObject {
-	func render(_ shapeNode: ShapeNode)
-	func render(_ pathNode: PathNode)
-	func render(_ geometryNode: GeometryNode)
+	
+	func windowWillResize(_ sender: NSWindow, to frameSize: NSSize) -> NSSize {
+		nodeScene.size = frameSize
+		return frameSize
+	}
+	
+	func windowDidResize(_ notification: Notification) {
+		nodeScene.size = view.bounds.size
+	}
 }

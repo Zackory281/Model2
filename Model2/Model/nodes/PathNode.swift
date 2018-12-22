@@ -18,9 +18,13 @@ class PathNode: NSObject, Positionable{
 	var table = WeakDictionary<Direction, PathNode>()
 	var outDegree: Int {get{table.reap();return table.count}}
 	var outNodes: Set<PathNode> {get{return Set(table.toStrongDictionary().values)}}
-	init(point: GPoint) {
+	
+	var valid: Bool
+	
+	init(point: GPoint, valid: Bool = true) {
 		taken = false
 		gpoint = point
+		self.valid = valid
 		id = getNodeId()
 	}
 	

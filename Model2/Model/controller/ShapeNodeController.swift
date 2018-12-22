@@ -89,6 +89,7 @@ class ShapeNodeController: Controller, ShapeNodeControllerDelegate {
 			return
 		}
 		shapeNode.fpoint = movement.startPoint + movement.delta * Float((evalTime - movement.startTime) / movement.duration)
+		shapeNodeBase.move(node: shapeNode)
 	}
 	
 	func finishShapeMovement(_ shapeNode: ShapeNode) {
@@ -102,6 +103,7 @@ class ShapeNodeController: Controller, ShapeNodeControllerDelegate {
 			pathNode.taken = true
 		}
 		shapeNode.moving = false
+		shapeNodeBase.move(node: shapeNode)
 		update(shapeNode)
 	}
 	

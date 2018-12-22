@@ -13,14 +13,16 @@ class NodeTree<N: NSObject & Positionable> {
 	let tree: GKQuadtree<N>
 	var nodes: Dictionary<N, GKQuadtreeNode>
 	var values: Dictionary<N, GKQuadtreeNode>.Keys {get{return nodes.keys}}
+	var nodesToRemove: Set<N>
 
 	init(_ minCorner: GP, _ maxCornder: GP, minCellSize: Float = 0.5) {
 		tree = GKQuadtree<N>.init(boundingQuad: GKQuad(quadMin: float2(Float(minCorner.x), Float(minCorner.y)), quadMax: float2(Float(maxCornder.x), Float(maxCornder.y))), minimumCellSize: minCellSize)
 		nodes = Dictionary<N, GKQuadtreeNode>()
+		nodesToRemove = Set<N>()
 	}
 	
-	func getNodesIn(_ minCorner: FP, _ maxCornder: FP) -> [N] {
-		return tree.elements(in: GKQuad(quadMin: minCorner, quadMax: maxCornder))
+	func getNodesIn(_ minCorner: FP, _ maxCorner: FP) -> [N] {
+		return tree.elements(in: GKQuad(quadMin: minCorner, quadMax: maxCorner))
 	}
 	
 	func getNodesAt(_ gpoint: GP) -> [N] {
@@ -32,8 +34,15 @@ class NodeTree<N: NSObject & Positionable> {
 	}
 
 	func remove(node: N) {
-		guard let qnode = nodes[node] else { return }
+		guard let qnode = nodes.removeValue(forKey: node) else { return }
 		tree.remove(node, using: qnode)
+		nodesToRemove.insert(node)
+	}
+	
+	@discardableResult func flushRemove() -> Set<N> {
+		let r = self.nodesToRemove
+		self.nodesToRemove.removeAll()
+		return r
 	}
 
 	func add(node: N) {
@@ -48,6 +57,8 @@ class NodeTree<N: NSObject & Positionable> {
 	}
 
 	func move(node: N) {
-		add(node: node)
+		guard let qnode = nodes[node] else { return }
+		self.tree.remove(node, using: qnode)
+		tree.add(node, at: node.fpoint)
 	}
 }

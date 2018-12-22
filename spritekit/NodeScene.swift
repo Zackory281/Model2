@@ -12,6 +12,12 @@ import SpriteKit
 class NodeScene: SKScene, NodeRenderer {
 	
 	var nodeDict = Dictionary<NSObject, SKSpriteNode>()
+	lazy var pointConverter: PointConverter = {return { liw in return self.view!.convert(liw, to: self)}}()
+	
+	func remove(_ obj: NSObject) {
+		let sknode = nodeDict.removeValue(forKey: obj)!
+		sknode.removeFromParent()
+	}
 	
 	func render(_ shapeNode: ShapeNode) {
 		let sknode: SKSpriteNode
@@ -57,6 +63,28 @@ class NodeScene: SKScene, NodeRenderer {
 			sknode = nodeDict[geometryNode]!
 		}
 		sknode.position = geometryNode.fpoint.cgPoint
+	}
+	
+	var imaginaryPathPair: (PathNode, SKNode)?
+	
+	func renderImagine(_ pathnode: PathNode) {
+		if let prePath = imaginaryPathPair {
+			if prePath.0 === pathnode {
+				return
+			}
+			prePath.1.removeFromParent()
+		}
+		let sknode = createNewPathNode()
+		sknode.position = pathnode.fpoint.cgPoint
+		if !pathnode.valid {
+			let colorize = SKAction.colorize(with: .systemRed, colorBlendFactor: 1, duration: 0)
+			sknode.run(colorize)
+		}
+		let action = SKAction.repeatForever(.sequence([.fadeOut(withDuration: 0.5), .fadeIn(withDuration: 0.5)]))
+		sknode.run(action)
+		sknode.zPosition = PathNodeImagine_Z
+		self.addChild(sknode)
+		imaginaryPathPair = (pathnode, sknode)
 	}
 	
 	private func createNewShapeNode() -> SKSpriteNode {
@@ -106,6 +134,7 @@ class NodeScene: SKScene, NodeRenderer {
 
 let PathNode_Z: CGFloat = 1
 let ShapeNode_Z: CGFloat = 2
+let PathNodeImagine_Z: CGFloat = 5
 
 let SCALE: CGFloat = 100
 let LINE_WIDTH: CGFloat = SCALE / 10

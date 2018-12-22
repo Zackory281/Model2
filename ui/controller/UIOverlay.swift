@@ -1,5 +1,5 @@
 //
-//  ScrollGestureRecognizer.swift
+//  UIOverlay.swift
 //  Model2
 //
 //  Created by Zackory Cramer on 12/20/18.
@@ -7,9 +7,8 @@
 //
 
 import Foundation
-import Cocoa
 
-class ScrollGestureRecognizer: NSGestureRecognizer {
-	
-	//override func mouse
+
+protocol Overlay {
+	//func displ
 }

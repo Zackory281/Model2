@@ -15,7 +15,7 @@ class PathNodeController: Controller {
 	weak var shapeNodeControllerDelegate: ShapeNodeControllerDelegate?
 	
 	func addPathNode(_ point: GP) {
-		guard pathNodeBase.getNodesAt(point.f2 + float2(0.5, 0.5)).isEmpty else {
+		guard canPlacePathNode(at: point) else {
 			error("Adding a pathNode to where there's already a pathNode: ", point, ".", pathNodeBase.values.count)
 			return
 		}
@@ -39,8 +39,20 @@ class PathNodeController: Controller {
 			pathNode.table[.DOWN] = node
 		}
 		if let delegate = shapeNodeControllerDelegate {
-			delegate.triggerUpdateMovement(shapeNodeBase.getNodesIn(fp + float2(-1, -1), fp + float2(1, 1)))
+			delegate.triggerUpdateMovement(shapeNodeBase.getNodesIn(fp + float2(-2.5, -2.5), fp + float2(2.5, 2.5)))
 		}
+	}
+	
+	func canPlacePathNode(at point: GP) -> Bool {
+		return pathNodeBase.getNodesAt(point.f2 + float2(0.5, 0.5)).isEmpty
+	}
+	
+	func removePathNode(_ point: GP) {
+		guard let path = pathNodeBase.getNodesAt(point.f2 + float2(0.5, 0.5)).first else {
+			error("Remove a pathnode where there is no pathNode: ", point, ".")
+			return
+		}
+		pathNodeBase.remove(node: path)
 	}
 	
 	init(dataBase: DataBase, shapeNodeControllerDelegate: ShapeNodeControllerDelegate) {
@@ -54,6 +66,11 @@ class PathNodeController: Controller {
 			/// TODO
 			actionBase.addAction(InstantAction(start: time) { [unowned self] in
 				self.addPathNode(point)
+				return true
+			})
+		case let .removePathNode(at: point):
+			actionBase.addAction(InstantAction(start: time) { [unowned self] in
+				self.removePathNode(point)
 				return true
 			})
 		default:

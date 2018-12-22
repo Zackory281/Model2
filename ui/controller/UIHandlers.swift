@@ -17,3 +17,11 @@ protocol PanHandler: AnyObject {
 protocol Scrollhandler: AnyObject {
 	func updateScroll(_ deltaX: CGFloat, _ deltaY: CGFloat)
 }
+
+protocol HoverHandler: AnyObject {
+	func updateHover(_ point: CGPoint)
+}
+
+protocol ClickHandler: AnyObject {
+	func clicked(_ point: CGPoint)
+}

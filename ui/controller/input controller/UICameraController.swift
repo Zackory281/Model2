@@ -17,6 +17,7 @@ class CameraController: NSObject, PanHandler, Scrollhandler {
 		self.camera.xScale = 2
 		self.camera.yScale = 2
 	}
+	
 	var cursorDistFromCenter: CGPoint = .zero//need
 	
 	func beginPan(_ start: CGPoint, _ center: CGPoint) {

@@ -53,6 +53,7 @@ extension Controller {
 	var shapeNodeBase: ShapeNodeBase { return dataBase.shapeNodeBase }
 	var pathNodeBase: PathNodeBase { return dataBase.pathNodeBase }
 	var geometryNodeBase: GeometryNodeBase { return dataBase.geometryNodeBase }
+	var projectileBase: ProjectileBase { return dataBase.projectileBase }
 	var clock: Clock { return dataBase.clock }
 	var evalTime: Time { return dataBase.clock.evalTime }
 	var actionBase: ActionBase { return dataBase.actionBase }
