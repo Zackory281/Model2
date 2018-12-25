@@ -25,7 +25,7 @@ class ProjectilNodeController: Controller, ProjectilControllerDelegate {
 	func fire(from: Positionable, to: Positionable, time: Time, duration: Time) {
 		let projectileNode = ProjectileNode(subject: from, object: to, startTime: time, duration: duration)
 		projectileBase.add(node: projectileNode)
-		actionBase.addInstantAction(InstantAction(start: time){ [weak projectileNode] in
+		actionBase.addInstantAction(InstantAction(start: time + duration){ [weak projectileNode] in
 			guard let pnode = projectileNode else {
 				return false
 			}

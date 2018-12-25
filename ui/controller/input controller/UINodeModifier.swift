@@ -19,6 +19,6 @@ class UINodeModifier: ClickHandler {
 	}
 	func clicked(_ point: CGPoint) {
 		//print(Date().timeIntervalSince1970 - model.startAbsTime)
-		model.command(action: .addPathNode(at: toGP(point: converter(point))), time: Date().timeIntervalSince1970 - model.startAbsTime)
+		model.command(action: .addShapeNode(at: toGP(point: converter(point))), time: Date().timeIntervalSince1970 - model.startAbsTime)
 	}
 }

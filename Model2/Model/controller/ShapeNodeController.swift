@@ -12,6 +12,9 @@ import simd
 class ShapeNodeController: Controller, ShapeNodeControllerDelegate {
 	
 	let dataBase: DataBase
+	var projectileDelegate: ProjectilControllerDelegate!
+	
+	var flowField: FlowField = FlowField(FP(0.5, 0.5), gap: 0.5)
 	
 	func addShapeNode(_ point: GP) {
 		guard shapeNodeBase.getNodesAt(point).isEmpty else {
@@ -39,19 +42,21 @@ class ShapeNodeController: Controller, ShapeNodeControllerDelegate {
 			let fp = shapeNode.fpoint
 			let dir = shapeNode.direction
 			//let movement = ShapeMovement.init(startTime: evalTime, duration: 1000, startPoint: shapeNode.fpoint, delta: FP()
-			var ddir: Direction?
+			var ddir: Direction? = .UP
 			var delta: FP?
-			if let path = pathNode.table[dir], !path.taken {
-				delta = DirectionToVector[dir]!
-				ddir = dir
-			} else if let path = pathNode.table[dir.left()], !path.taken {
-				ddir = dir.left()
-				delta = DirectionToVector[ddir!]!
-			} else if let path = pathNode.table[dir.right()], !path.taken {
-				ddir = dir.right()
-				delta = DirectionToVector[ddir!]!
-			}
-			if let d = ddir {
+			delta = flowField.getDelta(from: fp)
+			//print(delta!)
+//			if let path = pathNode.table[dir], !path.taken {
+//				delta = DirectionToVector[dir]!
+//				ddir = dir
+//			} else if let path = pathNode.table[dir.left()], !path.taken {
+//				ddir = dir.left()
+//				delta = DirectionToVector[ddir!]!
+//			} else if let path = pathNode.table[dir.right()], !path.taken {
+//				ddir = dir.right()
+//				delta = DirectionToVector[ddir!]!
+//			}
+			if let d = ddir, let _ = delta {
 				let movement = ShapeMovement.init(startTime: evalTime, duration: MOVING_DURATION, startPoint: fp, delta: delta!)
 				shapeNode.direction = d
 				shapeNode.movement = movement
@@ -105,6 +110,9 @@ class ShapeNodeController: Controller, ShapeNodeControllerDelegate {
 		shapeNode.moving = false
 		shapeNodeBase.move(node: shapeNode)
 		update(shapeNode)
+//		for i in stride(from: 0, to: 0.5, by: 0.02) {
+//			projectileDelegate.fire(from: shapeNode, to: geometryNodeBase.getNodesIn(FP(-10, -10), FP(10, 10)).first!, time: evalTime + i, duration: 0.3)
+//		}
 	}
 	
 	init(dataBase: DataBase) {
@@ -131,4 +139,4 @@ protocol ShapeNodeControllerDelegate: AnyObject {
 	func triggerUpdateMovement(_ shapeNodes: [ShapeNode])
 }
 
-let MOVING_DURATION: Time = 2
+let MOVING_DURATION: Time = 0.5

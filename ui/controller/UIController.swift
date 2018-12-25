@@ -48,6 +48,7 @@ class UIController {
 		dataBase.forEachShapeNode(function: renderer.render)
 		dataBase.forEachPathNode(function: renderer.render)
 		dataBase.forEachGeometryNode(function: renderer.render)
+		dataBase.forEachProjectileNode(function: renderer.render)
 	}
 	
 	func renderImagine() {
@@ -63,5 +64,6 @@ protocol NodeRenderer: AnyObject {
 	func render(_ shapeNode: ShapeNode)
 	func render(_ pathNode: PathNode)
 	func render(_ geometryNode: GeometryNode)
+	func render(_ projectileNode: ProjectileNode)
 	func renderImagine(_ pathnode: PathNode)
 }

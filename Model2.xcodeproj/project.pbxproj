@@ -49,6 +49,10 @@
 		F2899F4B21CE1026006F3318 /* ProjectileNodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2899F4921CE1026006F3318 /* ProjectileNodeController.swift */; };
 		F2899F4D21CE112D006F3318 /* ProjectileBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2899F4C21CE112D006F3318 /* ProjectileBase.swift */; };
 		F2899F4E21CE112D006F3318 /* ProjectileBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2899F4C21CE112D006F3318 /* ProjectileBase.swift */; };
+		F2899F5121D0BC83006F3318 /* FlowField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2899F5021D0BC83006F3318 /* FlowField.swift */; };
+		F2899F5221D15C13006F3318 /* FlowField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2899F5021D0BC83006F3318 /* FlowField.swift */; };
+		F2899F5421D19A54006F3318 /* MovementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2899F5321D19A54006F3318 /* MovementController.swift */; };
+		F2899F5521D19A54006F3318 /* MovementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2899F5321D19A54006F3318 /* MovementController.swift */; };
 		F2BAA17E21C0825100503A6D /* NodeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BAA17D21C0825100503A6D /* NodeScene.swift */; };
 		F2BAA18021C0830E00503A6D /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BAA17F21C0830E00503A6D /* DataBase.swift */; };
 		F2BAA18121C0830E00503A6D /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BAA17F21C0830E00503A6D /* DataBase.swift */; };
@@ -192,6 +196,8 @@
 		F2899F4621CE0C58006F3318 /* ProjectileNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectileNode.swift; sourceTree = "<group>"; };
 		F2899F4921CE1026006F3318 /* ProjectileNodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectileNodeController.swift; sourceTree = "<group>"; };
 		F2899F4C21CE112D006F3318 /* ProjectileBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectileBase.swift; sourceTree = "<group>"; };
+		F2899F5021D0BC83006F3318 /* FlowField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowField.swift; sourceTree = "<group>"; };
+		F2899F5321D19A54006F3318 /* MovementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementController.swift; sourceTree = "<group>"; };
 		F2BAA17D21C0825100503A6D /* NodeScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeScene.swift; sourceTree = "<group>"; };
 		F2BAA17F21C0830E00503A6D /* DataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
 		F2BAA18221C0861300503A6D /* NodeSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeSceneViewController.swift; sourceTree = "<group>"; };
@@ -378,6 +384,14 @@
 			path = "input controller";
 			sourceTree = "<group>";
 		};
+		F2899F4F21D0BC14006F3318 /* ai */ = {
+			isa = PBXGroup;
+			children = (
+				F2899F5021D0BC83006F3318 /* FlowField.swift */,
+			);
+			path = ai;
+			sourceTree = "<group>";
+		};
 		F2BD63EA21B0B2D500FBDFD2 = {
 			isa = PBXGroup;
 			children = (
@@ -434,6 +448,7 @@
 		F2BD641A21B0B30B00FBDFD2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F2899F4F21D0BC14006F3318 /* ai */,
 				F2CC64E221C9AC0F00809FE3 /* controller */,
 				F2CC64BB21C4E8EB00809FE3 /* evaluator */,
 				F2CC64B421C4E30200809FE3 /* action */,
@@ -514,6 +529,7 @@
 				F2CC64ED21C9E21100809FE3 /* PathNodeController.swift */,
 				F2CC64F621CA15D100809FE3 /* GeometryNodeController.swift */,
 				F2899F4921CE1026006F3318 /* ProjectileNodeController.swift */,
+				F2899F5321D19A54006F3318 /* MovementController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -728,6 +744,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2899F5221D15C13006F3318 /* FlowField.swift in Sources */,
 				F2899EE721CD8533006F3318 /* TimeDilator.swift in Sources */,
 				F2899F4D21CE112D006F3318 /* ProjectileBase.swift in Sources */,
 				F2CC64AF21C4E23400809FE3 /* ActionBase.swift in Sources */,
@@ -761,6 +778,7 @@
 				F2CC64EE21C9E21100809FE3 /* PathNodeController.swift in Sources */,
 				F2BD642E21B0B48F00FBDFD2 /* misc.swift in Sources */,
 				F2899F4A21CE1026006F3318 /* ProjectileNodeController.swift in Sources */,
+				F2899F5421D19A54006F3318 /* MovementController.swift in Sources */,
 				F2D6BDA121B1F45F00EC3AE5 /* Utils.swift in Sources */,
 				F2852C1421BA4E6400FCD231 /* Fixture.swift in Sources */,
 				F2CC64C321C5F8FC00809FE3 /* ActionCreater.swift in Sources */,
@@ -825,6 +843,7 @@
 				F2556A1521B4881800E23A39 /* ShapeNodeBase.swift in Sources */,
 				F2CC64CA21C5F97C00809FE3 /* Clock.swift in Sources */,
 				F2BD643321B0CB5700FBDFD2 /* SetStack.swift in Sources */,
+				F2899F5121D0BC83006F3318 /* FlowField.swift in Sources */,
 				F2CC64D621C7704100809FE3 /* PathNodeActionDelegate.swift in Sources */,
 				F2899F4B21CE1026006F3318 /* ProjectileNodeController.swift in Sources */,
 				F2CC650521CB079000809FE3 /* GQTPointQuadTreeChild.m in Sources */,
@@ -852,6 +871,7 @@
 				F2899EEB21CD88CB006F3318 /* ModelImagine.swift in Sources */,
 				F21CB3BC21B87D0200036785 /* LinkedList.swift in Sources */,
 				F2CC64B321C4E27400809FE3 /* Heap.swift in Sources */,
+				F2899F5521D19A54006F3318 /* MovementController.swift in Sources */,
 				F262F1BC21B2225C00B973C8 /* CommandQueue.swift in Sources */,
 				F2CC64CD21C618F400809FE3 /* ShapeNodeEvaluator.swift in Sources */,
 				F2852C1521BA4E6400FCD231 /* Fixture.swift in Sources */,

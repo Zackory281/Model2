@@ -29,11 +29,14 @@ class NodeScene: SKScene, NodeRenderer {
 			sknode = nodeDict[shapeNode]!
 		}
 		sknode.position = shapeNode.fpoint.cgPoint
-		if shapeNode.moving {
-			sknode.zRotation = 0.1
-		} else {
-			sknode.zRotation = 0.0
+		if let movement = shapeNode.movement {
+			sknode.zRotation = floa2Toangle(movement.delta)
 		}
+//		if shapeNode.moving {
+//			sknode.zRotation = 0.1
+//		} else {
+//			sknode.zRotation = 0.0
+//		}
 	}
 	
 	func render(_ pathNode: PathNode) {
@@ -65,6 +68,18 @@ class NodeScene: SKScene, NodeRenderer {
 		sknode.position = geometryNode.fpoint.cgPoint
 	}
 	
+	func render(_ projectileNode: ProjectileNode) {
+		let sknode: SKSpriteNode
+		if !nodeDict.keys.contains(projectileNode) {
+			sknode = createProjectileNode(projectileNode: projectileNode)
+			addChild(sknode)
+			nodeDict[projectileNode] = sknode
+		} else {
+			sknode = nodeDict[projectileNode]!
+		}
+		sknode.position = projectileNode.fpoint.cgPoint
+	}
+	
 	var imaginaryPathPair: (PathNode, SKNode)?
 	
 	func renderImagine(_ pathnode: PathNode) {
@@ -88,7 +103,7 @@ class NodeScene: SKScene, NodeRenderer {
 	}
 	
 	private func createNewShapeNode() -> SKSpriteNode {
-		let node = SKSpriteNode(texture: SKTexture(imageNamed: "square"), size: CGSize(width: SCALE, height: SCALE))
+		let node = SKSpriteNode(texture: SKTexture(imageNamed: "tank"), size: CGSize(width: SCALE, height: SCALE))
 		node.texture?.filteringMode = .nearest
 		//		let node2 = SKSpriteNode(texture: SKTexture(imageNamed: "square"), size: CGSize(width: 100, height: 100))
 		//		node2.texture?.filteringMode = .nearest
@@ -127,6 +142,22 @@ class NodeScene: SKScene, NodeRenderer {
 			return SKSpriteNode()
 		}
 		let sknode = SKSpriteNode(texture: texture)
+		sknode.zPosition = Geometry_Z
+		texture.filteringMode = .nearest
+		return sknode
+	}
+	
+	private func createProjectileNode(projectileNode: ProjectileNode) -> SKSpriteNode {
+		let shnode = SKShapeNode(rect: CGRect(x: -30, y: -10, width: 60, height: 20))
+		shnode.fillColor = .white
+		shnode.strokeColor = .red
+		shnode.zRotation = CGFloat(atan(projectileNode.delta.y / projectileNode.delta.x))
+		guard let texture = self.view?.texture(from: shnode) else {
+			error("No view or texture to generate texture.")
+			return SKSpriteNode()
+		}
+		let sknode = SKSpriteNode(texture: texture)
+		sknode.zPosition = Projectile_Z
 		texture.filteringMode = .nearest
 		return sknode
 	}
@@ -134,6 +165,8 @@ class NodeScene: SKScene, NodeRenderer {
 
 let PathNode_Z: CGFloat = 1
 let ShapeNode_Z: CGFloat = 2
+let Geometry_Z: CGFloat = 0
+let Projectile_Z: CGFloat = 10
 let PathNodeImagine_Z: CGFloat = 5
 
 let SCALE: CGFloat = 100

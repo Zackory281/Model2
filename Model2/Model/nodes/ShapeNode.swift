@@ -35,6 +35,14 @@ struct ShapeMovement {
 	let startPoint: FP
 	let delta: FP
 }
+
+func floa2Toangle(_ delta: float2) -> CGFloat {
+	let a = atan(delta.y / delta.x)
+	if delta.x < 0 {
+		return CGFloat(a + Float.pi)
+	}
+	return CGFloat(a)
+}
 enum TrasientState {
 	case Stopped
 	case Moving

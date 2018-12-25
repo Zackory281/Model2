@@ -31,7 +31,7 @@ class ActionEvaluator {
 		}
 		nd = actionBase.nextDate
 		if nd != pnd {
-			print("Next eval time: ", nd)
+			//print("Next eval time: ", nd)
 		}
 		pnd = nd
 		while clock.evalTime >= nd {

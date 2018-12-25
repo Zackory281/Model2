@@ -13,6 +13,7 @@ class ControllerSet {
 	let shapeNodeController: ShapeNodeController
 	let pathNodeController: PathNodeController
 	let geometryNodeController: GeometryNodeController
+	let projectileNodeController: ProjectilNodeController
 	var controllers: WeakSet<Controller>
 	
 	func feed(_ cmd: MC, _ time: Time) {
@@ -28,11 +29,15 @@ class ControllerSet {
 		self.shapeNodeController = ShapeNodeController(dataBase: dataBase)
 		self.pathNodeController = PathNodeController(dataBase: dataBase, shapeNodeControllerDelegate: shapeNodeController)
 		self.geometryNodeController = GeometryNodeController(dataBase: dataBase)
+		self.projectileNodeController = ProjectilNodeController(dataBase: dataBase)
 		self.controllers = WeakSet<Controller>()
+		
+		self.shapeNodeController.projectileDelegate = projectileNodeController
 		
 		controllers.insert(shapeNodeController)
 		controllers.insert(pathNodeController)
 		controllers.insert(geometryNodeController)
+		controllers.insert(projectileNodeController)
 	}
 }
 

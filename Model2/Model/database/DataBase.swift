@@ -38,6 +38,9 @@ class DataBase {
 		for obj in geometryNodeBase.flushRemove() {
 			function(obj)
 		}
+		for obj in projectileBase.flushRemove() {
+			function(obj)
+		}
 	}
 	
 	func forEachShapeNode(function: (ShapeNode)->()) {
